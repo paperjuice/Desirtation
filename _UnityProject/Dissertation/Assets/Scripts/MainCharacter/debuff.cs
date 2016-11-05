@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class debuff : MonoBehaviour {
 
+    Collider mcWeaponCol;
     [SerializeField] Animator _anim;
     [SerializeField] characterController _charController;
     [SerializeField] characterAttack _charAttack;
@@ -14,7 +15,10 @@ public class debuff : MonoBehaviour {
     [SerializeField] float endInterruptTime;
     public float currentInterruptTime;
 
-
+    void Awake()
+    {
+        mcWeaponCol = GameObject.FindGameObjectWithTag("mainCharacterWeapon").GetComponent<Collider>();
+    }
 
     void Update()
     {
@@ -29,6 +33,7 @@ public class debuff : MonoBehaviour {
             _charAttack.enabled = false;
             currentInterruptTime -= Time.deltaTime;
             _anim.SetBool("interrupt", true);
+            mcWeaponCol.enabled = false;
 
 
             if (currentInterruptTime <= 0 && currentInterruptTime > -1)

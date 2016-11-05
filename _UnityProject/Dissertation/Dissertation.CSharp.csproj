@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemies\enemyWeaponCollision.cs" />
+    <Compile Include="Assets\Scripts\Enemies\generalEnemyStats.cs" />
     <Compile Include="Assets\Scripts\Enemies\meleeEnemyAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\meleeEnemyGeneralBehaviour.cs" />
     <Compile Include="Assets\Scripts\MainCharacter\characterAttack.cs" />

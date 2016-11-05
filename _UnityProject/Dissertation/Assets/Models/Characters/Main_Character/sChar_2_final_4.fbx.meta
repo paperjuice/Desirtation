@@ -1,19 +1,46 @@
 fileFormatVersion: 2
-guid: eca1eca44cb4fff49af765fd8fe67862
-timeCreated: 1478128985
+guid: a0685452343a660479ec9ba30bff5a86
+timeCreated: 1478335201
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: Armature
+    100002: chest
+    100004: Cube.001
+    100006: feet
+    100008: forearm
+    100010: hand
+    100012: hand_end
+    100014: head
+    100016: head_end
+    100018: //RootNode
+    100020: stomach
+    100022: upperarm
+    400000: Armature
+    400002: chest
+    400004: Cube.001
+    400006: feet
+    400008: forearm
+    400010: hand
+    400012: hand_end
+    400014: head
+    400016: head_end
+    400018: //RootNode
+    400020: stomach
+    400022: upperarm
     4300000: Cube.001
-    7400000: Cube.001|ArmatureAction
-    7400002: Cube.001|attack_2
-    7400004: Cube.001|idle
+    7400000: Armature|ArmatureAction
+    7400002: Armature|attack_1
+    7400004: Armature|attack_2
+    7400006: Armature|attack_3
+    7400008: Armature|block
+    7400010: Armature|idle
+    7400012: Armature|interrupt
+    7400014: Armature|movement
+    7400016: Armature|tumble
     9500000: //RootNode
+    13700000: Cube.001
   materials:
     importMaterials: 1
     materialName: 0
@@ -38,7 +65,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

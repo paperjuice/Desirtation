@@ -20,7 +20,7 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
     Vector3 rememberPosition;
 
     //attack variables
-    float aCurrentTime;
+    float aCurrentTime=2;
     float aEndTime = 2f;
     int attackBehaviour;
 
@@ -35,16 +35,8 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-
-    void PrintFloat(string asd)
-    {
-        Debug.Log(asd);
-    }
-
     IEnumerator Start()
     {
-
-
         //activate move animation when moving
         while (true)
         {
@@ -78,7 +70,6 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
                 AttackPlayer();
             }
         }
-       // print(bCurrentTime);
     }
     
     void Distance()
@@ -168,7 +159,8 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
 
     void Block()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //chance to roll a block value when player plesses mouse 0
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
         {
             float blockRoll = Random.Range(0f, 100f);
 
@@ -184,11 +176,22 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
             anim.SetBool("block", true);
             bCurrentTime += Time.deltaTime;
 
-            if (bCurrentTime >= bEndTime)
+            if (bCurrentTime >= bEndTime )
             {
                 anim.SetBool("block", false);
                 bCurrentTime = 0;
                 enemyState = 0;
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (enemyState == 3)
+        {
+            if (col.gameObject.tag == "mainCharacterWeapon")
+            {
+                player.GetComponent<debuff>().currentInterruptTime = 1f;
             }
         }
     }

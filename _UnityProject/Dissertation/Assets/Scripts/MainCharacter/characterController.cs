@@ -29,7 +29,7 @@ public class characterController : MonoBehaviour {
     [SerializeField] private KeyCode D;
 
     //Roll
-    private bool isRolling = false;
+    public bool isRolling = false;
     private int rollCase; //based on the direction you re moving, you roll towards that 
     
 
@@ -44,6 +44,7 @@ public class characterController : MonoBehaviour {
     {
         pos = transform.position;
     }
+    
 
     void FixedUpdate()
     {

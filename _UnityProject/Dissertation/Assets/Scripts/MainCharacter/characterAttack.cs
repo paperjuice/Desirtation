@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class characterAttack : MonoBehaviour {
 
-	[SerializeField] characterController charController;
+    
+    [SerializeField] characterController charController;
 	[SerializeField] Animator anim;
     Rigidbody rigid;
 
     
     [SerializeField]float endAttackTime;
     float savedEndAttackTime;
-    float currentAttackTime = 0f;
-	bool isAttacking;
+    public float currentAttackTime = 0f;
+	public bool isAttacking =false;
     bool waitForAttackSequenceToFinish = false;
     [SerializeField]float bodyForceForwardOnAttack = 600f;
     float savedBodyForceForwardOnAttack;
     bool isBodyForceActivated = false;
+    Vector3 savedTargetPosition;
 
 
 
@@ -37,20 +39,26 @@ public class characterAttack : MonoBehaviour {
     void Update()
     {
         Attack();
-        Block();
     }
 
     void Attack()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+           
             if (!isAttacking)
             {
+
                 anim.SetTrigger("attack_1");
                 isAttacking = true;
                 charController.enabled = false;
                 isBodyForceActivated = true;
             }
+        }
+
+        if (isAttacking)
+        {
+            currentAttackTime += Time.deltaTime;
         }
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1"))
@@ -70,10 +78,7 @@ public class characterAttack : MonoBehaviour {
             }
         }
 
-        if (isAttacking)
-        {
-            currentAttackTime += Time.deltaTime;
-        }
+        
 
         if (currentAttackTime > endAttackTime)
         {
@@ -88,28 +93,11 @@ public class characterAttack : MonoBehaviour {
             isBodyForceActivated = false;
         }
 
-
         if (isBodyForceActivated)
         {
             bodyForceForwardOnAttack += Time.deltaTime * 100;
             rigid.AddForce(bodyForceForwardOnAttack * transform.forward);
-
         }
 
-    }
-
-
-    void Block()
-    {
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            anim.SetBool("block", true);
-            isAttacking = true;
-        }
-        else
-        {
-            anim.SetBool("block", false);
-            isAttacking = false;
-        }
     }
 }

@@ -45,11 +45,10 @@ public class characterAttack : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-           
             if (!isAttacking)
             {
-
-                anim.SetTrigger("attack_1");
+               // anim.SetTrigger("attack_1");
+                anim.SetBool("attack_1b", true);
                 isAttacking = true;
                 charController.enabled = false;
                 isBodyForceActivated = true;
@@ -70,7 +69,8 @@ public class characterAttack : MonoBehaviour {
                     if (!waitForAttackSequenceToFinish)
                     {
                         anim.SetBool("chain_1", true);
-                        endAttackTime += 1f;
+                        anim.SetBool("attack_1b", false);
+                        endAttackTime *=2f;
                         waitForAttackSequenceToFinish = true;
                         bodyForceForwardOnAttack = savedBodyForceForwardOnAttack;
                     }
@@ -78,7 +78,7 @@ public class characterAttack : MonoBehaviour {
             }
         }
 
-        
+        print(endAttackTime);
 
         if (currentAttackTime > endAttackTime)
         {
@@ -87,6 +87,7 @@ public class characterAttack : MonoBehaviour {
             currentAttackTime = 0f;
             endAttackTime = savedEndAttackTime;
             anim.SetBool("chain_1", false);
+            anim.SetBool("attack_1b", false);
             waitForAttackSequenceToFinish = false;
 
             bodyForceForwardOnAttack = savedBodyForceForwardOnAttack;

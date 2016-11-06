@@ -21,7 +21,7 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
 
     //attack variables
     float aCurrentTime=2;
-    float aEndTime = 2f;
+    float aEndTime = 1f;
     int attackBehaviour;
 
     //block variable
@@ -74,7 +74,7 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
     
     void Distance()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 6 && Vector3.Distance(transform.position, player.transform.position) > 1.3f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 6 && Vector3.Distance(transform.position, player.transform.position) > 2.5f)
         {
             enemyState = 1;
         }
@@ -83,7 +83,7 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
             enemyState = 0;
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) < 1.3f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 2.5f)
         {
             enemyState = 2;
         }
@@ -125,7 +125,9 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
         Vector3 direction = player.transform.position - transform.position;
         direction.y = 0;
 
-        transform.rotation = Quaternion.LookRotation(direction);
+       Quaternion target = Quaternion.LookRotation(direction);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, target, Time.deltaTime * 3f);
     }
 
     void AttackPlayer()
@@ -145,7 +147,7 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
         //attack when chance is higher/equal than 3
         if (aCurrentTime >= aEndTime)
         {
-            attackBehaviour = Random.Range(1, 11);
+            attackBehaviour = Random.Range(1, 20);
 
             
             if(attackBehaviour >=3)

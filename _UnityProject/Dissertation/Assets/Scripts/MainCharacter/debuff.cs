@@ -33,7 +33,10 @@ public class debuff : MonoBehaviour {
             _charAttack.enabled = false;
             currentInterruptTime -= Time.deltaTime;
             _anim.SetBool("interrupt", true);
-            mcWeaponCol.enabled = false;
+            if (mcWeaponCol != null)
+            {
+                mcWeaponCol.enabled = false;
+            }
 
 
             if (currentInterruptTime <= 0 && currentInterruptTime > -1)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mcSwordCollision : MonoBehaviour {
+public class mcSwordCollision : buff {
 
 
     private Animator _cameraAnimator;
@@ -20,6 +20,7 @@ public class mcSwordCollision : MonoBehaviour {
         if (col.gameObject.tag == "enemy")
         {
             _cameraAnimator.SetTrigger("shake");
+            col.GetComponent<generalEnemyStats>().eCurrentHealth -= Damage(5f);
             print("hit");
         }
 

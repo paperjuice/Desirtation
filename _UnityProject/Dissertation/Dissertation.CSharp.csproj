@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Enemies\generalEnemyStats.cs" />
     <Compile Include="Assets\Scripts\Enemies\meleeEnemyAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\meleeEnemyGeneralBehaviour.cs" />
+    <Compile Include="Assets\Scripts\MainCharacter\buff.cs" />
     <Compile Include="Assets\Scripts\MainCharacter\characterAttack.cs" />
     <Compile Include="Assets\Scripts\MainCharacter\characterController.cs" />
     <Compile Include="Assets\Scripts\MainCharacter\debuff.cs" />

@@ -30,6 +30,12 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
     [SerializeField]float chanceToBlock;
 
 
+    //isPatrolling
+    bool isPatrolling = true;
+    float pCurrentTime = 0f;
+    float pEndTime=1.5f;
+
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -55,6 +61,7 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
 
     void Update()
     {
+        EnablePatrolling();
         Block();
 
         if (enemyState != 3)
@@ -74,13 +81,9 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
     
     void Distance()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 6 && Vector3.Distance(transform.position, player.transform.position) > 2.5f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 10 && Vector3.Distance(transform.position, player.transform.position) > 2.5f)
         {
             enemyState = 1;
-        }
-        else
-        {
-            enemyState = 0;
         }
 
         if (Vector3.Distance(transform.position, player.transform.position) < 2.5f)
@@ -186,6 +189,15 @@ public class meleeEnemyGeneralBehaviour : MonoBehaviour {
             }
         }
     }
+
+    void EnablePatrolling()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) > 15f)
+        {
+            enemyState = 0;
+        }
+    }
+
 
     void OnTriggerEnter(Collider col)
     {

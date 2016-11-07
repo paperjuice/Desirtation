@@ -96,7 +96,7 @@ public class characterAttack : MonoBehaviour {
 
         if (isBodyForceActivated)
         {
-            bodyForceForwardOnAttack += Time.deltaTime * 100;
+            bodyForceForwardOnAttack += Time.deltaTime * 1600;
             rigid.AddForce(bodyForceForwardOnAttack * transform.forward);
         }
 

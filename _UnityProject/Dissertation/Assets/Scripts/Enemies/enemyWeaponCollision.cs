@@ -32,7 +32,8 @@ public class enemyWeaponCollision : MonoBehaviour {
                 _mcStats.mcCurrentHealth -= _debuff.DamageReceived(10f);
                 //interrupt
                 _debuff.currentInterruptTime = 1f;
-                player.GetComponent<Rigidbody>().AddForce((player.transform.position- enemyMesh.transform.position) * 10200f);
+                //push
+                player.GetComponent<Rigidbody>().AddForce((player.transform.position- enemyMesh.transform.position) * 105200f);
             }
         }
     }

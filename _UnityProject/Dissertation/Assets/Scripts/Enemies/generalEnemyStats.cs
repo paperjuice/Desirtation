@@ -5,7 +5,7 @@ using UnityEngine;
 public class generalEnemyStats : MonoBehaviour {
 
 
-    private float eMaxHealth = 100f;
+    private float eMaxHealth = 20f;
     public float eCurrentHealth;
 
     void Start()

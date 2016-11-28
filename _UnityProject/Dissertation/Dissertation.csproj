@@ -80,10 +80,13 @@
     <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeWeaponCollider.cs" />
     <Compile Include="Assets\Scripts\Enemies\generalEnemyStats.cs" />
     <Compile Include="Assets\Scripts\MC5\buff.cs" />
+    <Compile Include="Assets\Scripts\MC5\debuff.cs" />
     <Compile Include="Assets\Scripts\MC5\mcAnimationMethods.cs" />
     <Compile Include="Assets\Scripts\MC5\mcCameraFollow.cs" />
     <Compile Include="Assets\Scripts\MC5\mcMovementBehaviour.cs" />
+    <Compile Include="Assets\Scripts\MC5\mcStats.cs" />
     <Compile Include="Assets\Scripts\MC5\mcWeaponCollision.cs" />
+    <Compile Include="Assets\Scripts\Misc\bilboard.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

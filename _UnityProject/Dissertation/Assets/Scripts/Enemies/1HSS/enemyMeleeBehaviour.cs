@@ -110,7 +110,7 @@ public class enemyMeleeBehaviour : MonoBehaviour {
 
     void AttackPlayer()
     {
-        print(attackBehaviour);
+        //print(attackBehaviour);
         if (attackBehaviour == 0)
         {
             attackBehaviour = Random.Range(1, 7);

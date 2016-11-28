@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class generalEnemyStats : MonoBehaviour {
 
+    [SerializeField] GameObject aliveBody;
+    [SerializeField] GameObject deadBody;
+    [SerializeField] ParticleSystem _part;
 
-    private float eMaxHealth = 20f;
+    [Header("VisualizeHealth")]
+    [SerializeField] GameObject fillBar;
+
+    private float eMaxHealth = 10f;
     public float eCurrentHealth;
 
     void Start()
@@ -16,13 +22,29 @@ public class generalEnemyStats : MonoBehaviour {
     void Update()
     {
         Death();
+        VisualizeHealth();
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "mcWeapon")
+        {
+            _part.Play();
+        }
+    }
+
+    void VisualizeHealth()
+    {
+        fillBar.transform.localScale = new Vector3(eCurrentHealth / eMaxHealth, 1f, 1f);
     }
 
     void Death()
     {
         if (eCurrentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            deadBody.gameObject.SetActive(true);
+            deadBody.transform.parent = null;
+            aliveBody.gameObject.SetActive(false);
         }
     }
 

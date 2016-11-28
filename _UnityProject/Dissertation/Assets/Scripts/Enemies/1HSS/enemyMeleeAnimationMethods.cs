@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyMeleeAnimationMethods : MonoBehaviour {
 
     [SerializeField] private enemyMeleeBehaviour _enemyMeleeBehaviour;
+    [SerializeField] Collider mcWeapon;
     private Animator anim;
 
     private void Awake()
@@ -17,7 +18,7 @@ public class enemyMeleeAnimationMethods : MonoBehaviour {
         if (_enemyMeleeBehaviour.attackBehaviour != 0)
         {
             _enemyMeleeBehaviour.attackBehaviour--;
-            print("asda");
+           // print("asda");
         }
 
         if (_enemyMeleeBehaviour.attackBehaviour == 0)
@@ -26,6 +27,14 @@ public class enemyMeleeAnimationMethods : MonoBehaviour {
 
     void AttackMovement()
     {
-        _enemyMeleeBehaviour.GetComponent<Rigidbody>().AddForce(transform.forward * 45000f);
+        _enemyMeleeBehaviour.GetComponent<Rigidbody>().AddForce(transform.forward * 55000f);
+    }
+
+    void ActivateWeaponCollider(int a)
+    {
+        if (a == 1)
+            mcWeapon.enabled = true;
+        else if (a == 0)
+            mcWeapon.enabled = false;
     }
 }

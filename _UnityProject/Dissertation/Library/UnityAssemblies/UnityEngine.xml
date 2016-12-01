@@ -8526,10 +8526,10 @@ The default value is Camera.MonoOrStereoscopicEye.Left, so Camera.MonoOrStereosc
     </member>
     <member name="M:UnityEngine.Canvas.GetETC1SupportedCanvasMaterial">
       <summary>
-        <para>Gets or generates the ETC1 material.</para>
+        <para>Gets or generates the ETC1 Material.</para>
       </summary>
       <returns>
-        <para>The generated ETC1 material from the Canvas.</para>
+        <para>The generated ETC1 Material from the Canvas.</para>
       </returns>
     </member>
     <member name="T:UnityEngine.CanvasGroup">
@@ -8704,7 +8704,7 @@ See Also: CanvasRenderer.EnableRectClipping, CanvasRenderer.DisableRectClipping.
     </member>
     <member name="M:UnityEngine.CanvasRenderer.SetAlphaTexture(UnityEngine.Texture)">
       <summary>
-        <para>The Alpha Texture that will be passed to the shader under the _AlphaTex property.</para>
+        <para>The Alpha Texture that will be passed to the Shader under the _AlphaTex property.</para>
       </summary>
       <param name="texture">The Texture to be passed.</param>
     </member>

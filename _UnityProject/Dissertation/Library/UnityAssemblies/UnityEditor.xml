@@ -4048,6 +4048,16 @@ These will be used as asset names, which you can then pass to AssetBundle.Load t
         <para>Fullscreen window.</para>
       </summary>
     </member>
+    <member name="T:UnityEditor.DDSImporter">
+      <summary>
+        <para>Texture importer lets you modify Texture2D import settings for DDS textures from editor scripts.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.DDSImporter.isReadable">
+      <summary>
+        <para>Is texture data readable from scripts.</para>
+      </summary>
+    </member>
     <member name="T:UnityEditor.DecoratorDrawer">
       <summary>
         <para>Base class to derive custom decorator drawers from.</para>

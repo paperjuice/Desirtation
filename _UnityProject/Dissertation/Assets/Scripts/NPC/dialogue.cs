@@ -9,6 +9,7 @@ public class dialogue : MonoBehaviour {
 
     private GameObject player;
     private GameObject dialogueParent;
+    private int i = 0;
 
 
     void Awake()
@@ -27,8 +28,21 @@ public class dialogue : MonoBehaviour {
         if (Vector3.Distance(transform.position, player.transform.position) < 3)
         {
             speakToText.gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
 
-            
+                dialoguesGO[i].gameObject.SetActive(true);
+
+                if(i>=1)
+                    dialoguesGO[i-1].gameObject.SetActive(false);
+
+                i++;
+
+                if(i>dialoguesGO.Length)
+                    dialoguesGO[i-1].gameObject.SetActive(false);
+            }
+
+
 
         }
         else 

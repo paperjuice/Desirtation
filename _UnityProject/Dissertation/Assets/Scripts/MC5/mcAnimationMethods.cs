@@ -50,7 +50,7 @@ public class mcAnimationMethods : MonoBehaviour {
 
     void ActivateWeaponCollider(int a)
     {
-        mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<Collider>();
+        mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<BoxCollider>();
 
         if (a == 1)
             mcWeapon.enabled = true;

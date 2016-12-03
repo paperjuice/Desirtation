@@ -4,27 +4,39 @@ using UnityEngine;
 
 public class enemyMeleeWeaponCollider : MonoBehaviour {
 
-    GameObject player;
+    debuff mcDebuffs;
+    mcMovementBehaviour mcMovement;
     [SerializeField] GameObject enemyPosition;
 
     //enemy amount of damage it deals
-    private float enemyDamage = 10f;
+    private float enemyDamage=0f;
 
+    
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        mcDebuffs = GameObject.FindGameObjectWithTag("Player").GetComponent<debuff>();
+        mcMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<mcMovementBehaviour>();
+    }
+
+
+    void Start()
+    {
+        enemyDamage = 8f+controller.dungeonLevel * 2f;
     }
 
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject == player)
+        if (col.gameObject.tag == "Player")
         {
-            if (!player.GetComponent<mcMovementBehaviour>().isInvincible) //put it outside "if(col.gameObject==player)"
+            if (!mcMovement.isInvincible) //put it outside "if(col.gameObject==player)"
             {
-                player.GetComponent<debuff>().PlayerDamaged(enemyDamage); //Damage dealt
-                player.GetComponent<debuff>().secondsInterrupted = 0.75f; //Interrupt - this will be iterated based on enemy type
-                player.GetComponent<debuff>().PushBack(enemyPosition.transform.position, player.transform.position, 50f); //PushBack - iterate force
+                mcStats.age += enemyDamage;
+
+                mcDebuffs.PlayerDamaged(enemyDamage); //Damage dealt
+                mcDebuffs.secondsInterrupted = 0.75f; //Interrupt - this will be iterated based on enemy type
+                mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, 50f); //PushBack - iterate force
+                mcDebuffs.ChanceToDieOnHit();
             }
         }
     }

@@ -21,6 +21,11 @@ public class mcMovementBehaviour : MonoBehaviour {
     [SerializeField] Animator anim;
     [SerializeField] private float mcSpeed;
 
+    //Stamina
+    [SerializeField]private float currentStamin;
+    private float maxStamina =20f;
+
+
     //Attack
     public int attackQueue = 0;
 
@@ -40,8 +45,15 @@ public class mcMovementBehaviour : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
     }
 
+    void Start()
+    {
+        currentStamin = maxStamina;
+    }
+
     void Update()
     {
+        RegenStamin();
+
         if (attackQueue == 0 )
             Roll();
 
@@ -77,6 +89,15 @@ public class mcMovementBehaviour : MonoBehaviour {
 
             transform.rotation = Quaternion.Lerp(transform.rotation, target_rotation, playerRotationSpeed * Time.deltaTime);
         }
+    }
+
+    //aici o sa intre fortitude
+    void RegenStamin()
+    {
+        if (currentStamin < maxStamina)
+            currentStamin += Time.deltaTime * 5f;
+
+        currentStamin = Mathf.Clamp(currentStamin, 0f, maxStamina);
     }
 
     void Movement()
@@ -118,33 +139,23 @@ public class mcMovementBehaviour : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            isBlocking = true;
-            anim.SetBool("block", true);
+            if (currentStamin >= 10f)
+            {
+                isBlocking = true;
+                anim.SetTrigger("block");
+                currentStamin -= 10f;
+            }
         }
-
-        if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            isBlocking = false;
-            anim.SetBool("block", false);
-        }
+        
 
         if (isBlocking)
         {
             deflect += Time.deltaTime;
         }
-        else
-        {
-            deflect = 0;
-        }
 
-        if (deflect <= 0.5f)
+        if (deflect >= 0.2f)
         {
-            isDeflecting = true;
-            //print("successfully deflected");
-        }
-        else
-        {
-            isDeflecting = false;
+            isBlocking = false;
         }
     }
 

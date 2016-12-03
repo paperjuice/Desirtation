@@ -41,6 +41,7 @@ public class debuff : MonoBehaviour {
             anim.SetBool("attack", false);
             anim.SetBool("walkin", false);
             _mainChar.attackQueue = 0;
+            _mainChar.isRolling = false;
             _mainChar.enabled = false;
         }
         else if (secondsInterrupted <= 0)
@@ -53,6 +54,21 @@ public class debuff : MonoBehaviour {
     public void PushBack(Vector3 fromPos, Vector3 toPos, float force)
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().AddForce((toPos-fromPos) * force*1000f);
+    }
+
+
+    public float ChanceToDieOnHit()
+    {
+        float ageChanceToDieOnHit;
+
+        ageChanceToDieOnHit = Mathf.Floor(((18 + mcStats.age) / (1000/ (mcStats.age+1)))*10f);
+        mcStats.statisticsChanceToDieOnHit = ageChanceToDieOnHit;
+
+        if (Random.Range(1f, 100f) <= ageChanceToDieOnHit)
+            mcStats.isDead = true;
+        print(mcStats.age+18f + "   |   " + ageChanceToDieOnHit);
+
+        return ageChanceToDieOnHit;
     }
 
 

@@ -13,7 +13,7 @@ public class enemyMeleeBehaviour : MonoBehaviour {
     //time between movement
     [SerializeField] float enemyMSSpeed = 80f;
     private float mvCurrentTime=0f;
-    private float mvEndTime = 2f;
+    private float mvEndTime = 1f;
     private int movementBehaviour = 0; //roll number to determine movement behaviour
 
     //Attack behaviour
@@ -58,14 +58,17 @@ public class enemyMeleeBehaviour : MonoBehaviour {
 
     void Distance()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 10 && Vector3.Distance(transform.position, player.transform.position) > 2.5f)
+        if (player != null)
         {
-            enemyState = 1;
-        }
+            if (Vector3.Distance(transform.position, player.transform.position) < 10 && Vector3.Distance(transform.position, player.transform.position) > 2.5f)
+            {
+                enemyState = 1;
+            }
 
-        if (Vector3.Distance(transform.position, player.transform.position) < 3f)
-        {
-            enemyState = 2;
+            if (Vector3.Distance(transform.position, player.transform.position) < 3f)
+            {
+                enemyState = 2;
+            }
         }
     }
 
@@ -102,9 +105,12 @@ public class enemyMeleeBehaviour : MonoBehaviour {
 
     void EnablePatrolling()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) > 15f)
+        if (player != null)
         {
-            enemyState = 0;
+            if (Vector3.Distance(transform.position, player.transform.position) > 15f)
+            {
+                enemyState = 0;
+            }
         }
     }
 

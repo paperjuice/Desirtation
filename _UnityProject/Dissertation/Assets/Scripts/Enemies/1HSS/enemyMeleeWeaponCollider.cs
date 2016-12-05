@@ -7,6 +7,9 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
     debuff mcDebuffs;
     mcMovementBehaviour mcMovement;
     [SerializeField] GameObject enemyPosition;
+    [SerializeField] float eDamage;
+    [SerializeField] float interruptTime;
+    [SerializeField] float pushBackForce;
 
     //enemy amount of damage it deals
     private float enemyDamage=0f;
@@ -21,7 +24,7 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
 
     void Start()
     {
-        enemyDamage = 8f+controller.dungeonLevel * 2f;
+        enemyDamage = eDamage + controller.dungeonLevel * 2f;
     }
 
 
@@ -34,8 +37,8 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
                 mcStats.age += enemyDamage;
 
                 mcDebuffs.PlayerDamaged(enemyDamage); //Damage dealt
-                mcDebuffs.secondsInterrupted = 0.75f; //Interrupt - this will be iterated based on enemy type
-                mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, 50f); //PushBack - iterate force
+                mcDebuffs.secondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
+                mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, pushBackForce); //PushBack - iterate force
                 mcDebuffs.ChanceToDieOnHit();
             }
         }

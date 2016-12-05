@@ -29,8 +29,11 @@ public class dialogue : MonoBehaviour {
     {
         if (Vector3.Distance(transform.position, player.transform.position) < 3)
         {
-            if (i % 2 == 0 && i!=0)
+            if (i % 2 == 0 && i != 0)
                 _anim.SetBool("talking", true);
+            else
+                _anim.SetBool("talking", false);
+
 
             RotateTowards();
             speakToText.gameObject.SetActive(true);

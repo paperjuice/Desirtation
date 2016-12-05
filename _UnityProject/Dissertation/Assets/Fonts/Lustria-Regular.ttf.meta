@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d8abe21dbca8fe5449aaf80c591693de
+timeCreated: 1480876640
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Lustria
+  fontNames:
+  - Lustria
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

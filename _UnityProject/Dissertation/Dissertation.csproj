@@ -78,6 +78,9 @@
     <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeAnimationMethods.cs" />
     <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeWeaponCollider.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Boss\bossAnimationMethods.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Boss\bossGeneralBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Boss\bossMeleeAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\generalEnemyStats.cs" />
     <Compile Include="Assets\Scripts\Environment\breakableObjects.cs" />
     <Compile Include="Assets\Scripts\Environment\controller.cs" />

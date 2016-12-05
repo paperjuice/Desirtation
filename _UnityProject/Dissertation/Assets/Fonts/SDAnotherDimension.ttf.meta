@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 71e0f15834075a24a8cebc4c3b41a7b6
+timeCreated: 1480888251
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SD Another Dimension
+  fontNames:
+  - SD Another Dimension
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

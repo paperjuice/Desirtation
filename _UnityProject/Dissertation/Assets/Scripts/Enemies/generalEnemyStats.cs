@@ -11,7 +11,7 @@ public class generalEnemyStats : MonoBehaviour {
     [Header("VisualizeHealth")]
     [SerializeField] GameObject fillBar;
 
-    private float eMaxHealth = 10f;
+    [SerializeField]private float eMaxHealth = 10f;
     public float eCurrentHealth;
 
     void Start()

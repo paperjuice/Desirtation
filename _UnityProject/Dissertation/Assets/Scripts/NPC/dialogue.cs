@@ -18,8 +18,9 @@ public class dialogue : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         dialogueFather = GameObject.FindGameObjectWithTag("dialogueFather");
-    }
 
+    }
+    
     void Update()
     {
         ActivateDialogue();
@@ -40,6 +41,8 @@ public class dialogue : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 
+
+
                 if (i >= dialoguesGO.Length)
                 {
                     dialoguesGO[i - 1].gameObject.SetActive(false);

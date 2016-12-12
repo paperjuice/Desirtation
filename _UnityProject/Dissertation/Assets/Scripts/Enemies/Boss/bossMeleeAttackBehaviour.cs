@@ -27,7 +27,7 @@ public class bossMeleeAttackBehaviour : MonoBehaviour {
         if (numberOfCombos == 0)
         {
             _anim.SetBool("attack", false);
-            _bossGeneralBehaviour.enabled = true;
+           // _bossGeneralBehaviour.enabled = true;
         }
     }
 

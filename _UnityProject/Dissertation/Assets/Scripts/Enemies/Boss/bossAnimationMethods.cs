@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class bossAnimationMethods : MonoBehaviour {
 
-	
+    [SerializeField] bossGeneralBehaviour _bossGeneralBehaviour;
     [SerializeField] bossMeleeAttackBehaviour _bossMeleeAttackBehaviour;
     [SerializeField] Collider mcWeapon;
 
     public void DecrementNumberOfCombos()
     {
         _bossMeleeAttackBehaviour.numberOfCombos--;
+
+        if (_bossMeleeAttackBehaviour.numberOfCombos == 0)
+        {
+            _bossGeneralBehaviour.enabled = true;
+        }
     }
 
     void AttackMovement(float force)

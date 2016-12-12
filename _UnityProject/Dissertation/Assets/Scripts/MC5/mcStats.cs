@@ -9,43 +9,50 @@ public class mcStats : MonoBehaviour {
 
     [SerializeField] GameObject deadBody;
 
+    
+    //knowledge
+    [SerializeField] GameObject textKnowledge;
+    public static float knowledge = 0f;
 
-
-
-
+    //age
     public static float age=0;
-    public static bool isDead = false;
-    public static float statisticsChanceToDieOnHit;
-
     private float agingPerSecond;
-    private float ageSuddenDeath;
 
-    private float knowledge;
+    //health
+    private GameObject guiHealth; 
+    private float currentHealth=50f;
+    private float maxHealth;
 
-    //perception
-    private float perception;
-    private float currentPerception;
+    //Spirit
+    private GameObject guiSpirit;
+    private float currentSpirit=20f;
+    private float maxSpirit;
+
+    
+    //youthfulness
+    private float youthfulness;
 
     //fortitude
     private float fortitude;
-    private float currentFortitude;
 
     //wisdom
     private float wisdom;
-    private float currentWisdom;
 
+    //luck
     private float luck;
-    private float passivePotency;
 
+    //damage
+    private float mcDamage;
 
-    //GUI
-    private GameObject ageChanceToDieOnHitPanel;
+    
+    
 
 
 
     void Awake()
     {
-        ageChanceToDieOnHitPanel = GameObject.FindGameObjectWithTag("mcAgeFill");
+        guiHealth = GameObject.FindGameObjectWithTag("healthFill");
+        guiSpirit = GameObject.FindGameObjectWithTag("spiritFill");
         mcDebuff = GetComponent<debuff>();
     }
 
@@ -56,10 +63,89 @@ public class mcStats : MonoBehaviour {
         GUI();
     }
 
+    public void Knowledge(float knowledgeGain)
+    {
+        if (knowledgeGain > 0f)
+        {
+            Instantiate(textKnowledge, textKnowledge.transform.position = transform.position + new Vector3(0f, 3f, 0f), transform.rotation);
+            
 
+            knowledge += knowledgeGain;
+            knowledgeGain = 0f;
+        }
+    }
+
+    public float Youthfulness()
+    {
+        youthfulness = knowledge * (1 + (age / 2.5f) / (1 + age));
+        return youthfulness;
+    }
+
+    public float Fortitude()
+    {
+        if (age <= 17)
+            fortitude = knowledge * ((age+1) / 17)*0.1f;
+        else
+            fortitude = knowledge * (17 / age) * 0.1f;
+        
+        return fortitude;
+    }
+
+    public float Wisdom()
+    {
+        wisdom = knowledge * (age * 0.03f);
+        return wisdom;
+    }
+
+    public float Health(float damageDealt)
+    {
+        if (damageDealt > 0f)
+        {
+            currentHealth -= damageDealt;
+            damageDealt = 0f;
+        }
+
+        maxHealth = 50 + Fortitude();
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        
+        return currentHealth;
+    }
+
+
+    public float Spirit(float decreasAmount)
+    {
+        if (decreasAmount > 0)
+        {
+            currentSpirit -= decreasAmount;
+            decreasAmount = 0f;
+        }
+
+        maxSpirit = 20 + Youthfulness()*0.1f;
+        currentSpirit = Mathf.Clamp(currentSpirit, 0f, maxSpirit);
+
+        if (currentSpirit < maxSpirit)
+            currentSpirit += Time.deltaTime*1.4f;
+        
+        return currentSpirit;
+    }
+
+    public float Luck()
+    {
+        luck = (Youthfulness() / Youthfulness() + 10f) * 10f;
+        return luck;
+    }
+
+    public float McDamage(float weaponDamage)
+    {
+        mcDamage = Fortitude() + weaponDamage;
+        print(mcDamage);
+        return mcDamage;
+    }
+
+    
     void Death()
     {
-        if (isDead)
+        if (Health(0)<=0)
         {
             deadBody.transform.parent = null;
             deadBody.gameObject.SetActive(true);
@@ -70,7 +156,8 @@ public class mcStats : MonoBehaviour {
 
     void GUI()
     {
-        ageChanceToDieOnHitPanel.transform.localScale = new Vector3(statisticsChanceToDieOnHit / 100f, 1f, 1f);
+        guiHealth.transform.localScale = new Vector3(Health(0) / maxHealth, 1f, 1f);
+        guiSpirit.transform.localScale = new Vector3(Spirit(0) / maxSpirit, 1f, 1f);
     }
 
 

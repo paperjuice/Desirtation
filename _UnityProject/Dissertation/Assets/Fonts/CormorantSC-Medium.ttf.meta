@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 62ca4e8da527bfc41ac0d7698d6289f4
+timeCreated: 1481301274
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Cormorant SC
+  fontNames:
+  - Cormorant SC
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 075948a06f9f99844a44b00f2c223ccd, type: 3}
+  - {fileID: 12800000, guid: 024c90960cf687344bb89498453c2a21, type: 3}
+  - {fileID: 12800000, guid: 0b2724274e791b248a39fde8455202f9, type: 3}
+  - {fileID: 12800000, guid: 1195ff3de31e3c04da7e0a9c3fd7f4a3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

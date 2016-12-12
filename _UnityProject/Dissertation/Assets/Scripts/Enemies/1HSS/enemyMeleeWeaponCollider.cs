@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyMeleeWeaponCollider : MonoBehaviour {
 
     debuff mcDebuffs;
+    mcStats _mcStats;
     mcMovementBehaviour mcMovement;
     [SerializeField] GameObject enemyPosition;
     [SerializeField] float eDamage;
@@ -18,6 +19,7 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
     void Awake()
     {
         mcDebuffs = GameObject.FindGameObjectWithTag("Player").GetComponent<debuff>();
+        _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
         mcMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<mcMovementBehaviour>();
     }
 
@@ -34,12 +36,10 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
         {
             if (!mcMovement.isInvincible) //put it outside "if(col.gameObject==player)"
             {
-                mcStats.age += enemyDamage;
-
+                _mcStats.Health(enemyDamage);
                 mcDebuffs.PlayerDamaged(enemyDamage); //Damage dealt
                 mcDebuffs.secondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
                 mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, pushBackForce); //PushBack - iterate force
-                mcDebuffs.ChanceToDieOnHit();
             }
         }
     }

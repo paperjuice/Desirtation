@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class mcMovementBehaviour : MonoBehaviour {
 
+
+    private mcStats _mcStats;
+
     //Rotation
     private RaycastHit _raycast;
     private float dist = 1000f;
@@ -20,17 +23,14 @@ public class mcMovementBehaviour : MonoBehaviour {
     private float _z;
     [SerializeField] Animator anim;
     [SerializeField] private float mcSpeed;
-
-    //Stamina
-    [SerializeField]private float currentStamin;
-    private float maxStamina =20f;
-
-
+    
     //Attack
     public int attackQueue = 0;
+    BoxCollider mcWeapon;
 
     //Block
     private bool isBlocking;
+    [SerializeField]private GameObject gameObjectBlock;
     [SerializeField]private float deflect = 0f;
     private bool isDeflecting;
 
@@ -41,19 +41,14 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Awake()
     {
+        mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<BoxCollider>();
+        _mcStats = GetComponent<mcStats>();
         layerMask = LayerMask.GetMask("floor");
         rigid = GetComponent<Rigidbody>();
     }
-
-    void Start()
-    {
-        currentStamin = maxStamina;
-    }
-
+    
     void Update()
     {
-        RegenStamin();
-
         if (attackQueue == 0 )
             Roll();
 
@@ -91,15 +86,6 @@ public class mcMovementBehaviour : MonoBehaviour {
         }
     }
 
-    //aici o sa intre fortitude
-    void RegenStamin()
-    {
-        if (currentStamin < maxStamina)
-            currentStamin += Time.deltaTime * 5f;
-
-        currentStamin = Mathf.Clamp(currentStamin, 0f, maxStamina);
-    }
-
     void Movement()
     {
         _x = Input.GetAxis("Horizontal");
@@ -121,32 +107,37 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (_mcStats.Spirit(0) >= 5)
         {
-            if (attackQueue < 3)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                attackQueue++;
+                if (attackQueue < 3)
+                {
+                    attackQueue++;
+                    _mcStats.Spirit(5f);
+                }
             }
         }
 
+        if (attackQueue == 0f)
+            mcWeapon.enabled = false;
+
         if (attackQueue != 0)
-        {
             anim.SetBool("attack", true);
-        }
     }
 
     void Block()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (_mcStats.Spirit(0f) >= 10f)
         {
-            if (currentStamin >= 10f)
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 isBlocking = true;
                 anim.SetTrigger("block");
-                currentStamin -= 10f;
+                gameObjectBlock.gameObject.SetActive(true);
+                _mcStats.Spirit(10f);
             }
         }
-        
 
         if (isBlocking)
         {
@@ -162,52 +153,58 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Roll()
     {
-        if ((_x!=0||_z!=0)&&Input.GetKeyDown(KeyCode.Space)&& !isRolling)
+        if(_mcStats.Spirit(0)>=15)
         {
-            isRolling = true;
-
-            if (_x > 0)
+            if ((_x != 0 || _z != 0) && Input.GetKeyDown(KeyCode.Space) && !isRolling)
             {
-                transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                isRolling = true;
+
+                if (_x > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                }
+
+                if (_x < 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+                }
+
+                if (_z < 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                }
+
+                if (_z > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                }
+
+                if (_z > 0 && _x > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 45f, 0f);
+                }
+
+                if (_z > 0 && _x < 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 315f, 0f);
+                }
+
+                if (_z < 0 && _x > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 135f, 0f);
+                }
+
+                if (_z < 0 && _x < 0)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 225f, 0f);
+                }
+                anim.SetTrigger("roll");
+                _mcStats.Spirit(15f);
             }
 
-            if (_x < 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 270f, 0f);
-            }
+            
 
-            if (_z < 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            }
-
-            if (_z > 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            }
-
-            if (_z > 0 && _x > 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 45f, 0f);
-            }
-
-            if (_z > 0 && _x < 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 315f, 0f);
-            }
-
-            if (_z < 0 && _x > 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 135f, 0f);
-            }
-
-            if (_z < 0 && _x < 0)
-            {
-                transform.rotation = Quaternion.Euler(0f, 225f, 0f);
-            }
-            anim.SetTrigger("roll");
         }
-
         if (isRolling)
         {
             rigid.MovePosition(transform.position + transform.forward * mcSpeed * Time.deltaTime);

@@ -10,7 +10,7 @@ public class debuff : MonoBehaviour {
 
 
     //is interrupting
-    public float secondsInterrupted;
+    [HideInInspector]public float secondsInterrupted;
 
 
 
@@ -57,19 +57,7 @@ public class debuff : MonoBehaviour {
     }
 
 
-    public float ChanceToDieOnHit()
-    {
-        float ageChanceToDieOnHit;
-
-        ageChanceToDieOnHit = Mathf.Floor(((18 + mcStats.age) / (1000/ (mcStats.age+1)))*10f);
-        mcStats.statisticsChanceToDieOnHit = ageChanceToDieOnHit;
-
-        if (Random.Range(1f, 100f) <= ageChanceToDieOnHit)
-            mcStats.isDead = true;
-        print(mcStats.age+18f + "   |   " + ageChanceToDieOnHit);
-
-        return ageChanceToDieOnHit;
-    }
+   
 
 
 

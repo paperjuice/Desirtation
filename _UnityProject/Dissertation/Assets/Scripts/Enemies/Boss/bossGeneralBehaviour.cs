@@ -66,7 +66,7 @@ public class bossGeneralBehaviour : MonoBehaviour {
         }
     }
 
-
+    //distance to see enemy state: attack or idle
     void Distance()
     {
         if (player != null)

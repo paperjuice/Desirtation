@@ -13,7 +13,8 @@ public class npcQuestGiver : MonoBehaviour {
 
     void Awake()
     {
-        _unlockQuest = GameObject.FindGameObjectWithTag("quest").GetComponent<unlockQuest>();
+        if(_unlockQuest!=null)
+            _unlockQuest = GameObject.FindGameObjectWithTag("quest").GetComponent<unlockQuest>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

@@ -6,7 +6,7 @@ public class generalEnemyStats : MonoBehaviour {
 
     [SerializeField] GameObject aliveBody;
     [SerializeField] GameObject deadBody;
-    [SerializeField] ParticleSystem _part;
+    [SerializeField] ParticleSystem _bloodPart;
 
     [Header("VisualizeHealth")]
     [SerializeField] GameObject fillBar;
@@ -29,7 +29,7 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (col.gameObject.tag == "mcWeapon")
         {
-            _part.Play();
+            _bloodPart.Play();
         }
     }
 

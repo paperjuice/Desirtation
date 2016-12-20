@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class bossAnimationMethods : MonoBehaviour {
 
     [SerializeField] bossGeneralBehaviour _bossGeneralBehaviour;
     [SerializeField] bossMeleeAttackBehaviour _bossMeleeAttackBehaviour;
-    [SerializeField] Collider mcWeapon;
+    [SerializeField] Collider[] mcWeapon;
 
     public void DecrementNumberOfCombos()
     {
@@ -23,12 +21,21 @@ public class bossAnimationMethods : MonoBehaviour {
         _bossMeleeAttackBehaviour.GetComponent<Rigidbody>().AddForce(transform.forward * force * 1000f);
     }
 
-    void ActivateWeaponCollider(int a)
+    //activate weapon in right hand
+    void ActivateWeaponCollider1(int a)
     {
         if (a == 1)
-            mcWeapon.enabled = true;
+            mcWeapon[0].enabled = true;
         else if (a == 0)
-            mcWeapon.enabled = false;
+            mcWeapon[0].enabled = false;
     }
 
+    //activate weapon in left hand
+    void ActivateWeaponCollider2(int a)
+    {
+        if (a == 1)
+            mcWeapon[1].enabled = true;
+        else if (a == 0)
+            mcWeapon[1].enabled = false;
+    }
 }

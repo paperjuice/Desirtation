@@ -4,7 +4,7 @@ public class bossAnimationMethods : MonoBehaviour {
 
     [SerializeField] bossGeneralBehaviour _bossGeneralBehaviour;
     [SerializeField] bossMeleeAttackBehaviour _bossMeleeAttackBehaviour;
-    [SerializeField] Collider[] mcWeapon;
+    [SerializeField] Collider[] bossWeapon;
 
     public void DecrementNumberOfCombos()
     {
@@ -25,17 +25,17 @@ public class bossAnimationMethods : MonoBehaviour {
     void ActivateWeaponCollider1(int a)
     {
         if (a == 1)
-            mcWeapon[0].enabled = true;
+            bossWeapon[0].enabled = true;
         else if (a == 0)
-            mcWeapon[0].enabled = false;
+            bossWeapon[0].enabled = false;
     }
 
     //activate weapon in left hand
     void ActivateWeaponCollider2(int a)
     {
         if (a == 1)
-            mcWeapon[1].enabled = true;
+            bossWeapon[1].enabled = true;
         else if (a == 0)
-            mcWeapon[1].enabled = false;
+            bossWeapon[1].enabled = false;
     }
 }

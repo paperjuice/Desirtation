@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -100,6 +94,10 @@
     <Compile Include="Assets\Scripts\Enemies\Boss\bossGeneralBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\Boss\bossMeleeAttackBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\Boss2\boss2Behaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeAnimationMethods.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeAttackBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeMovementBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeProjectileBehaviour.cs" />
     <Compile Include="Assets\Scripts\Enemies\generalEnemyStats.cs" />
     <Compile Include="Assets\Scripts\Environment\breakableObjects.cs" />
     <Compile Include="Assets\Scripts\MC5\block.cs" />

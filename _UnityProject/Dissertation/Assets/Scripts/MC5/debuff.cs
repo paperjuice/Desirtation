@@ -25,13 +25,7 @@ public class debuff : MonoBehaviour {
     {
         Interrupting();
     }
-
-    public void PlayerDamaged(float enemyDamage)
-    {
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
-        print("DAMAGED!:  " + enemyDamage);
-    }
-
+    
     void Interrupting()
     {
         if (secondsInterrupted > 0)
@@ -53,7 +47,7 @@ public class debuff : MonoBehaviour {
 
     public void PushBack(Vector3 fromPos, Vector3 toPos, float force)
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().AddForce((toPos-fromPos) * force*1000f);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().AddForce((toPos-fromPos) * force*1000f*60f * Time.deltaTime);
     }
 
 

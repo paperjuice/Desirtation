@@ -18,6 +18,14 @@ public class enemyMeleeBehaviour : MonoBehaviour {
 
     //Attack behaviour
     public int attackBehaviour; //roll a number between 1 and 4 which will dictate enemy behaviour
+    float timeBeforeNextAttack= 0.7f;
+
+    private Vector3 currentPosition;
+    private Vector3 newPosition;
+
+
+    [Header("Animation Strings")]
+    public string[] animationString;
 
 
 
@@ -25,6 +33,24 @@ public class enemyMeleeBehaviour : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
+
+
+    IEnumerator Start()
+    {
+        while (true)
+        {
+            currentPosition = transform.position;
+            yield return new WaitForSeconds(0.1f);
+            newPosition = transform.position;
+
+            if (newPosition == currentPosition)
+                anim.SetBool("move", false);
+            else
+                anim.SetBool("move", true);
+
+        }
+    }
+
 
 
     void Update()
@@ -119,14 +145,14 @@ public class enemyMeleeBehaviour : MonoBehaviour {
         //print(attackBehaviour);
         if (attackBehaviour == 0)
         {
-            attackBehaviour = Random.Range(1, 7);
+            attackBehaviour = Random.Range(1, animationString.Length+ (int)Mathf.Ceil(animationString.Length/2)+1);
             movementBehaviour = Random.Range(1, 3);  //in case "attackBehaviour" rolls 4, a number between 1 and 2 is rolled to move left or right
         }
         
-        if (attackBehaviour >= 4)
+        if (attackBehaviour > animationString.Length)
         {
             RotateTowardsPlayer();
-            mvCurrentTime += Time.deltaTime;
+            mvCurrentTime += Time.deltaTime; //amount of time that the enemie move when in player range
             if (movementBehaviour == 1)
             {
                 transform.position += (Time.deltaTime * enemyMSSpeed / 100) * transform.right;
@@ -143,20 +169,22 @@ public class enemyMeleeBehaviour : MonoBehaviour {
             }
         }
 
-        if (attackBehaviour >= 1 && attackBehaviour <= 3)
+        if (attackBehaviour >= 1 && attackBehaviour <= animationString.Length)
         {
-            anim.SetBool("attack", true);
-        }
-        else
-        {
-            anim.SetBool("attack", false);
+            anim.SetTrigger(animationString[attackBehaviour - 1]);
+
+            timeBeforeNextAttack -= Time.deltaTime;
+
+            if (timeBeforeNextAttack <= 0)
+            {
+                timeBeforeNextAttack = 0.7f;
+                attackBehaviour = 0;
+            }
         }
 
 
 
 
     }
-
-
 
 }

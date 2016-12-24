@@ -34,12 +34,15 @@ public class enemyBeenBlocked : MonoBehaviour {
         if (other.gameObject.tag == "shield")
         {
             _anim.SetTrigger("blocked");
-            _anim.SetBool("attack",false);
             _mcStats.Knowledge(1 + controller.dungeonLevel);
-            //_particle.transform.parent = null;
             _particle.Play();
             pushback.AddForce((-other.gameObject.transform.position+pushback.transform.position) * pushbackForce * 1000000 * Time.deltaTime);
             GetComponent<Collider>().enabled = false;
+
+            //we stop all animations
+            foreach (string a in _enemyMeleeBehaviour.animationString)
+                _anim.ResetTrigger(a);
+
 
             if (!isBoss)
             {

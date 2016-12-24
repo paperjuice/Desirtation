@@ -37,7 +37,6 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
             if (!mcMovement.isInvincible) //put it outside "if(col.gameObject==player)"
             {
                 _mcStats.Health(enemyDamage);
-                mcDebuffs.PlayerDamaged(enemyDamage); //Damage dealt
                 mcDebuffs.secondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
                 mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, pushBackForce); //PushBack - iterate force
             }

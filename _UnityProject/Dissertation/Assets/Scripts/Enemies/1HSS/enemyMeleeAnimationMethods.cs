@@ -18,11 +18,8 @@ public class enemyMeleeAnimationMethods : MonoBehaviour {
         //combo of 1, 2, 3 an so on attacks
         if (_enemyMeleeBehaviour.attackBehaviour != 0)
         {
-            _enemyMeleeBehaviour.attackBehaviour--;
+            _enemyMeleeBehaviour.attackBehaviour=0;
         }
-
-        if (_enemyMeleeBehaviour.attackBehaviour == 0)
-            anim.SetBool("attack", false);
     }
 
     //the force that pushes the enemy forward when attacking

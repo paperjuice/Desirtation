@@ -101,6 +101,7 @@ public class mcStats : MonoBehaviour {
     {
         if (damageDealt > 0f)
         {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
             currentHealth -= damageDealt;
             damageDealt = 0f;
         }

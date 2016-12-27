@@ -8,7 +8,8 @@ public class consumableIdentity : MonoBehaviour {
 
 
     [SerializeField] private int id;
-	[SerializeField] private string description;
+    [SerializeField] private int proficiency;
+    [SerializeField] private string description;
     [SerializeField] Color _col;
     GameObject[] consumables;
     TextMesh _text;
@@ -32,6 +33,7 @@ public class consumableIdentity : MonoBehaviour {
 
         _text.color = _col;
         GetComponentInParent<inventoryControl>().consumableID = id;
+        GetComponentInParent<inventoryControl>().consumableProficiency = proficiency;
         GetComponentInParent<inventoryControl>().consumableDescription = description;
     }
 }

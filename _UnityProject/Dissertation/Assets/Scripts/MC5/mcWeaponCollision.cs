@@ -7,6 +7,14 @@ public class mcWeaponCollision : MonoBehaviour {
     private Animator _mainCamera;
     private mcStats _mcStats;
 
+    private float damageWeapon = 3;
+    public float DamageWeapon
+    {
+        get { return damageWeapon; }
+        set { damageWeapon = value; }
+    }
+
+
 
     void Awake()
     {
@@ -20,7 +28,7 @@ public class mcWeaponCollision : MonoBehaviour {
         {
             _mcStats.Knowledge(1+controller.dungeonLevel);  //this needs iteration
             _mainCamera.SetTrigger("shake");
-            col.gameObject.GetComponent<generalEnemyStats>().eCurrentHealth -= _mcStats.McDamage(3);
+            col.gameObject.GetComponent<generalEnemyStats>().eCurrentHealth -=_mcStats.CritChance(_mcStats.McDamage(DamageWeapon));
         }
     }
 }

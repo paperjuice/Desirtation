@@ -81,7 +81,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Consumable\consumableDrop.cs" />
     <Compile Include="Assets\Scripts\Consumable\consumableIdentity.cs" />
+    <Compile Include="Assets\Scripts\Consumable\consumablePotency.cs" />
     <Compile Include="Assets\Scripts\Controller\controller.cs" />
     <Compile Include="Assets\Scripts\Controller\gatingSystem.cs" />
     <Compile Include="Assets\Scripts\Controller\inventoryControl.cs" />

@@ -104,7 +104,6 @@ public class mcMovementBehaviour : MonoBehaviour {
         }
     }
 
-
     void Attack()
     {
         if (_mcStats.Spirit(0) >= 5)
@@ -149,7 +148,6 @@ public class mcMovementBehaviour : MonoBehaviour {
             isBlocking = false;
         }
     }
-
 
     void Roll()
     {

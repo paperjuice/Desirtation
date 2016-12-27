@@ -6,11 +6,14 @@ public class inventoryControl : MonoBehaviour {
 
 
     public int consumableID;
+    public int consumableProficiency;
     public string consumableDescription;
 
     [SerializeField] GameObject[] inventorySlots;
     private GameObject _player;
     private GameObject[] _consumables;
+
+    private bool isOpen;
 
 
     private void Awake()
@@ -31,6 +34,25 @@ public class inventoryControl : MonoBehaviour {
     {
         Range();
         ActivatePotion();
+        InventoryOnOff();
+    }
+
+    void InventoryOnOff()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (isOpen)
+                isOpen = false;
+            else
+                isOpen = true;
+        }
+
+        if (isOpen)
+            transform.localPosition = Vector3.zero;
+        else
+            transform.localPosition = new Vector3(-99f, transform.localPosition.y, transform.localPosition.z);
+
+
     }
 
     void Range()
@@ -63,6 +85,7 @@ public class inventoryControl : MonoBehaviour {
                 consumable.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
                 consumable.GetComponent<bilboard>().enabled = false;
                 consumable.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                consumable.transform.GetComponentInChildren<MeshRenderer>().enabled = true;
             }
         }
     }
@@ -75,6 +98,7 @@ public class inventoryControl : MonoBehaviour {
             {
                 if (c.GetComponent<consumableIdentity>().isActive)
                 {
+                    _player.GetComponent<consumablePotency>().IncrementPassivePotency(consumableID, consumableProficiency);
                     Destroy(c.gameObject);
                 }
             }

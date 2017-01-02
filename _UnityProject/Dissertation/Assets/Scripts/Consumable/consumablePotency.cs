@@ -5,6 +5,7 @@ using UnityEngine;
 public class consumablePotency : MonoBehaviour {
 
 
+    private consumableEffect _ce;
     private mcStats _mcStats;
 
 
@@ -20,6 +21,7 @@ public class consumablePotency : MonoBehaviour {
 
     private void Awake()
     {
+        _ce = GetComponent<consumableEffect>();
         _mcStats = GetComponent<mcStats>();
     }
 
@@ -30,23 +32,51 @@ public class consumablePotency : MonoBehaviour {
             case 8:
 
                 ArmourLevel+= proficiency;
-                proficiency = 0;
-                id = 0;
                 break;
 
             case 9:
                 CritChanceLevel += proficiency;
-                proficiency = 0;
-                id = 0;
                 break;
 
             case 1:
                 HealHp(proficiency);
-                proficiency = 0;
-                id = 0;
+                break;
+                 
+            case 10:
+                LowerAge(proficiency);
+                break;
+
+            case 13:
+                PayHpForKnowledge(proficiency);
+                break;
+
+            case 6:
+                _mcStats.BonusWisdom+=proficiency;
+                break;
+            
+            case 5:
+                _mcStats.BonusFortitude += proficiency;
+                break;
+
+            case 4:
+                _mcStats.BonusYouthfulness+= proficiency;
+                break;
+
+            case 15:
+                _ce.AttackSpeed+= proficiency/100f;
+                break;
+
+            case 14:
+                _ce.HealthRegen+= proficiency;
+                break;
+
+            case 16:
+                _ce.AOE_DeadDmgPerSecondLevel += proficiency;
                 break;
         }
 
+        proficiency=0;
+        id=0;
 
     }
 
@@ -55,8 +85,7 @@ public class consumablePotency : MonoBehaviour {
 
     public void HealHp(float amountHeald)
     {
-        _mcStats.HealHp(amountHeald + _mcStats.Wisdom());
-
+        _ce.HealHp(amountHeald * _mcStats.Wisdom());
     }
 
 
@@ -74,7 +103,17 @@ public class consumablePotency : MonoBehaviour {
     }
 
 
+    private void LowerAge(float lowerAgeAmount)
+    {
+        _ce.LowerAge(lowerAgeAmount);
+    }
     
 
+    private void PayHpForKnowledge(float amount)
+    {
+        _ce.PayHpForKnowledge(amount);
+    }
+
+    
 
 }

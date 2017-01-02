@@ -22,8 +22,9 @@ public class mcStats : MonoBehaviour {
     [SerializeField] TextMesh textArmour;
     [SerializeField] TextMesh textCriticalChance;
     [SerializeField] TextMesh textLuck;
+    [SerializeField] TextMesh textAge;
 
-
+    
     //knowledge
     // [SerializeField] GameObject textKnowledge;
     public static float knowledge = 0f;
@@ -35,6 +36,10 @@ public class mcStats : MonoBehaviour {
     //health
     private GameObject guiHealth; 
     private float currentHealth=50f;
+    public  float CurrentHealth{
+        get{return currentHealth;}
+        set{currentHealth = value;}
+    }
     private float maxHealth;
 
     //Spirit
@@ -45,12 +50,30 @@ public class mcStats : MonoBehaviour {
     
     //youthfulness
     private float youthfulness;
+    private float bonusYouthfulness;
+    public float BonusYouthfulness
+    {
+        get{return bonusYouthfulness;}
+        set{bonusYouthfulness=value;}
+    }
 
     //fortitude
     private float fortitude;
+    private float bonusFortitude;
+    public float BonusFortitude
+    {
+        get{return bonusFortitude;}
+        set{bonusFortitude=value;}
+    }
 
     //wisdom
     private float wisdom;
+    private float bonusWisdom;
+    public float BonusWisdom
+    {
+        get{return bonusWisdom;}
+        set{bonusWisdom =value;}
+    }
 
     //luck
     private float luck;
@@ -83,6 +106,13 @@ public class mcStats : MonoBehaviour {
     {
         Death();
         GUI();
+        AgePerSecond();
+    }
+
+
+    private void AgePerSecond()
+    {
+        age += Time.deltaTime * 0.005f;
     }
 
     public void Knowledge(float knowledgeGain)
@@ -99,23 +129,23 @@ public class mcStats : MonoBehaviour {
 
     public float Youthfulness()
     {
-        youthfulness = (knowledge+1) * (1 + (age / 2.5f) / (1 + age));
+        youthfulness = (knowledge+1) * (1 + (age / 2.5f) / (1 + age))+BonusYouthfulness;
         return youthfulness;
     }
 
     public float Fortitude()
     {
         if (age <= 17)
-            fortitude = knowledge * ((age+1) / 17)*0.1f;
+            fortitude = knowledge * ((age+1) / 17)*0.1f + BonusFortitude;
         else
-            fortitude = knowledge * (17 / age) * 0.1f;
+            fortitude = knowledge * (17 / age) * 0.1f+ BonusFortitude;
         
         return fortitude;
     }
 
     public float Wisdom()
     {
-        wisdom = knowledge * (1+age * 0.03f);
+        wisdom = knowledge * (1+age * 0.03f) + BonusWisdom;
         return wisdom;
     }
 
@@ -134,16 +164,6 @@ public class mcStats : MonoBehaviour {
         return currentHealth;
     }
 
-    public void HealHp(float amountHealed)
-    {
-        if (amountHealed > 0f)
-        {
-            currentHealth += amountHealed;
-            amountHealed = 0f; 
-        }
-    }
-
-    
     public float Spirit(float decreasAmount)
     {
         if (decreasAmount > 0)
@@ -217,7 +237,7 @@ public class mcStats : MonoBehaviour {
         textArmour.text = "Damage Reduction: " + ((_cp.ArmourLevel / (100f + _cp.ArmourLevel)) * 100f*Wisdom()).ToString("N1");
         textCriticalChance.text = "Critical Chance: " + CritChance(0).ToString("N1");
         textLuck.text = "Luck: " + Luck();
-
+        textAge.text = "Age: " + (18f+age).ToString("N1");
 
 
 

@@ -6,6 +6,7 @@ public class mcMovementBehaviour : MonoBehaviour {
 
 
     private mcStats _mcStats;
+    private consumableEffect _ce;
 
     //Rotation
     private RaycastHit _raycast;
@@ -45,10 +46,13 @@ public class mcMovementBehaviour : MonoBehaviour {
         _mcStats = GetComponent<mcStats>();
         layerMask = LayerMask.GetMask("floor");
         rigid = GetComponent<Rigidbody>();
+        _ce = GetComponent<consumableEffect>();
     }
     
     void Update()
     {
+        anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed);
+
         if (attackQueue == 0 )
             Roll();
 
@@ -106,6 +110,8 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Attack()
     {
+        
+
         if (_mcStats.Spirit(0) >= 5)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))

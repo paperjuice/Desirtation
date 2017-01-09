@@ -8,6 +8,7 @@ public class mcStats : MonoBehaviour {
     private consumablePotency _cp;
     private mcWeaponCollision _mcWeapon;
 
+    [SerializeField] ParticleSystem blood;
     [Header("Mc Dead Body ")]
     [SerializeField] GameObject deadBody;
 
@@ -41,6 +42,10 @@ public class mcStats : MonoBehaviour {
         set{currentHealth = value;}
     }
     private float maxHealth;
+    public float MaxHealth{
+        get{return maxHealth;}
+        set{maxHealth = value;}
+    }
 
     //Spirit
     private GameObject guiSpirit;
@@ -153,9 +158,9 @@ public class mcStats : MonoBehaviour {
     {
         if (damageReceived > 0f)
         {
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
-            currentHealth -= Armour(damageReceived);
+            currentHealth -=Armour(damageReceived);
             damageReceived = 0f;
+            blood.Play();
         }
 
         maxHealth = 50 + Fortitude();
@@ -227,7 +232,7 @@ public class mcStats : MonoBehaviour {
         guiSpirit.transform.localScale = new Vector3(Spirit(0) / maxSpirit, 1f, 1f);
 
 
-        textKnowledge.text = "Knowledge: " + knowledge.ToString("N1");
+      /*  textKnowledge.text = "Knowledge: " + knowledge.ToString("N1");
         textYouthfulness.text = "Youthfulness: " + Youthfulness().ToString("N1");
         textFortitude.text = "Fortitude: " + Fortitude().ToString("N1");
         textWisdom.text = "Wisdom: " + Wisdom().ToString("N1");
@@ -237,7 +242,7 @@ public class mcStats : MonoBehaviour {
         textArmour.text = "Damage Reduction: " + ((_cp.ArmourLevel / (100f + _cp.ArmourLevel)) * 100f*Wisdom()).ToString("N1");
         textCriticalChance.text = "Critical Chance: " + CritChance(0).ToString("N1");
         textLuck.text = "Luck: " + Luck();
-        textAge.text = "Age: " + (18f+age).ToString("N1");
+        textAge.text = "Age: " + (18f+age).ToString("N1");*/
 
 
 

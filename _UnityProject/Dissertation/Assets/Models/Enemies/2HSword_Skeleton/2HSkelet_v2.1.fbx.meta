@@ -177,29 +177,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.87839645
-        functionName: AttackBehaviour
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.49584487
-        functionName: AttackMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 65
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.44291338
+      - time: 0.47184646
         functionName: ActivateWeaponCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
+      - time: 0.5066948
+        functionName: AttackMovement
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 65
+        intParameter: 0
+        messageOptions: 0
       - time: 0.6673228
         functionName: ActivateWeaponCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.87839645
+        functionName: AttackBehaviour
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

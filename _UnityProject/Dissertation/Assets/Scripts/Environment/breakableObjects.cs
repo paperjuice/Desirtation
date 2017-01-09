@@ -6,25 +6,30 @@ public class breakableObjects : MonoBehaviour {
 
 	
     [SerializeField] private GameObject[] parts;
+    [SerializeField] float force;
     private Animator _camera;
-
+    private GameObject player;
 
     void Awake()
     {
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "mcWeapon")
         {
-            foreach (GameObject a in parts)
+            foreach(GameObject p in parts)
             {
                 _camera.SetTrigger("shake");
-                a.GetComponent<Rigidbody>().isKinematic = false;
-                a.GetComponent<Rigidbody>().AddForce((transform.position - other.gameObject.transform.position) * Random.Range(800f,1000f)+ new Vector3(0f,520f,0f));
+                p.GetComponent<Rigidbody>().isKinematic = false;
+                p.GetComponent<BoxCollider>().enabled = true;
+                p.GetComponent<Rigidbody>().AddForce((transform.position - player.gameObject.transform.position) * force + new Vector3(0f,520f,0f));
                 GetComponent<Collider>().enabled = false;
-                this.enabled = false;
+                p.transform.parent = null;
+                gameObject.SetActive(false);
+            // this.enabled = false;
             }
         }
 

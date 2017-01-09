@@ -8,12 +8,12 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
     mcStats _mcStats;
     mcMovementBehaviour mcMovement;
     [SerializeField] GameObject enemyPosition;
-    [SerializeField] float eDamage;
+  //  [SerializeField] float eDamage;
     [SerializeField] float interruptTime;
     [SerializeField] float pushBackForce;
 
     //enemy amount of damage it deals
-    private float enemyDamage=0f;
+    [SerializeField]private float enemyDamage=0f;
 
     
     void Awake()
@@ -26,7 +26,8 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
 
     void Start()
     {
-        enemyDamage = eDamage + controller.dungeonLevel * 2f;
+        enemyDamage += controller.dungeonLevel * 2f;
+        print(enemyDamage);
     }
 
 
@@ -36,6 +37,7 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
         {
             if (!mcMovement.isInvincible) //put it outside "if(col.gameObject==player)"
             {
+                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
                 _mcStats.Health(enemyDamage);
                 mcDebuffs.secondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
                 mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, pushBackForce); //PushBack - iterate force

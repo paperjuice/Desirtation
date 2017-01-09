@@ -63,7 +63,7 @@ public class inventoryControl : MonoBehaviour {
             {
                 if (Vector3.Distance(_player.transform.position, c.transform.position) < 3)
                 {
-                    print("e in range");
+//                    print("e in range");
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         ChooseInventorySlot(c);

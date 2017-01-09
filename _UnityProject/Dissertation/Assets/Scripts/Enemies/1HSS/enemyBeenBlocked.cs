@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyBeenBlocked : MonoBehaviour {
 
     private mcStats _mcStats;
+    private Animator _camera;
 
     [SerializeField] private bool isBoss;
     
@@ -27,6 +28,7 @@ public class enemyBeenBlocked : MonoBehaviour {
     private void Awake()
     {
         _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
+        _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,7 +37,10 @@ public class enemyBeenBlocked : MonoBehaviour {
         {
             _anim.SetTrigger("blocked");
             _mcStats.Knowledge(1 + controller.dungeonLevel);
+            _camera.SetTrigger("shake");
+            _particle.transform.position = other.gameObject.transform.position + new Vector3(0,1,0) + transform.forward *-1.2f;
             _particle.Play();
+            _particle.transform.parent=null;
             pushback.AddForce((-other.gameObject.transform.position+pushback.transform.position) * pushbackForce * 1000000 * Time.deltaTime);
             GetComponent<Collider>().enabled = false;
 

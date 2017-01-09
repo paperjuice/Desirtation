@@ -1,0 +1,62 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class prologueBehaviour : MonoBehaviour {
+
+
+	[SerializeField] Image drawing;
+	[SerializeField] Animator _elder;
+	GameObject _camera;
+	int checkpoint=0;
+	Vector3 targetPos;
+	Quaternion targetRot;
+	float cameraSpeed;
+
+	void Awake()
+	{
+		_camera = GameObject.FindGameObjectWithTag("MainCamera");
+	}
+
+	IEnumerator Start()
+	{
+		cameraSpeed = 0.4f;
+		yield return new WaitForSeconds(20f);
+
+		_elder.SetTrigger("show");
+
+		yield return new WaitForSeconds(1.5f);
+		checkpoint = 1;
+		cameraSpeed = 1.5f;
+		
+		yield return new WaitForSeconds(4.5f);
+
+		SceneManager.LoadScene("tutorial");
+	}
+
+	void Update()
+	{
+		Course();
+
+		drawing.color -=new Color(0,0,0,Time.deltaTime*0.3f);
+		_camera.transform.position = Vector3.Lerp(_camera.transform.position, targetPos, Time.deltaTime *cameraSpeed);
+		_camera.transform.rotation = Quaternion.Lerp(_camera.transform.rotation, targetRot, Time.deltaTime * 1f);
+	}
+
+	void Course()
+	{
+		switch(checkpoint)
+		{
+			case 0:
+				targetPos = new Vector3(3.5f,7.5f, -7.3f);
+				break;
+			case 1:
+				targetPos = new Vector3(2.949f, 3.005f, 1.707f);
+				targetRot = Quaternion.Euler(0f,0f,0f);
+				break;
+		}
+
+	}
+}

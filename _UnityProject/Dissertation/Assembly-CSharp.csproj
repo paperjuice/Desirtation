@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\Environment\lift.cs" />
      <Compile Include="Assets\Scripts\Intro\firstStartGameBahaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\prologueBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Intro\storyText.cs" />
      <Compile Include="Assets\Scripts\Intro\tutImageBehaviour.cs" />
      <Compile Include="Assets\Scripts\MC5\block.cs" />
      <Compile Include="Assets\Scripts\MC5\debuff.cs" />
@@ -82,9 +83,13 @@
      <Compile Include="Assets\Scripts\MC5\mcMovementBehaviour.cs" />
      <Compile Include="Assets\Scripts\MC5\mcStats.cs" />
      <Compile Include="Assets\Scripts\MC5\mcWeaponCollision.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\mainMenuController.cs" />
      <Compile Include="Assets\Scripts\Misc\bilboard.cs" />
+     <Compile Include="Assets\Scripts\Misc\fadeOutFadein.cs" />
      <Compile Include="Assets\Scripts\Misc\floatingText.cs" />
      <Compile Include="Assets\Scripts\Misc\floatingTextController.cs" />
+     <Compile Include="Assets\Scripts\Misc\pressE_textBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Misc\reloadScene.cs" />
      <Compile Include="Assets\Scripts\NPC\QuestSystem\npcQuestGiver.cs" />
      <Compile Include="Assets\Scripts\NPC\QuestSystem\onClickQuest.cs" />
      <Compile Include="Assets\Scripts\NPC\QuestSystem\unlockQuest.cs" />
@@ -187,6 +192,9 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -201,6 +209,9 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>

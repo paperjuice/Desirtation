@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class prologueBehaviour : MonoBehaviour {
 
 
-	[SerializeField] Image drawing;
+	[SerializeField] fadeOutFadein fadeOutImg;
 	[SerializeField] Animator _elder;
+	[SerializeField] float timeUnilStartingCamera;
+	[SerializeField] float timeUntilElderMoves;
 	GameObject _camera;
 	int checkpoint=0;
 	Vector3 targetPos;
@@ -22,8 +24,12 @@ public class prologueBehaviour : MonoBehaviour {
 
 	IEnumerator Start()
 	{
+		cameraSpeed = 0f;
+		yield return new WaitForSeconds(timeUnilStartingCamera);
+		fadeOutImg.enabled=true;
+
 		cameraSpeed = 0.4f;
-		yield return new WaitForSeconds(20f);
+		yield return new WaitForSeconds(timeUntilElderMoves);
 
 		_elder.SetTrigger("show");
 
@@ -39,8 +45,6 @@ public class prologueBehaviour : MonoBehaviour {
 	void Update()
 	{
 		Course();
-
-		drawing.color -=new Color(0,0,0,Time.deltaTime*0.3f);
 		_camera.transform.position = Vector3.Lerp(_camera.transform.position, targetPos, Time.deltaTime *cameraSpeed);
 		_camera.transform.rotation = Quaternion.Lerp(_camera.transform.rotation, targetRot, Time.deltaTime * 1f);
 	}

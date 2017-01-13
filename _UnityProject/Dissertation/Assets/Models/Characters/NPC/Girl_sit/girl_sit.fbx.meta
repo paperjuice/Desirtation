@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 9c908a114dfd20a4eb60322a92b06c3e
+timeCreated: 1484083755
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: chest
+    100004: Cube
+    100006: feet
+    100008: finger.L
+    100010: finger.L_end
+    100012: finger.R
+    100014: finger.R_end
+    100016: foreArm.L
+    100018: foreArm.R
+    100020: //RootNode
+    100022: head
+    100024: head_end
+    100026: neck
+    100028: palm.L
+    100030: palm.R
+    100032: sholder.L
+    100034: sholder.R
+    100036: stomach
+    100038: upperArm.L
+    100040: upperArm.R
+    400000: Armature
+    400002: chest
+    400004: Cube
+    400006: feet
+    400008: finger.L
+    400010: finger.L_end
+    400012: finger.R
+    400014: finger.R_end
+    400016: foreArm.L
+    400018: foreArm.R
+    400020: //RootNode
+    400022: head
+    400024: head_end
+    400026: neck
+    400028: palm.L
+    400030: palm.R
+    400032: sholder.L
+    400034: sholder.R
+    400036: stomach
+    400038: upperArm.L
+    400040: upperArm.R
+    4300000: Cube
+    7400000: Armature|idle
+    7400002: Armature|sit
+    7400004: Armature|talking
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|idle
+      takeName: Armature|idle
+      firstFrame: 0
+      lastFrame: 86
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/feet
+        weight: 1
+      - path: Armature/feet/stomach
+        weight: 1
+      - path: Armature/feet/stomach/chest
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|sit
+      takeName: Armature|sit
+      firstFrame: 0
+      lastFrame: 160
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/feet
+        weight: 1
+      - path: Armature/feet/stomach
+        weight: 1
+      - path: Armature/feet/stomach/chest
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|talking
+      takeName: Armature|talking
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/feet
+        weight: 1
+      - path: Armature/feet/stomach
+        weight: 1
+      - path: Armature/feet/stomach/chest
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/feet/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.L/upperArm.L/foreArm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/feet/stomach/chest/sholder.R/upperArm.R/foreArm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.3
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

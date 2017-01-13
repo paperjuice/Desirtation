@@ -10,6 +10,7 @@ public class lift : MonoBehaviour {
 	float progress;
 	bool isDescending;
 	bool isLocked;
+	Text pressE;
 	[SerializeField] string sceneName;
 	[SerializeField] float speed;
 	[SerializeField] GameObject wheel;
@@ -20,6 +21,7 @@ public class lift : MonoBehaviour {
 	void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
+		pressE = GameObject.FindGameObjectWithTag("pressE").GetComponent<Text>();
 	}
 
 	void Update()
@@ -31,7 +33,7 @@ public class lift : MonoBehaviour {
 
 	void Distance()
 	{
-		if(Vector3.Distance(transform.position, player.transform.position)<3f)
+		if(Vector3.Distance(transform.position, player.transform.position)<2f)
 		{
 			if(Input.GetKey(KeyCode.E))
 			{

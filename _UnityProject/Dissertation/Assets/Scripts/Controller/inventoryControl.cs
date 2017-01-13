@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class inventoryControl : MonoBehaviour {
 
 
@@ -12,6 +12,7 @@ public class inventoryControl : MonoBehaviour {
     [SerializeField] GameObject[] inventorySlots;
     private GameObject _player;
     private GameObject[] _consumables;
+    Text pressE;
 
     private bool isOpen;
 
@@ -19,6 +20,7 @@ public class inventoryControl : MonoBehaviour {
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        pressE = GameObject.FindGameObjectWithTag("pressE").GetComponent<Text>();
     }
 
     private IEnumerator Start()
@@ -61,9 +63,8 @@ public class inventoryControl : MonoBehaviour {
         {
             if (c != null)
             {
-                if (Vector3.Distance(_player.transform.position, c.transform.position) < 3)
+                if (Vector3.Distance(_player.transform.position, c.transform.position) < 2)
                 {
-//                    print("e in range");
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         ChooseInventorySlot(c);

@@ -1,0 +1,238 @@
+fileFormatVersion: 2
+guid: 42ae275be867a0b4c9460a4d44f1b29c
+timeCreated: 1484244237
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: chest
+    100004: femur
+    100006: fingers
+    100008: fingers_end
+    100010: foreArm
+    100012: hip
+    100014: ik_hand
+    100016: ik_hand_end
+    100018: //RootNode
+    100020: mcMainMenu
+    100022: palm
+    100024: thumb1
+    100026: thumb2
+    100028: thumb2_end
+    100030: tibia
+    100032: upperArm
+    400000: Armature
+    400002: chest
+    400004: femur
+    400006: fingers
+    400008: fingers_end
+    400010: foreArm
+    400012: hip
+    400014: ik_hand
+    400016: ik_hand_end
+    400018: mcMainMenu
+    400020: //RootNode
+    400022: palm
+    400024: thumb1
+    400026: thumb2
+    400028: thumb2_end
+    400030: tibia
+    400032: upperArm
+    4300000: mcMainMenu
+    7400000: Armature|grab
+    7400002: Armature|idle
+    9500000: //RootNode
+    13700000: mcMainMenu
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|grab
+      takeName: Armature|grab
+      firstFrame: 0
+      lastFrame: 87
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/ik_hand
+        weight: 1
+      - path: Armature/ik_hand/ik_hand_end
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/hip
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/fingers
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/fingers/fingers_end
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/thumb1
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/thumb1/thumb2
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/thumb1/thumb2/thumb2_end
+        weight: 1
+      - path: mcMainMenu
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|idle
+      takeName: Armature|idle
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/ik_hand
+        weight: 1
+      - path: Armature/ik_hand/ik_hand_end
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/hip
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/fingers
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/fingers/fingers_end
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/thumb1
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/thumb1/thumb2
+        weight: 1
+      - path: Armature/tibia/femur/hip/chest/upperArm/foreArm/palm/thumb1/thumb2/thumb2_end
+        weight: 1
+      - path: mcMainMenu
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

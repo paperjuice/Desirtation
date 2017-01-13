@@ -188,7 +188,7 @@ public class mcStats : MonoBehaviour {
 
     public float Luck()
     {
-        luck = (Youthfulness() / Youthfulness() + 10f) * 10f;
+        luck = (Youthfulness() / Youthfulness() + 10f) * 10f*0f; //needs modification
         return luck;
     }
 

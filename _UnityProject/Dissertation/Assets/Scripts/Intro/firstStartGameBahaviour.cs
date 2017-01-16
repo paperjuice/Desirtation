@@ -9,6 +9,7 @@ public class firstStartGameBahaviour : MonoBehaviour {
 	GameObject _canvas;
 	MonoBehaviour[] _player;
 	Image[] _img;
+	Text[] _text;
 	mcCameraFollow _camera;
 
 
@@ -24,8 +25,12 @@ public class firstStartGameBahaviour : MonoBehaviour {
 	IEnumerator Start()
 	{
 		_img = _canvas.GetComponentsInChildren<Image>();
+		_text = _canvas.GetComponentsInChildren<Text>();
 		foreach(Image i in _img)
 			i.enabled = false;
+
+		foreach(Text t in _text)
+			t.enabled = false;
 
 		yield return new WaitForSeconds(2);
 
@@ -35,6 +40,9 @@ public class firstStartGameBahaviour : MonoBehaviour {
 
 		foreach(Image i in _img)
 			i.enabled = true;
+
+		foreach(Text t in _text)
+			t.enabled = true;
 
 		foreach(MonoBehaviour m in _player)
 			m.enabled = true;

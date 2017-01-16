@@ -19,7 +19,7 @@ public class deathPillar : MonoBehaviour {
 		if(other.gameObject.tag == "Player")
 		{
 			if(!_mcMovementBehaviour.isInvincible)
-				_mcStats.Health(_mcStats.MaxHealth*0.2f * Time.deltaTime);
+				_mcStats.IncrementAgeOnDamageReceived(10f * Time.deltaTime);
 		}
 	}
 }

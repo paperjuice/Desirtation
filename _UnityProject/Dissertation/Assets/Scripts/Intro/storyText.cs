@@ -22,7 +22,7 @@ public class storyText : MonoBehaviour {
 			_canvasText.text = text[i];
 
 			isFading = false;
-			yield return new WaitForSeconds((text[i].Length/20)*1.7f);
+			yield return new WaitForSeconds((text[i].Length/20)*2.1f);
 			isFading = true;
 			i++;
 			yield return new WaitForSeconds(1);

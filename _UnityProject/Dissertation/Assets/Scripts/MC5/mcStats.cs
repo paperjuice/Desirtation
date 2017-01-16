@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class mcStats : MonoBehaviour {
 
@@ -23,7 +22,6 @@ public class mcStats : MonoBehaviour {
     [SerializeField] TextMesh textArmour;
     [SerializeField] TextMesh textCriticalChance;
     [SerializeField] TextMesh textLuck;
-    [SerializeField] TextMesh textAge;
 
     
     //knowledge
@@ -31,8 +29,14 @@ public class mcStats : MonoBehaviour {
     public static float knowledge = 0f;
 
     //age
-    public static float age=0;
+    private float age=0;
+    public float Age{
+        get{return age;}
+        set{age = value;}
+    }
     private float agingPerSecond;
+    private GameObject guiAge;
+    private Text textAge;
 
     //health
     private GameObject guiHealth; 
@@ -99,7 +103,8 @@ public class mcStats : MonoBehaviour {
 
     void Awake()
     {
-        guiHealth = GameObject.FindGameObjectWithTag("healthFill");
+        guiAge = GameObject.FindGameObjectWithTag("ageFill");
+        textAge = GameObject.FindGameObjectWithTag("ageText").GetComponent<Text>();
         guiSpirit = GameObject.FindGameObjectWithTag("spiritFill");
         mcDebuff = GetComponent<debuff>();
         _cp = GetComponent<consumablePotency>();
@@ -109,7 +114,7 @@ public class mcStats : MonoBehaviour {
     
     void Update()
     {
-        Death();
+       // Death();
         GUI();
         AgePerSecond();
     }
@@ -117,16 +122,25 @@ public class mcStats : MonoBehaviour {
 
     private void AgePerSecond()
     {
-        age += Time.deltaTime * 0.005f;
+        Age = Mathf.Clamp(Age,0f,float.MaxValue);
+        Age += Time.deltaTime * 0.001f;
+    }
+
+    public void IncrementAgeOnDamageReceived(float damageReceived)
+    {
+        if(damageReceived>0)
+        {
+            Age += Armour(damageReceived);
+            damageReceived = 0f;
+            blood.Play();
+            Death();
+        }
     }
 
     public void Knowledge(float knowledgeGain)
     {
         if (knowledgeGain > 0f)
         {
-           // Instantiate(textKnowledge, textKnowledge.transform.position = transform.position + new Vector3(0f, 3f, 0f), transform.rotation);
-            
-
             knowledge += knowledgeGain;
             knowledgeGain = 0f;
         }
@@ -152,21 +166,6 @@ public class mcStats : MonoBehaviour {
     {
         wisdom = knowledge * (1+age * 0.03f) + BonusWisdom;
         return wisdom;
-    }
-
-    public float Health(float damageReceived)
-    {
-        if (damageReceived > 0f)
-        {
-            currentHealth -=Armour(damageReceived);
-            damageReceived = 0f;
-            blood.Play();
-        }
-
-        maxHealth = 50 + Fortitude();
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
-        
-        return currentHealth;
     }
 
     public float Spirit(float decreasAmount)
@@ -217,18 +216,26 @@ public class mcStats : MonoBehaviour {
 
     void Death()
     {
-        if (Health(0)<=0)
+        float deathChance = 0f;
+        if (Age>=62)
         {
-            deadBody.transform.parent = null;
-            deadBody.gameObject.SetActive(true);
-            gameObject.SetActive(false);
+            deathChance = Random.Range(1f,100f);
+            if(deathChance<= Age / (1.5f +Age/41f))
+            {
+                deadBody.transform.parent = null;
+                deadBody.gameObject.SetActive(true);
+                gameObject.SetActive(false);
+            }
         }
-    }
 
+    }
 
     void GUI()
     {
-        guiHealth.transform.localScale = new Vector3(Health(0) / maxHealth, 1f, 1f);
+        guiAge.transform.localScale = new Vector3(Mathf.Clamp(Age / 100f,0f,1f), 1f, 1f);
+        guiAge.GetComponent<Image>().color = Color.Lerp(new Color32(128, 174,159, 255), Color.red, (Age/100f));
+        textAge.text = "Age: " + (18f +Age).ToString("N1");
+
         guiSpirit.transform.localScale = new Vector3(Spirit(0) / maxSpirit, 1f, 1f);
 
 

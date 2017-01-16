@@ -33,7 +33,7 @@ public class enemyRangeProjectileBehaviour : MonoBehaviour {
         {
             if (!_player.isInvincible)
             {
-                _mcStats.Health(dmg);
+                _mcStats.IncrementAgeOnDamageReceived(dmg);
                 _mcDebuffs.secondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
                 _mcDebuffs.PushBack(new Vector3(transform.position.x, _player.transform.position.y, transform.position.z), _mcDebuffs.transform.position, pushBackForce); //PushBack - iterate force
                 gameObject.SetActive(false);

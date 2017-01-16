@@ -40,10 +40,10 @@ public class consumableEffect : MonoBehaviour {
 	{
 		if(lowerAgeAmount >0)
 		{
-			if(mcStats.age - lowerAgeAmount<0)
-				mcStats.age =0;
+			if(_mcStats.Age - lowerAgeAmount<0)
+				_mcStats.Age =0;
 			else
-				mcStats.age -= lowerAgeAmount;
+				_mcStats.Age -= lowerAgeAmount;
 
 			lowerAgeAmount = 0f;
 		}

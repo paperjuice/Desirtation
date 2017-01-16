@@ -11,6 +11,8 @@ public class mainMenuController : MonoBehaviour {
 
 	IEnumerator Start()
 	{
+		Cursor.visible=false;
+
 		yield return new WaitForSeconds(9f);
 		mcAnim.SetTrigger("grab");
 

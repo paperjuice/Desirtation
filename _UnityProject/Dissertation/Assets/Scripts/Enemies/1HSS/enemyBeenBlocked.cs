@@ -44,15 +44,13 @@ public class enemyBeenBlocked : MonoBehaviour {
             pushback.AddForce((-other.gameObject.transform.position+pushback.transform.position) * pushbackForce * 1000000 * Time.deltaTime);
             GetComponent<Collider>().enabled = false;
 
-            //we stop all animations
-            foreach (string a in _enemyMeleeBehaviour.animationString)
-                _anim.ResetTrigger(a);
-
 
             if (!isBoss)
             {
                 _enemyMeleeBehaviour.attackBehaviour = 0;
                 _enemyMeleeBehaviour.enabled = false;
+                foreach (string a in _enemyMeleeBehaviour.animationString)
+                    _anim.ResetTrigger(a);
             }
             else
             {

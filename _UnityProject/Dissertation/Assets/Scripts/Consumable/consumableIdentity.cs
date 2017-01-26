@@ -9,8 +9,6 @@ public class consumableIdentity : MonoBehaviour {
 
     [SerializeField] private int id;
     [SerializeField] private int proficiency;
-    [SerializeField] private string description;
-    [SerializeField] Color _col;
     GameObject[] consumables;
     TextMesh _text;
 
@@ -23,17 +21,7 @@ public class consumableIdentity : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        consumables = GameObject.FindGameObjectsWithTag("consumable");
-        foreach (GameObject c in consumables)
-        {
-            c.GetComponent<consumableIdentity>().isActive=false;
-            c.GetComponentInChildren<TextMesh>().color= Color.white;
-        }
-        isActive = true;
-
-        _text.color = _col;
-        GetComponentInParent<inventoryControl>().consumableID = id;
-        GetComponentInParent<inventoryControl>().consumableProficiency = proficiency;
-        GetComponentInParent<inventoryControl>().consumableDescription = description;
+     //   GetComponentInParent<inventoryControl>().consumableID = id;
+       // GetComponentInParent<inventoryControl>().consumableProficiency = proficiency;
     }
 }

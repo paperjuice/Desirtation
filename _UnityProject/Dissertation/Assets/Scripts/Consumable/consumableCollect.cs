@@ -1,0 +1,26 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class consumableCollect : MonoBehaviour {
+
+	[SerializeField]int id;
+	public int Id
+	{
+		get{return id;}
+		set{id=value;}
+	}
+
+
+	void Update()
+	{
+		Rotate();
+	}
+
+	void Rotate()
+	{
+		transform.Rotate(Vector3.up * Time.deltaTime * 50f);
+	}
+
+
+}

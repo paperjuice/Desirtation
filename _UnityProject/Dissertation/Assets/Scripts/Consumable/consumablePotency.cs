@@ -30,7 +30,6 @@ public class consumablePotency : MonoBehaviour {
         switch (id)
         {
             case 8:
-
                 ArmourLevel+= proficiency;
                 break;
 

@@ -47,10 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Consumable\AOE-dealDmgPerSecond\aoe_DealDmgPerSecond.cs" />
+     <Compile Include="Assets\Scripts\Consumable\canvasConsumable.cs" />
+     <Compile Include="Assets\Scripts\Consumable\consumableCollect.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableDrop.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableEffect.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableIdentity.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumablePotency.cs" />
+     <Compile Include="Assets\Scripts\Consumable\useConsumable.cs" />
      <Compile Include="Assets\Scripts\Controller\controller.cs" />
      <Compile Include="Assets\Scripts\Controller\enemySpawnController.cs" />
      <Compile Include="Assets\Scripts\Controller\gatingSystem.cs" />
@@ -72,6 +75,7 @@
      <Compile Include="Assets\Scripts\Environment\breakableObjects.cs" />
      <Compile Include="Assets\Scripts\Environment\deathPillar.cs" />
      <Compile Include="Assets\Scripts\Environment\lift.cs" />
+     <Compile Include="Assets\Scripts\Environment\particlesFollow.cs" />
      <Compile Include="Assets\Scripts\Intro\firstStartGameBahaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\prologueBehaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\storyText.cs" />
@@ -192,6 +196,9 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -206,6 +213,9 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>D:/Program Files (x86)/Unity 5/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>

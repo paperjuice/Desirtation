@@ -41,6 +41,8 @@ public class mcMovementBehaviour : MonoBehaviour {
     public bool isInvincible;
 
 
+
+
     void Awake()
     {
         mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<BoxCollider>();
@@ -52,6 +54,8 @@ public class mcMovementBehaviour : MonoBehaviour {
     
     void Update()
     {
+
+
         anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed);
 
         if (attackQueue == 0 )

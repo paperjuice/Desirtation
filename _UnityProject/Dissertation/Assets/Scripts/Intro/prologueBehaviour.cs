@@ -24,7 +24,6 @@ public class prologueBehaviour : MonoBehaviour {
 
 	IEnumerator Start()
 	{
-		Cursor.visible=false;
 
 		cameraSpeed = 0f;
 		yield return new WaitForSeconds(timeUnilStartingCamera);

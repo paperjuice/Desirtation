@@ -4,110 +4,79 @@ using UnityEngine;
 using UnityEngine.UI;
 public class inventoryControl : MonoBehaviour {
 
+    [SerializeField] GameObject[] listOfSlots;
+    GameObject[] consumables;
+    GameObject player;
+    bool isPicked;
 
-    public int consumableID;
-    public int consumableProficiency;
-    public string consumableDescription;
-
-    [SerializeField] GameObject[] inventorySlots;
-    private GameObject _player;
-    private GameObject[] _consumables;
-    Text pressE;
-
-    private bool isOpen;
-
-
-    private void Awake()
-    {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        pressE = GameObject.FindGameObjectWithTag("pressE").GetComponent<Text>();
-    }
-
-    private IEnumerator Start()
-    {
-        while (true)
-        {
-            _consumables = GameObject.FindGameObjectsWithTag("consumable");
-            yield return new WaitForSeconds(1f);
-        }
-    }
+    [HeaderAttribute("Consumables")]
+    [SerializeField] GameObject c_LowerAge;
     
-    private void Update()
+    
+    //the id of the consumable
+    int id; 
+
+
+    void Awake()
     {
-        Range();
-        ActivatePotion();
-        InventoryOnOff();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void InventoryOnOff()
+    IEnumerator Start()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        while(true)
         {
-            if (isOpen)
-                isOpen = false;
-            else
-                isOpen = true;
-        }
-
-        if (isOpen)
-            transform.localPosition = Vector3.zero;
-        else
-            transform.localPosition = new Vector3(-99f, transform.localPosition.y, transform.localPosition.z);
-
-
-    }
-
-    void Range()
-    {
-        foreach (GameObject c in _consumables)
-        {
-            if (c != null)
-            {
-                if (Vector3.Distance(_player.transform.position, c.transform.position) < 2)
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        ChooseInventorySlot(c);
-                    }
-                }
-            }
+            consumables = GameObject.FindGameObjectsWithTag("consumable");
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
-    void ChooseInventorySlot(GameObject consumable)
+    void Update()
     {
-        foreach (GameObject s in inventorySlots)
-        {
-            if (s.gameObject.activeInHierarchy && s.transform.childCount == 0)
-            {
-                consumable.transform.SetParent(s.transform, worldPositionStays: false);
-                consumable.transform.localScale = new Vector3(1f, 1f, 1f);
-                consumable.transform.localPosition = Vector3.zero;
-                consumable.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-                consumable.GetComponent<bilboard>().enabled = false;
-                consumable.transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
-                consumable.transform.GetComponentInChildren<MeshRenderer>().enabled = true;
-            }
-        }
+        Pick();
     }
-
-    void ActivatePotion()
+    void Pick()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        foreach(GameObject consumable in consumables)
         {
-            foreach (GameObject c in _consumables)
+            if(Vector3.Distance(consumable.transform.position, player.transform.position) < 2 && Input.GetKeyDown(KeyCode.E))
             {
-                if (c.GetComponent<consumableIdentity>().isActive)
-                {
-                    _player.GetComponent<consumablePotency>().IncrementPassivePotency(consumableID, consumableProficiency);
-                    Destroy(c.gameObject);
-                }
+                id = consumable.GetComponent<consumableCollect>().Id;
+                isPicked = true;
+                PopulateInventory(consumable);
             }
         }
     }
 
 
+    void PopulateInventory(GameObject consumable)
+    {
+        foreach(GameObject slot in listOfSlots)  
+        {
+            if(slot.transform.childCount ==0 && isPicked)
+            {
+                InstantiateConsumableBasedOnId(id, slot);
+                consumable.gameObject.SetActive(false);
+                isPicked = false;
+            }
+        }
 
+    }
+
+    void InstantiateConsumableBasedOnId(int id, GameObject slot)
+    {
+        switch(id)
+        {
+            case 10:
+                GameObject temp = Instantiate(c_LowerAge, transform.position, transform.rotation);
+                temp.transform.SetParent(slot.transform);
+                temp.transform.localPosition = new Vector3(0f,2f,0f);
+                temp.transform.localScale = new Vector3(1f,1f,1f);
+                temp.GetComponent<canvasConsumable>().Id = id;
+            break;
+
+        }
+    }
 
 
 

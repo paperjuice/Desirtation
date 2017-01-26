@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class enemySpawnController : MonoBehaviour {
 
@@ -41,12 +42,20 @@ public class enemySpawnController : MonoBehaviour {
 
     void Update()
     {
+        
+        if(Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("game2_randomMapGen");
+
+
         if(isReady)
         {
             SpawnFoes();
             SpawnBosses();
         }
     }
+
+    
+
 
     void SpawnFoes()
     {
@@ -56,7 +65,7 @@ public class enemySpawnController : MonoBehaviour {
             {
                 if(esp.gameObject.activeInHierarchy)
                 {
-                    chanceToGetEnemy = Random.Range(1f,100f);
+                    chanceToGetEnemy = Random.Range(0f,100f);
                     if(chanceToGetEnemy <= 20f+(i*2f))
                     {
                         enemyRollChance = Random.Range(1f,100f);

@@ -15,6 +15,6 @@ public class particlesFollow : MonoBehaviour {
 
 	void Update()
 	{
-		transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime*followSpeed/10);
+		transform.position = Vector3.Lerp(transform.position, player.transform.position - new Vector3(0,0,15f), Time.deltaTime*followSpeed/10);
 	}
 }

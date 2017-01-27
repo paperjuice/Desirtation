@@ -14,6 +14,7 @@ public class mcMovementBehaviour : MonoBehaviour {
     private float dist = 1000f;
     private int layerMask;
     [SerializeField] private float playerRotationSpeed;
+    float savedPlayerRotationSpeed;
 
 
     //Movement
@@ -35,6 +36,7 @@ public class mcMovementBehaviour : MonoBehaviour {
     [SerializeField]private GameObject gameObjectBlock;
     [SerializeField]private float deflect = 0f;
     private bool isDeflecting;
+    bool isAbleToBlock=true;
 
     //Roll
     public bool isRolling;
@@ -45,6 +47,8 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Awake()
     {
+        savedPlayerRotationSpeed = playerRotationSpeed;
+
         mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<BoxCollider>();
         _mcStats = GetComponent<mcStats>();
         layerMask = LayerMask.GetMask("floor");
@@ -58,8 +62,8 @@ public class mcMovementBehaviour : MonoBehaviour {
 
         anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed);
 
-        if (attackQueue == 0 )
-            Roll();
+        // if (attackQueue == 0 )
+        //     Roll();
 
         if (!isRolling)
         {
@@ -67,11 +71,11 @@ public class mcMovementBehaviour : MonoBehaviour {
             {
                 RotateTowardsMouse();
                 Block();
-                Roll();
+                //Roll();
             }
 
             if (!isBlocking && !anim.GetBool("deflected"))
-                Attack();
+                AttackV2();
         }
     }
 
@@ -115,13 +119,11 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Attack()
     {
-        
-
         if (_mcStats.Spirit(0) >= 5)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (attackQueue < 3)
+                if (attackQueue < 1)
                 {
                     attackQueue++;
                     _mcStats.Spirit(5f);
@@ -134,29 +136,72 @@ public class mcMovementBehaviour : MonoBehaviour {
 
         if (attackQueue != 0)
             anim.SetBool("attack", true);
+
+        
     }
+
+    void AttackV2()
+    {
+        var randomSwingAttack = 0;
+        if(_mcStats.Spirit(0) >= 5f)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                randomSwingAttack = Random.Range(1,3);
+                _mcStats.Spirit(5f);
+            }
+        }
+
+        if(randomSwingAttack == 1)
+        {
+            anim.SetTrigger("attack1");
+            randomSwingAttack = 0;
+        }
+        else if(randomSwingAttack == 2)
+        {
+            anim.SetTrigger("attack2");
+            randomSwingAttack = 0;
+        }
+
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_2"))
+        {
+            playerRotationSpeed = 0.5f;
+            print("asdsadasdasdasd");
+        }
+        else
+        {
+            playerRotationSpeed = savedPlayerRotationSpeed;
+        }
+    }
+
+
+
+
 
     void Block()
     {
         if (_mcStats.Spirit(0f) >= 10f)
+            isAbleToBlock = true;
+
+        if(isAbleToBlock)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKey(KeyCode.Mouse1))
             {
-                isBlocking = true;
-                anim.SetTrigger("block");
-                gameObjectBlock.gameObject.SetActive(true);
-                _mcStats.Spirit(10f);
+                anim.SetBool("block", true);
+                if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|block"))
+                {
+                    isBlocking = true;
+                    gameObjectBlock.gameObject.SetActive(true);
+                    _mcStats.Spirit(0.4f);
+                }
             }
         }
-
-        if (isBlocking)
+        if (Input.GetKeyUp(KeyCode.Mouse1) || _mcStats.Spirit(0f) <= 1f)
         {
-            deflect += Time.deltaTime;
-        }
-
-        if (deflect >= 0.2f)
-        {
+            isAbleToBlock = false;
             isBlocking = false;
+            anim.SetBool("block", false);
+            gameObjectBlock.gameObject.SetActive(false);
         }
     }
 

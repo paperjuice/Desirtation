@@ -7,8 +7,9 @@ public class generalEnemyStats : MonoBehaviour {
     consumableDrop _consumableDrop;
 
     [SerializeField] GameObject aliveBody;
-    [SerializeField] GameObject deadBody;
+    [SerializeField] GameObject[] deadBody;
     [SerializeField] ParticleSystem _bloodPart;
+    [SerializeField] GameObject _bloodSplatter;
 
     [Header("VisualizeHealth")]
     [SerializeField] GameObject fillBar;
@@ -37,6 +38,7 @@ public class generalEnemyStats : MonoBehaviour {
         if (col.gameObject.tag == "mcWeapon")
         {
             _bloodPart.Play();
+            StartCoroutine(InstantiateBloodSplatter());
         }
     }
 
@@ -49,13 +51,27 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (eCurrentHealth <= 0)
         {
-            deadBody.gameObject.SetActive(true);
-            deadBody.transform.parent = null;
+            foreach(GameObject a in deadBody)
+            {
+                a.transform.parent = null;
+                a.gameObject.SetActive(true);
+                a.transform.rotation = Quaternion.Euler(Random.Range(0f,360f), Random.Range(0f,360f), Random.Range(0f,360f));
+                a.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-0.7f,0.7f), 1000f, Random.Range(-0.7f,0.7f)* Time.deltaTime * 8f *10000f));
+                Destroy(a.gameObject, 4f);
+            }
             aliveBody.gameObject.SetActive(false);
             _consumableDrop.ItemDrop();
         }
     }
 
+    IEnumerator InstantiateBloodSplatter()
+    {
+        GameObject bloodPng;
+        float bloodScale = Random.Range(0.05f, 0.2f);
+        yield return new WaitForSeconds(0.3f);
+        bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, 10.02f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
+        bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.2f);
+    }
 
 
 }

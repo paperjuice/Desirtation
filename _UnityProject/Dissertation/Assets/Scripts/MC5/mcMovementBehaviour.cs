@@ -166,7 +166,7 @@ public class mcMovementBehaviour : MonoBehaviour {
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_2"))
         {
             playerRotationSpeed = 0.5f;
-            print("asdsadasdasdasd");
+//            print("asdsadasdasdasd");
         }
         else
         {

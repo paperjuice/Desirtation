@@ -80,6 +80,7 @@
      <Compile Include="Assets\Scripts\Intro\prologueBehaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\storyText.cs" />
      <Compile Include="Assets\Scripts\Intro\tutImageBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\leaderboard.cs" />
      <Compile Include="Assets\Scripts\MC5\block.cs" />
      <Compile Include="Assets\Scripts\MC5\debuff.cs" />
      <Compile Include="Assets\Scripts\MC5\mcAnimationMethods.cs" />

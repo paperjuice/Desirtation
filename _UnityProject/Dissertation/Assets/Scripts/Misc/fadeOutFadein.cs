@@ -4,6 +4,11 @@ using UnityEngine.SceneManagement;
 public class fadeOutFadein : MonoBehaviour {
 
 	[SerializeField] string sceneName;
+  	public string SceneName
+	{
+		get{return sceneName;}
+		set{sceneName = value;}
+	}
 	[SerializeField]bool isFadeIn;
 	Image img;
 

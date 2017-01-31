@@ -7,6 +7,7 @@ public class debuff : MonoBehaviour {
     private Animator _mainCamera;
     [SerializeField]private Animator anim;
     private mcMovementBehaviour _mainChar;
+    Rigidbody rigid;
 
 
     //is interrupting
@@ -16,6 +17,7 @@ public class debuff : MonoBehaviour {
 
     void Awake()
     {
+        rigid =  GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
         anim = GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<Animator>();
         _mainChar = GameObject.FindGameObjectWithTag("Player").GetComponent<mcMovementBehaviour>();
@@ -47,7 +49,8 @@ public class debuff : MonoBehaviour {
 
     public void PushBack(Vector3 fromPos, Vector3 toPos, float force)
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().AddForce((toPos-fromPos) * force*1000f*60f * Time.deltaTime);
+        if(rigid!= null)
+            rigid.AddForce((toPos-fromPos) * force*1000f*60f * Time.deltaTime);
     }
 
 

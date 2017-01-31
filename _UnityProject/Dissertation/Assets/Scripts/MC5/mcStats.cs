@@ -6,6 +6,7 @@ public class mcStats : MonoBehaviour {
     private debuff mcDebuff;
     private consumablePotency _cp;
     private mcWeaponCollision _mcWeapon;
+    private fadeOutFadein fadeIn;
 
     [SerializeField] ParticleSystem blood;
     [Header("Mc Dead Body ")]
@@ -103,6 +104,7 @@ public class mcStats : MonoBehaviour {
 
     void Awake()
     {
+        fadeIn = GameObject.FindGameObjectWithTag("fadeIn").GetComponent<fadeOutFadein>();
         guiAge = GameObject.FindGameObjectWithTag("ageFill");
         textAge = GameObject.FindGameObjectWithTag("ageText").GetComponent<Text>();
         guiSpirit = GameObject.FindGameObjectWithTag("spiritFill");
@@ -225,6 +227,7 @@ public class mcStats : MonoBehaviour {
                 deadBody.transform.parent = null;
                 deadBody.gameObject.SetActive(true);
                 gameObject.SetActive(false);
+                fadeIn.enabled = true;
             }
         }
 

@@ -44,8 +44,10 @@ public class enemySpawnController : MonoBehaviour {
     {
         
         if(Input.GetKeyDown(KeyCode.Escape))
+        {
             SceneManager.LoadScene("game2_randomMapGen");
-
+            controller.dungeonLevel = 1;
+        }
 
         if(isReady)
         {

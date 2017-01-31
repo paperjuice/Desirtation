@@ -1,0 +1,43 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960 (ID=0x1401)
+    Vendor:   NVIDIA
+    VRAM:     1953 MB
+    Driver:   10.18.14.4264
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.022 seconds
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\_Work\_DesirtationGit\Build\build_1.3\build_1.3_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 133.820297 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: e4c -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.350725 ms
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 1841.
+Total: 24.986263 ms (FindLiveObjects: 0.111360 ms CreateObjectMapping: 0.019200 ms MarkObjects: 24.661463 ms  DeleteObjects: 0.193280 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.625282 ms
+
+Unloading 48 unused Assets to reduce memory usage. Loaded Objects now: 7545.
+Total: 1.760961 ms (FindLiveObjects: 0.428160 ms CreateObjectMapping: 0.075840 ms MarkObjects: 0.872000 ms  DeleteObjects: 0.384000 ms)
+

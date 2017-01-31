@@ -44,7 +44,6 @@ public class tutImageBehaviour : MonoBehaviour {
 
 	void ImageOpacity()
 	{
-
 		img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
 	}
 
@@ -52,7 +51,6 @@ public class tutImageBehaviour : MonoBehaviour {
 	{
 		if(Input.GetKeyDown(key))
 			inRange =false;
-
 	}
 
 

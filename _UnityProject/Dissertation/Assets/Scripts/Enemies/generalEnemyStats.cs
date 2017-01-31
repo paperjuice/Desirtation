@@ -69,7 +69,7 @@ public class generalEnemyStats : MonoBehaviour {
         GameObject bloodPng;
         float bloodScale = Random.Range(0.05f, 0.2f);
         yield return new WaitForSeconds(0.3f);
-        bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, 10.02f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
+        bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
         bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.2f);
     }
 

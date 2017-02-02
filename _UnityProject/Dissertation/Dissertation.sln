@@ -1,11 +1,11 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{5A0A43A7-40AD-BE8E-A14D-9ACEF493F54C}") = "Dissertation", "Assembly-CSharp-firstpass.csproj", "{0E5042FD-8F7A-2934-2167-A9442279F88A}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dissertation", "Assembly-CSharp-firstpass.csproj", "{0E5042FD-8F7A-2934-2167-A9442279F88A}"
 EndProject
-Project("{5A0A43A7-40AD-BE8E-A14D-9ACEF493F54C}") = "Dissertation", "Assembly-CSharp.csproj", "{B464E99C-0AB8-A65C-312C-D2ACD07B08AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dissertation", "Assembly-CSharp.csproj", "{B464E99C-0AB8-A65C-312C-D2ACD07B08AD}"
 EndProject
-Project("{5A0A43A7-40AD-BE8E-A14D-9ACEF493F54C}") = "Dissertation", "Assembly-CSharp-Editor-firstpass.csproj", "{95AED906-0CB8-42D4-9F9A-5C35FF2DFBE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dissertation", "Assembly-CSharp-Editor-firstpass.csproj", "{95AED906-0CB8-42D4-9F9A-5C35FF2DFBE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -99,9 +99,6 @@ public class mcStats : MonoBehaviour {
     private float damageIfCrited;
     
     
-
-
-
     void Awake()
     {
         fadeIn = GameObject.FindGameObjectWithTag("fadeIn").GetComponent<fadeOutFadein>();
@@ -121,6 +118,11 @@ public class mcStats : MonoBehaviour {
         AgePerSecond();
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.gameObject.tag == "water")
+            DeathBehaviour();
+    }
 
     private void AgePerSecond()
     {
@@ -223,15 +225,20 @@ public class mcStats : MonoBehaviour {
         {
             deathChance = Random.Range(1f,100f);
             if(deathChance<= Age / (1.5f +Age/41f))
-            {
-                deadBody.transform.parent = null;
-                deadBody.gameObject.SetActive(true);
-                gameObject.SetActive(false);
-                fadeIn.enabled = true;
-            }
+                DeathBehaviour();
         }
-
     }
+
+    void DeathBehaviour()
+    {
+        controller.dungeonLevel = 1;
+        deadBody.transform.parent = null;
+        deadBody.gameObject.SetActive(true);
+        gameObject.SetActive(false);
+        fadeIn.enabled = true;
+    }
+
+
 
     void GUI()
     {

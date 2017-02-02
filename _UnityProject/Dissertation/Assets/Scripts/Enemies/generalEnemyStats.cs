@@ -40,6 +40,9 @@ public class generalEnemyStats : MonoBehaviour {
             _bloodPart.Play();
             StartCoroutine(InstantiateBloodSplatter());
         }
+
+        if(col.gameObject.tag == "water")
+            eCurrentHealth = 0;
     }
 
     void VisualizeHealth()
@@ -61,16 +64,19 @@ public class generalEnemyStats : MonoBehaviour {
             }
             aliveBody.gameObject.SetActive(false);
             _consumableDrop.ItemDrop();
+            StartCoroutine(InstantiateBloodSplatter());
         }
     }
 
     IEnumerator InstantiateBloodSplatter()
     {
         GameObject bloodPng;
-        float bloodScale = Random.Range(0.05f, 0.2f);
-        yield return new WaitForSeconds(0.3f);
+        float bloodScale = Random.Range(0.09f, 0.3f);
+        yield return new WaitForSeconds(0.15f);        
+        bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));             
+        yield return new WaitForSeconds(0.2f);
         bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
-        bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.2f);
+        bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.3f);
     }
 
 

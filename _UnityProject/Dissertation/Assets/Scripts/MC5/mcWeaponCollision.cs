@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class mcWeaponCollision : MonoBehaviour {
 
     private Animator _mainCamera;
     private mcStats _mcStats;
 
-    private float damageWeapon = 3;
-    public float DamageWeapon
+    private float weaponDamage = 3;
+    public float WeaponDamage
     {
-        get { return damageWeapon; }
-        set { damageWeapon = value; }
+        get { return weaponDamage; }
+        set { weaponDamage = value; }
     }
 
 
@@ -26,9 +24,9 @@ public class mcWeaponCollision : MonoBehaviour {
     {
         if (col.gameObject.tag == "enemy")
         {
-            _mcStats.Knowledge(1+controller.dungeonLevel);  //this needs iteration
+            _mcStats.Knowledge(0.1f+controller.dungeonLevel);  //this needs iteration
             _mainCamera.SetTrigger("shake");
-            col.gameObject.GetComponent<generalEnemyStats>().eCurrentHealth -=_mcStats.CritChance(_mcStats.McDamage(DamageWeapon));
+            col.gameObject.GetComponent<generalEnemyStats>().eCurrentHealth -=_mcStats.CritChance(WeaponDamage);
         }
     }
 }

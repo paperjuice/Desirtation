@@ -41,13 +41,13 @@ public class enemySpawnController : MonoBehaviour {
     }
 
     void Update()
-    {
+     {
         
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("game2_randomMapGen");
-            controller.dungeonLevel = 1;
-        }
+    //     if(Input.GetKeyDown(KeyCode.Escape))
+    //     {
+    //         SceneManager.LoadScene("game2_randomMapGen");
+    //         controller.dungeonLevel = 1;
+    //     }
 
         if(isReady)
         {
@@ -70,6 +70,7 @@ public class enemySpawnController : MonoBehaviour {
                     chanceToGetEnemy = Random.Range(0f,100f);
                     if(chanceToGetEnemy <= 20f+(i*2f))
                     {
+//                        Debug.Log("intra");
                         enemyRollChance = Random.Range(1f,100f);
                         if(enemyRollChance<=110-i*10)
                         {

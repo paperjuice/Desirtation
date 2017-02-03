@@ -12,7 +12,6 @@ public class controller : MonoBehaviour {
 
     IEnumerator Start()
     {
-        Debug.Log(dungeonLevel);
         floorLevelText.text = "Floor " + (100-dungeonLevel).ToString("N0");
         yield return new WaitForSeconds(1f);
         isFading=true;

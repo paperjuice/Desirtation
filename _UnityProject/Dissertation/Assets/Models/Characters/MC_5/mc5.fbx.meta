@@ -89,6 +89,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.5902836
+        functionName: ActivateWeaponCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.6675
         functionName: StepForward
         data: 
@@ -96,22 +103,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8799999
-        functionName: DecrementAttackQueue
+      - time: 0.7887324
+        functionName: ActivateWeaponCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6478873
-        functionName: ActivateWeaponCollider
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.7887324
-        functionName: ActivateWeaponCollider
+      - time: 0.79244226
+        functionName: DecrementAttackQueue
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -173,6 +173,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.60737
+        functionName: ActivateWeaponCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.67
         functionName: StepForward
         data: 
@@ -180,22 +187,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.88586956
-        functionName: DecrementAttackQueue
+      - time: 0.78521127
+        functionName: ActivateWeaponCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6373239
-        functionName: ActivateWeaponCollider
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.78521127
-        functionName: ActivateWeaponCollider
+      - time: 0.7937037
+        functionName: DecrementAttackQueue
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

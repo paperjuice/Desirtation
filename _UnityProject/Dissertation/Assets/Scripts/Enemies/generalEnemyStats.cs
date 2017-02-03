@@ -62,9 +62,13 @@ public class generalEnemyStats : MonoBehaviour {
                 a.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-0.7f,0.7f), 1000f, Random.Range(-0.7f,0.7f)* Time.deltaTime * 8f *10000f));
                 Destroy(a.gameObject, 4f);
             }
+            GameObject bloodPng;
+            float bloodScale = Random.Range(0.09f, 0.3f);
+            bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));             
+            bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
+            bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.3f);
             aliveBody.gameObject.SetActive(false);
             _consumableDrop.ItemDrop();
-            StartCoroutine(InstantiateBloodSplatter());
         }
     }
 

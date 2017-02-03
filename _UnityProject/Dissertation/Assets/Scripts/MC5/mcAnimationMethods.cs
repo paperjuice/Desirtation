@@ -29,10 +29,10 @@ public class mcAnimationMethods : MonoBehaviour {
         }
 
 
-        if (_mc.attackQueue <= 0)
-        {
-            anim.SetBool("attack", false);
-        }
+        // if (_mc.attackQueue <= 0)
+        // {
+        //     anim.SetBool("attack", false);
+        // }
     }
 
     void SetInvincibility(int a)

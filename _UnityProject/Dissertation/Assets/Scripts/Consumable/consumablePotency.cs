@@ -25,66 +25,48 @@ public class consumablePotency : MonoBehaviour {
         _mcStats = GetComponent<mcStats>();
     }
 
-    public void IncrementPassivePotency(int id, int proficiency)
+    public void IncrementPassivePotency(int id)
     {
         switch (id)
         {
             case 8:
-                ArmourLevel+= proficiency;
+                ArmourLevel++;
                 break;
 
             case 9:
-                CritChanceLevel += proficiency;
+                CritChanceLevel += 1;
                 break;
 
-            case 1:
-                HealHp(proficiency);
-                break;
-                 
             case 10:
-                LowerAge(proficiency);
+                LowerAge(1);
                 break;
 
             case 13:
-                PayHpForKnowledge(proficiency);
+                PayHpForKnowledge(1);
                 break;
 
             case 6:
-                _mcStats.BonusWisdom+=proficiency;
+                _mcStats.BonusWisdom++;
                 break;
             
             case 5:
-                _mcStats.BonusFortitude += proficiency;
+                _mcStats.BonusFortitude ++;
                 break;
 
             case 4:
-                _mcStats.BonusYouthfulness+= proficiency;
+                _mcStats.BonusYouthfulness++;
                 break;
 
             case 15:
-                _ce.AttackSpeed+= proficiency/100f;
-                break;
-
-            case 14:
-                _ce.HealthRegen+= proficiency;
+                _ce.AttackSpeed+= 1/100f;
                 break;
 
             case 16:
-                _ce.AOE_DeadDmgPerSecondLevel += proficiency;
+                _ce.AOE_DeadDmgPerSecondLevel ++;
                 break;
         }
 
-        proficiency=0;
         id=0;
-
-    }
-
-
-
-
-    public void HealHp(float amountHeald)
-    {
-        _ce.HealHp(amountHeald * _mcStats.Wisdom());
     }
 
 

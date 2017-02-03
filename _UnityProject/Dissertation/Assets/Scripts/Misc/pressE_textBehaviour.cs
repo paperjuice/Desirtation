@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class pressE_textBehaviour : MonoBehaviour {
 
 	Text _text;
 	[SerializeField] string theTextWhichWillShowOnTheScreen;
+	[SerializeField] GameObject panelName;
 
 	GameObject[] objectToFind;
 	GameObject player;
@@ -20,12 +19,19 @@ public class pressE_textBehaviour : MonoBehaviour {
 	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject ==player)
+		{
 			_text.text = theTextWhichWillShowOnTheScreen;
+			if(panelName != null)
+				panelName.gameObject.SetActive(true);
+		}
 	}
 	void OnTriggerExit(Collider col)
 	{
 		if(col.gameObject == player)
+		{
 			_text.text = string.Empty;
+			panelName.gameObject.SetActive(false);
+		}
 	}
 
 

@@ -74,7 +74,7 @@ public class mcMovementBehaviour : MonoBehaviour {
                 //Roll();
             }
 
-            if (!isBlocking && !anim.GetBool("deflected"))
+            if (!isBlocking /*&& !anim.GetBool("deflected")*/)
                 AttackV2();
         }
     }

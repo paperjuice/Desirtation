@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class mcStats : MonoBehaviour {
 
@@ -24,9 +25,11 @@ public class mcStats : MonoBehaviour {
     [SerializeField] TextMesh textCriticalChance;
     [SerializeField] TextMesh textLuck;
 
-    
+    //death
+    bool canDieOfOldAge = false;
+    float chanceToDieOfOldAge;
+
     //knowledge
-    // [SerializeField] GameObject textKnowledge;
     public static float knowledge = 0f;
 
     //age
@@ -113,7 +116,7 @@ public class mcStats : MonoBehaviour {
     
     void Update()
     {
-       // Death();
+//     Debug.Log(Luck());
         GUI();
         AgePerSecond();
     }
@@ -127,7 +130,7 @@ public class mcStats : MonoBehaviour {
     private void AgePerSecond()
     {
         Age = Mathf.Clamp(Age,0f,float.MaxValue);
-        Age += Time.deltaTime * 0.001f;
+        Age += Time.deltaTime * 0.003f;
     }
 
     public void IncrementAgeOnDamageReceived(float damageReceived)
@@ -152,23 +155,23 @@ public class mcStats : MonoBehaviour {
 
     public float Youthfulness()
     {
-        youthfulness = (knowledge+1) * (1 + (age / 2.5f) / (1 + age))+BonusYouthfulness;
+        youthfulness = Mathf.Clamp((1f-age/72f),0f,1f) * (1+knowledge);
         return youthfulness;
     }
 
     public float Fortitude()
     {
-        if (age <= 17)
-            fortitude = knowledge * ((age+1) / 17)*0.1f + BonusFortitude;
-        else
-            fortitude = knowledge * (17 / age) * 0.1f+ BonusFortitude;
+        if (age <= 17f)
+            fortitude = (knowledge * age/17f) + BonusFortitude;
+        else if(age > 17f)
+            fortitude = (knowledge * 17f/age) + BonusFortitude;
         
         return fortitude;
     }
 
     public float Wisdom()
     {
-        wisdom = knowledge * (1+age * 0.03f) + BonusWisdom;
+        wisdom = (knowledge * Mathf.Clamp(age/72f,0f,1f)) + BonusWisdom;
         return wisdom;
     }
 
@@ -180,7 +183,7 @@ public class mcStats : MonoBehaviour {
             decreasAmount = 0f;
         }
 
-        maxSpirit = 20 + Youthfulness()*0.1f;
+        maxSpirit = 10 + Youthfulness()*0.2f;
         currentSpirit = Mathf.Clamp(currentSpirit, 0f, maxSpirit);
 
         if (currentSpirit < maxSpirit)
@@ -191,30 +194,29 @@ public class mcStats : MonoBehaviour {
 
     public float Luck()
     {
-        luck = (Youthfulness() / Youthfulness() + 10f) * 10f*0f; //needs modification
+        luck = ((knowledge+1) / (knowledge + 10000f)) * Youthfulness() * 100; 
         return luck;
     }
 
     public float McDamage(float weaponDamage)
     {
-        mcDamage = Fortitude() + weaponDamage;;
-       // print(mcDamage);
-        return mcDamage;
+        mcDamage = (Fortitude() * 0.1f) + weaponDamage;   
+        return CritChance(mcDamage);
     }
 
-    //keep an eye on wisdom multiplier
     public float Armour(float damageReceived)
     {
-        damageProcessedBasedOnArmour = damageReceived - (damageReceived * (_cp.ArmourLevel / (100f+_cp.ArmourLevel))*100f)* Wisdom();
+        damageProcessedBasedOnArmour = damageReceived - (damageReceived * (_cp.ArmourLevel / (500f+_cp.ArmourLevel))*10f * (Fortitude() * 0.1f));
+        Debug.Log(damageProcessedBasedOnArmour);
         return damageProcessedBasedOnArmour;
     }
 
-    //keep an eye on wisdom multiplier
     public float CritChance(float damageDealt)
     {
         float chanceToCrit = Random.Range(1f, 100f);
-        if (chanceToCrit <= _cp.CritChanceLevel * (Wisdom()/10f))
+        if (chanceToCrit <= _cp.CritChanceLevel * Fortitude()*0.1f)
             damageDealt = damageDealt * Random.Range(1.4f,2f);
+        Debug.Log("is a crit: " + damageDealt);
         return damageDealt;
     }
 
@@ -227,6 +229,26 @@ public class mcStats : MonoBehaviour {
             if(deathChance<= Age / (1.5f +Age/41f))
                 DeathBehaviour();
         }
+
+        if(age>72 && !canDieOfOldAge)  
+        {  
+            canDieOfOldAge=true;
+            StartCoroutine(DeathByOld());
+        }
+        else if(age<=72 && canDieOfOldAge){
+            canDieOfOldAge = false;
+        }
+    }
+    IEnumerator DeathByOld()
+    {
+        while(canDieOfOldAge)
+        {
+            chanceToDieOfOldAge = Random.Range(1f,100f);
+            if(chanceToDieOfOldAge<=age/(50+age))
+                DeathBehaviour();
+
+            yield return new WaitForSeconds(10f);
+        }
     }
 
     void DeathBehaviour()
@@ -238,6 +260,7 @@ public class mcStats : MonoBehaviour {
         fadeIn.enabled = true;
     }
 
+    
 
 
     void GUI()

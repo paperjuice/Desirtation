@@ -33,16 +33,14 @@ public class debuff : MonoBehaviour {
         if (secondsInterrupted > 0)
         {
             secondsInterrupted -= Time.deltaTime;
-            anim.SetBool("deflected", true);
-            anim.SetBool("attack", false);
             anim.SetBool("walkin", false);
+            anim.SetBool("block", false);
             _mainChar.attackQueue = 0;
             _mainChar.isRolling = false;
             _mainChar.enabled = false;
         }
         else if (secondsInterrupted <= 0)
         {
-            anim.SetBool("deflected", false);
             _mainChar.enabled = true;
         }
     }

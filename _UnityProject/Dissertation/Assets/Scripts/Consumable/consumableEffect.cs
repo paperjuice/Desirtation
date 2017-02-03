@@ -65,15 +65,6 @@ public class consumableEffect : MonoBehaviour {
 		set{attackSpeed = value * _mcStats.Wisdom();}
 	}
 
-	//tre sa vad unde bag wisdom scale-ul
-	public float HealthRegen
-	{
-		get{return healthRegen;}
-		set{healthRegen=value/100;}
-	}
-
-
-
 	public float AOE_DeadDmgPerSecond()
 	{
 		float aoeDmg;

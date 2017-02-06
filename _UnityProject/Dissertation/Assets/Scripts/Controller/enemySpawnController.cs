@@ -20,16 +20,17 @@ public class enemySpawnController : MonoBehaviour {
 
     private bool isReady; //we set this true after we made sure all the tiles are instantiated
 
-    void Awake()
+    IEnumerator FindPlayer()
     {
+        yield return new WaitForSeconds(0.1f);
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Start()
     {
+        StartCoroutine(FindPlayer());
         StartCoroutine(GetSpawnPoints());
-        if (controller.dungeonLevel % 5 == 0 && i<enemyList.Length) 
-            i++;
+        i = controller.dungeonLevel;
     }
 
     IEnumerator GetSpawnPoints()
@@ -42,13 +43,6 @@ public class enemySpawnController : MonoBehaviour {
 
     void Update()
      {
-        
-    //     if(Input.GetKeyDown(KeyCode.Escape))
-    //     {
-    //         SceneManager.LoadScene("game2_randomMapGen");
-    //         controller.dungeonLevel = 1;
-    //     }
-
         if(isReady)
         {
             SpawnFoes();
@@ -70,7 +64,6 @@ public class enemySpawnController : MonoBehaviour {
                     chanceToGetEnemy = Random.Range(0f,100f);
                     if(chanceToGetEnemy <= 20f+(i*2f))
                     {
-//                        Debug.Log("intra");
                         enemyRollChance = Random.Range(1f,100f);
                         if(enemyRollChance<=110-i*10)
                         {

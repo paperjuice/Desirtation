@@ -82,7 +82,7 @@ public class lift : MonoBehaviour {
 			}
 
 			GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<Animator>().SetBool("walkin", false);
-			other.gameObject.transform.parent = platform.transform;
+			//other.gameObject.transform.parent = platform.transform;
 			controller.dungeonLevel += amountOfDungeonIncrement;
 			StartCoroutine(Ascend());
 		}

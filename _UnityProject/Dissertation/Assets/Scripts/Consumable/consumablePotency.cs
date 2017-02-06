@@ -38,7 +38,7 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 10:
-                LowerAge(1);
+                LowerAge(1+_mcStats.Wisdom()*0.3f);
                 break;
 
             case 13:

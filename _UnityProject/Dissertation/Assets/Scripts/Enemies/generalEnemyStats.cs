@@ -24,6 +24,7 @@ public class generalEnemyStats : MonoBehaviour {
 
     void Start()
     {
+        eMaxHealth = 1 + (controller.dungeonLevel * 5f);
         eCurrentHealth = eMaxHealth;
     }
 

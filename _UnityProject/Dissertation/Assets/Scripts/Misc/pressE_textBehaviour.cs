@@ -30,7 +30,8 @@ public class pressE_textBehaviour : MonoBehaviour {
 		if(col.gameObject == player)
 		{
 			_text.text = string.Empty;
-			panelName.gameObject.SetActive(false);
+			if(panelName != null)
+				panelName.gameObject.SetActive(false);
 		}
 	}
 

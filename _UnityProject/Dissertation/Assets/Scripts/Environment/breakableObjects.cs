@@ -13,6 +13,12 @@ public class breakableObjects : MonoBehaviour {
     void Awake()
     {
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+        StartCoroutine(FindPlayer());
+    }
+
+    IEnumerator FindPlayer()
+    {
+        yield return new WaitForSeconds(0.1f);
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

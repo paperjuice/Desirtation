@@ -27,10 +27,11 @@ public class aoe_DealDmgPerSecond : MonoBehaviour {
 	{
 		foreach(GameObject e in enemies)
 		{
-			if(Vector3.Distance(transform.position,e.transform.position)<3)
-			{
-				e.GetComponent<generalEnemyStats>().eCurrentHealth -= _ce.AOE_DeadDmgPerSecond();
-			}
+			if(e != null)
+				if(Vector3.Distance(transform.position,e.transform.position)<3)
+				{
+					e.GetComponent<generalEnemyStats>().eCurrentHealth -= _ce.AOE_DeadDmgPerSecond();
+				}
 
 		}
 

@@ -30,7 +30,6 @@ public class consumableDrop : MonoBehaviour {
     {
         dropChance = Random.Range(1f, 100f);
 
-
         if (dropChance <= _mcStats.Luck())
         {
             dropQuality = Random.Range(1f, 100f);
@@ -42,7 +41,6 @@ public class consumableDrop : MonoBehaviour {
             else if (dropQuality > 95 && dropQuality <= 100)
                 Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);
         }
-
 
         if(isBoss)
             Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);

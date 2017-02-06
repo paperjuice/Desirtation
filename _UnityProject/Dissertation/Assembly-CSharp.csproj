@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Consumable\consumableId.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumablePotency.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableUse.cs" />
+     <Compile Include="Assets\Scripts\Controller\McSpawnController.cs" />
      <Compile Include="Assets\Scripts\Controller\controller.cs" />
      <Compile Include="Assets\Scripts\Controller\enemySpawnController.cs" />
      <Compile Include="Assets\Scripts\Controller\gatingSystem.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\Intro\prologueBehaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\storyText.cs" />
      <Compile Include="Assets\Scripts\Intro\tutImageBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\holdScore.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\leaderboard.cs" />
      <Compile Include="Assets\Scripts\MC5\block.cs" />
      <Compile Include="Assets\Scripts\MC5\debuff.cs" />
@@ -86,6 +88,8 @@
      <Compile Include="Assets\Scripts\MC5\mcStats.cs" />
      <Compile Include="Assets\Scripts\MC5\mcWeaponCollision.cs" />
      <Compile Include="Assets\Scripts\MainMenu\mainMenuController.cs" />
+     <Compile Include="Assets\Scripts\Misc\DontDestroyOnLoad.cs" />
+     <Compile Include="Assets\Scripts\Misc\GUI.cs" />
      <Compile Include="Assets\Scripts\Misc\bilboard.cs" />
      <Compile Include="Assets\Scripts\Misc\fadeOutFadein.cs" />
      <Compile Include="Assets\Scripts\Misc\floatingText.cs" />

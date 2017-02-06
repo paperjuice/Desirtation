@@ -1,29 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class mcStats : MonoBehaviour {
 
+    [SerializeField] GameObject objectWhichShouldNotBeDestroyedOnLoad;
+    public static mcStats singeInstance;
     private debuff mcDebuff;
     private consumablePotency _cp;
     private mcWeaponCollision _mcWeapon;
     private fadeOutFadein fadeIn;
+    GameObject _camera;
+    bool isCameraObjectRefered = false;
 
     [SerializeField] ParticleSystem blood;
     [Header("Mc Dead Body ")]
     [SerializeField] GameObject deadBody;
-
-    [Header("Stats text")]
-    [SerializeField] TextMesh textKnowledge;
-    [SerializeField] TextMesh textYouthfulness;
-    [SerializeField] TextMesh textFortitude;
-    [SerializeField] TextMesh textWisdom;
-    [SerializeField] TextMesh textHealth;
-    [SerializeField] TextMesh textSpirit;
-    [SerializeField] TextMesh textDamage;
-    [SerializeField] TextMesh textArmour;
-    [SerializeField] TextMesh textCriticalChance;
-    [SerializeField] TextMesh textLuck;
 
     //death
     bool canDieOfOldAge = false;
@@ -59,6 +52,10 @@ public class mcStats : MonoBehaviour {
     private GameObject guiSpirit;
     private float currentSpirit=20f;
     private float maxSpirit;
+    public float MaxSpirit{
+        get{return maxSpirit;}
+        set{maxSpirit = value;}
+    }
 
     
     //youthfulness
@@ -104,10 +101,8 @@ public class mcStats : MonoBehaviour {
     
     void Awake()
     {
-        fadeIn = GameObject.FindGameObjectWithTag("fadeIn").GetComponent<fadeOutFadein>();
-        guiAge = GameObject.FindGameObjectWithTag("ageFill");
-        textAge = GameObject.FindGameObjectWithTag("ageText").GetComponent<Text>();
-        guiSpirit = GameObject.FindGameObjectWithTag("spiritFill");
+        DontDestroyOnLoad(transform.gameObject);
+
         mcDebuff = GetComponent<debuff>();
         _cp = GetComponent<consumablePotency>();
         _mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<mcWeaponCollision>();
@@ -116,9 +111,9 @@ public class mcStats : MonoBehaviour {
     
     void Update()
     {
-//     Debug.Log(Luck());
-        GUI();
+//        Debug.Log(Luck());
         AgePerSecond();
+        CameraGrayScaleOnAging();
     }
 
     void OnTriggerEnter(Collider col)
@@ -194,13 +189,13 @@ public class mcStats : MonoBehaviour {
 
     public float Luck()
     {
-        luck = ((knowledge+1) / (knowledge + 10000f)) * Youthfulness() * 100; 
+        luck = ((knowledge+1) / (knowledge + 7000f)) * Youthfulness() * 30; 
         return luck;
     }
 
     public float McDamage(float weaponDamage)
     {
-        mcDamage = (Fortitude() * 0.1f) + weaponDamage;   
+        mcDamage = ((Fortitude() * 0.02f) + weaponDamage) + Random.Range(-((Fortitude() * 0.02f) + weaponDamage)*0.1f, ((Fortitude() * 0.02f) + weaponDamage)*0.1f);   
         return CritChance(mcDamage);
     }
 
@@ -243,8 +238,9 @@ public class mcStats : MonoBehaviour {
     {
         while(canDieOfOldAge)
         {
+            print("tick-tack");
             chanceToDieOfOldAge = Random.Range(1f,100f);
-            if(chanceToDieOfOldAge<=age/(50+age))
+            if(chanceToDieOfOldAge<=(age/(50+age))*100f)
                 DeathBehaviour();
 
             yield return new WaitForSeconds(10f);
@@ -253,50 +249,28 @@ public class mcStats : MonoBehaviour {
 
     void DeathBehaviour()
     {
+        fadeIn = GameObject.FindGameObjectWithTag("fadeIn").GetComponent<fadeOutFadein>();         
+
         controller.dungeonLevel = 1;
         deadBody.transform.parent = null;
         deadBody.gameObject.SetActive(true);
         gameObject.SetActive(false);
         fadeIn.enabled = true;
     }
+    // IEnumerator DestroyOnDeath()
+    // {
+    //     yield return new WaitForSeconds(1f)
+    // }
 
-    
-
-
-    void GUI()
+    void CameraGrayScaleOnAging()
     {
-        guiAge.transform.localScale = new Vector3(Mathf.Clamp(Age / 100f,0f,1f), 1f, 1f);
-        guiAge.GetComponent<Image>().color = Color.Lerp(new Color32(128, 174,159, 255), Color.red, (Age/100f));
-        textAge.text = "Age: " + (18f +Age).ToString("N1");
+        if(_camera == null)
+            _camera = GameObject.FindGameObjectWithTag("MainCamera");
 
-        guiSpirit.transform.localScale = new Vector3(Spirit(0) / maxSpirit, 1f, 1f);
-
-
-      /*  textKnowledge.text = "Knowledge: " + knowledge.ToString("N1");
-        textYouthfulness.text = "Youthfulness: " + Youthfulness().ToString("N1");
-        textFortitude.text = "Fortitude: " + Fortitude().ToString("N1");
-        textWisdom.text = "Wisdom: " + Wisdom().ToString("N1");
-        textHealth.text = "Health: " + Health(0).ToString("N1") + "/" + maxHealth.ToString("N1");
-        textSpirit.text = "Spirit: " + Spirit(0).ToString("N1") + "/" + maxSpirit.ToString("N1");
-        textDamage.text = "Damage: " + McDamage(_mcWeapon.DamageWeapon).ToString("N1");
-        textArmour.text = "Damage Reduction: " + ((_cp.ArmourLevel / (100f + _cp.ArmourLevel)) * 100f*Wisdom()).ToString("N1");
-        textCriticalChance.text = "Critical Chance: " + CritChance(0).ToString("N1");
-        textLuck.text = "Luck: " + Luck();
-        textAge.text = "Age: " + (18f+age).ToString("N1");*/
-
-
-
-
-
-
-
-
+        if(_camera != null)
+            _camera.GetComponent<ColorCorrectionCurves>().saturation = 1f-(age/110f);
     }
 
-
-
-
-
-
-
+    
+    
 }

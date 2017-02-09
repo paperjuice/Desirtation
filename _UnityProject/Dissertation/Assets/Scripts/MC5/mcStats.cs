@@ -189,7 +189,8 @@ public class mcStats : MonoBehaviour {
 
     public float Luck()
     {
-        luck = ((knowledge+1) / (knowledge + 7000f)) * Youthfulness() * 30; 
+        luck = ((knowledge+1) / (knowledge + 6000f)) * Youthfulness() * 30;
+        luck = Mathf.Clamp(luck, 0,25); 
         return luck;
     }
 
@@ -201,7 +202,7 @@ public class mcStats : MonoBehaviour {
 
     public float Armour(float damageReceived)
     {
-        damageProcessedBasedOnArmour = damageReceived - (damageReceived * (_cp.ArmourLevel / (500f+_cp.ArmourLevel))*10f * (Fortitude() * 0.1f));
+        damageProcessedBasedOnArmour = damageReceived - (damageReceived * ((_cp.ArmourLevel+ Fortitude() * 0.1f) / (1000f+_cp.ArmourLevel + (Fortitude() * 0.1f)/2f)));
         Debug.Log(damageProcessedBasedOnArmour);
         return damageProcessedBasedOnArmour;
     }

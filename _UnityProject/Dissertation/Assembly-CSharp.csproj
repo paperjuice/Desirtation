@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Controller\controller.cs" />
      <Compile Include="Assets\Scripts\Controller\enemySpawnController.cs" />
      <Compile Include="Assets\Scripts\Controller\gatingSystem.cs" />
+     <Compile Include="Assets\Scripts\Controller\questGiverSpawnController.cs" />
      <Compile Include="Assets\Scripts\Controller\randomMapGenController.cs" />
      <Compile Include="Assets\Scripts\Enemies\1HSS\enemyBeenBlocked.cs" />
      <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeAnimationMethods.cs" />
@@ -78,8 +79,11 @@
      <Compile Include="Assets\Scripts\Intro\prologueBehaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\storyText.cs" />
      <Compile Include="Assets\Scripts\Intro\tutImageBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Leaderboard\holdScore.cs" />
-     <Compile Include="Assets\Scripts\Leaderboard\leaderboard.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScenes\holdScore.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScenes\leaderboard.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScenes\selectElder.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScenes\selectLeaderboardStone.cs" />
+     <Compile Include="Assets\Scripts\LeaderboardScenes\showLeaderboard.cs" />
      <Compile Include="Assets\Scripts\MC5\block.cs" />
      <Compile Include="Assets\Scripts\MC5\debuff.cs" />
      <Compile Include="Assets\Scripts\MC5\mcAnimationMethods.cs" />
@@ -96,10 +100,10 @@
      <Compile Include="Assets\Scripts\Misc\floatingTextController.cs" />
      <Compile Include="Assets\Scripts\Misc\pressE_textBehaviour.cs" />
      <Compile Include="Assets\Scripts\Misc\reloadScene.cs" />
-     <Compile Include="Assets\Scripts\NPC\QuestSystem\npcQuestGiver.cs" />
-     <Compile Include="Assets\Scripts\NPC\QuestSystem\onClickQuest.cs" />
-     <Compile Include="Assets\Scripts\NPC\QuestSystem\unlockQuest.cs" />
-     <Compile Include="Assets\Scripts\NPC\dialogue.cs" />
+     <Compile Include="Assets\Scripts\Misc\rotateOnY.cs" />
+     <Compile Include="Assets\Scripts\QuestSystem\HoldTaskPanels.cs" />
+     <Compile Include="Assets\Scripts\QuestSystem\QuestController.cs" />
+     <Compile Include="Assets\Scripts\QuestSystem\QuestGiver.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

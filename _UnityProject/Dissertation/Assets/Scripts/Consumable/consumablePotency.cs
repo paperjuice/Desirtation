@@ -58,7 +58,7 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 15:
-                _ce.AttackSpeed+= 1/100f;
+                _ce.AttackSpeed+= 0.05f;
                 break;
 
             case 16:

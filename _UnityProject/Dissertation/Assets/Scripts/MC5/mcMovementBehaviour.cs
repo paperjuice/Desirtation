@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class mcMovementBehaviour : MonoBehaviour {
 
@@ -166,17 +163,12 @@ public class mcMovementBehaviour : MonoBehaviour {
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_2"))
         {
             playerRotationSpeed = 0.5f;
-//            print("asdsadasdasdasd");
         }
         else
         {
             playerRotationSpeed = savedPlayerRotationSpeed;
         }
     }
-
-
-
-
 
     void Block()
     {
@@ -255,8 +247,6 @@ public class mcMovementBehaviour : MonoBehaviour {
                 anim.SetTrigger("roll");
                 _mcStats.Spirit(15f);
             }
-
-            
 
         }
         if (isRolling)

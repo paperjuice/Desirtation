@@ -25,6 +25,10 @@ public class consumableEffect : MonoBehaviour {
 		_mcStats = GetComponent<mcStats>();
 	}
 
+	void Update()
+	{
+		AOE_DeadDmgPerSecond();
+	}
 
 	public void HealHp(float amountHealed)
     {
@@ -62,7 +66,7 @@ public class consumableEffect : MonoBehaviour {
 	public float AttackSpeed
 	{
 		get{return attackSpeed;}
-		set{attackSpeed = value * _mcStats.Wisdom();}
+		set{attackSpeed = value;}
 	}
 
 	public float AOE_DeadDmgPerSecond()
@@ -73,7 +77,7 @@ public class consumableEffect : MonoBehaviour {
 			aoe_particle.gameObject.SetActive(true);
 		}
 
-		aoeDmg = AOE_DeadDmgPerSecondLevel * _mcStats.Wisdom()/100f;
+		aoeDmg = AOE_DeadDmgPerSecondLevel * _mcStats.Wisdom()/5000f;
 		return aoeDmg;
 	}
 

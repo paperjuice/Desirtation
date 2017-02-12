@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 public class firstStartGameBahaviour : MonoBehaviour {
 
 	
@@ -34,6 +35,7 @@ public class firstStartGameBahaviour : MonoBehaviour {
 
 		yield return new WaitForSeconds(2);
 
+		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<VignetteAndChromaticAberration>().enabled = true;
 		_camera.IsBiginning=false;
 
 		yield return new WaitForSeconds(1);

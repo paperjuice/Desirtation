@@ -1,11 +1,16 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class generalEnemyStats : MonoBehaviour {
 
     consumableDrop _consumableDrop;
-
+    QuestController questController;
+    [SerializeField]private int id;
+    public int Id{
+        get{return id;}
+        set{id=value;}
+    }
+    [HeaderAttribute("For when it dies")]
     [SerializeField] GameObject aliveBody;
     [SerializeField] GameObject[] deadBody;
     [SerializeField] ParticleSystem _bloodPart;
@@ -24,12 +29,15 @@ public class generalEnemyStats : MonoBehaviour {
 
     void Start()
     {
-        eMaxHealth = 1 + (controller.dungeonLevel * 5f);
+        eMaxHealth += (controller.dungeonLevel * 5f);
         eCurrentHealth = eMaxHealth;
     }
 
     void Update()
     {
+        if(questController==null)
+            questController = GameObject.FindGameObjectWithTag("questController").GetComponent<QuestController>();
+        
         Death();
         VisualizeHealth();
     }
@@ -55,13 +63,18 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (eCurrentHealth <= 0)
         {
+            questController.IncrementQuest(id);
+
             foreach(GameObject a in deadBody)
             {
                 a.transform.parent = null;
                 a.gameObject.SetActive(true);
-                a.transform.rotation = Quaternion.Euler(Random.Range(0f,360f), Random.Range(0f,360f), Random.Range(0f,360f));
-                a.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-0.7f,0.7f), 1000f, Random.Range(-0.7f,0.7f)* Time.deltaTime * 8f *10000f));
-                Destroy(a.gameObject, 4f);
+                if (CheckIfBodyHasRigidbody(a))
+                {
+                    a.transform.rotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+                    a.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-0.7f, 0.7f), 1000f, Random.Range(-0.7f, 0.7f) * Time.deltaTime * 8f * 10000f));
+                    Destroy(a.gameObject, 4f);
+                }
             }
             GameObject bloodPng;
             float bloodScale = Random.Range(0.09f, 0.3f);
@@ -71,6 +84,14 @@ public class generalEnemyStats : MonoBehaviour {
             aliveBody.gameObject.SetActive(false);
             _consumableDrop.ItemDrop();
         }
+    }
+
+    bool CheckIfBodyHasRigidbody(GameObject a)
+    {
+        if (a.GetComponent<Rigidbody>() != null)
+            return true;
+        else
+            return false;
     }
 
     IEnumerator InstantiateBloodSplatter()

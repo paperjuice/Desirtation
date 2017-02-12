@@ -10,6 +10,8 @@ public class McSpawnController : MonoBehaviour {
 	MonoBehaviour[] behaviours;
 	GameObject[] mcSpawnPoints;
 
+    bool isRandomPosition;
+
 	void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -23,7 +25,6 @@ public class McSpawnController : MonoBehaviour {
 			DontDestroyOnLoad(mcContainer.gameObject);
 		}
 		else{
-			//DontDestroyOnLoad(player.gameObject);
 			behaviours = player.GetComponents<MonoBehaviour>();
 			foreach(MonoBehaviour mb in behaviours)
 				mb.enabled = true;
@@ -31,5 +32,11 @@ public class McSpawnController : MonoBehaviour {
 		}
 	}
 
-
+    IEnumerator Start()
+    {
+        yield return new WaitForSeconds(0.2f);
+        player = GameObject.FindGameObjectWithTag("Player");
+        mcSpawnPoints = GameObject.FindGameObjectsWithTag("mcSpawnPoint");
+        player.transform.position = mcSpawnPoints[Random.Range(0, mcSpawnPoints.Length)].transform.position;
+    }
 }

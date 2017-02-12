@@ -5,8 +5,6 @@ using UnityStandardAssets.ImageEffects;
 
 public class mcStats : MonoBehaviour {
 
-    [SerializeField] GameObject objectWhichShouldNotBeDestroyedOnLoad;
-    public static mcStats singeInstance;
     private debuff mcDebuff;
     private consumablePotency _cp;
     private mcWeaponCollision _mcWeapon;
@@ -203,7 +201,7 @@ public class mcStats : MonoBehaviour {
     public float Armour(float damageReceived)
     {
         damageProcessedBasedOnArmour = damageReceived - (damageReceived * ((_cp.ArmourLevel+ Fortitude() * 0.1f) / (1000f+_cp.ArmourLevel + (Fortitude() * 0.1f)/2f)));
-        Debug.Log(damageProcessedBasedOnArmour);
+//        Debug.Log(damageProcessedBasedOnArmour);
         return damageProcessedBasedOnArmour;
     }
 
@@ -212,7 +210,7 @@ public class mcStats : MonoBehaviour {
         float chanceToCrit = Random.Range(1f, 100f);
         if (chanceToCrit <= _cp.CritChanceLevel * Fortitude()*0.1f)
             damageDealt = damageDealt * Random.Range(1.4f,2f);
-        Debug.Log("is a crit: " + damageDealt);
+//        Debug.Log("is a crit: " + damageDealt);
         return damageDealt;
     }
 
@@ -229,7 +227,8 @@ public class mcStats : MonoBehaviour {
         if(age>72 && !canDieOfOldAge)  
         {  
             canDieOfOldAge=true;
-            StartCoroutine(DeathByOld());
+            if(gameObject.activeInHierarchy)
+                StartCoroutine(DeathByOld());
         }
         else if(age<=72 && canDieOfOldAge){
             canDieOfOldAge = false;
@@ -251,12 +250,12 @@ public class mcStats : MonoBehaviour {
     void DeathBehaviour()
     {
         fadeIn = GameObject.FindGameObjectWithTag("fadeIn").GetComponent<fadeOutFadein>();         
-
-        controller.dungeonLevel = 1;
         deadBody.transform.parent = null;
         deadBody.gameObject.SetActive(true);
         gameObject.SetActive(false);
         fadeIn.enabled = true;
+        fadeIn.SceneName = "enterLeaderboard";
+        Destroy(gameObject,5f);
     }
     // IEnumerator DestroyOnDeath()
     // {

@@ -56,7 +56,7 @@ public class leaderboard : MonoBehaviour {
             int score = int.Parse(entryInfo[1]);
             highscoreList[i] = new Highscore(username, score);
             listOfHighscores.Add((highscoreList[i].username + " - " + highscoreList[i].score).ToString());
-            if(i>=20)
+            if(i>18)
                 break;
         }
         return listOfHighscores;

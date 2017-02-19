@@ -5,7 +5,7 @@ public class mcWeaponCollision : MonoBehaviour {
     [SerializeField]GameObject[] dmgNumbers;
 
     private Animator _mainCamera;
-    bool isCameraFound =false;
+//    bool isCameraFound =false;
     private mcStats _mcStats;
     private float weaponDamage = 3;
     public float WeaponDamage

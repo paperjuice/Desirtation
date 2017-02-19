@@ -30,18 +30,9 @@ public class consumableEffect : MonoBehaviour {
 		AOE_DeadDmgPerSecond();
 	}
 
-	public void HealHp(float amountHealed)
-    {
-        if (amountHealed > 0f)
-        {
-            _mcStats.CurrentHealth += amountHealed;
-            amountHealed = 0f; 
-        }
-    }
-
-
 	public void LowerAge(float lowerAgeAmount)
 	{
+		lowerAgeAmount = Mathf.Clamp(lowerAgeAmount, 0f,30f);
 		if(lowerAgeAmount >0)
 		{
 			if(_mcStats.Age - lowerAgeAmount<0)
@@ -77,7 +68,7 @@ public class consumableEffect : MonoBehaviour {
 			aoe_particle.gameObject.SetActive(true);
 		}
 
-		aoeDmg = AOE_DeadDmgPerSecondLevel * _mcStats.Wisdom()/5000f;
+		aoeDmg = AOE_DeadDmgPerSecondLevel * _mcStats.Wisdom()/3000f;
 		return aoeDmg;
 	}
 

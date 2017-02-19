@@ -5,12 +5,12 @@ using UnityStandardAssets.ImageEffects;
 
 public class mcStats : MonoBehaviour {
 
-    private debuff mcDebuff;
+//    private debuff mcDebuff;
     private consumablePotency _cp;
-    private mcWeaponCollision _mcWeapon;
+//    private mcWeaponCollision _mcWeapon;
     private fadeOutFadein fadeIn;
     GameObject _camera;
-    bool isCameraObjectRefered = false;
+//    bool isCameraObjectRefered = false;
 
     [SerializeField] ParticleSystem blood;
     [Header("Mc Dead Body ")]
@@ -100,18 +100,18 @@ public class mcStats : MonoBehaviour {
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-
-        mcDebuff = GetComponent<debuff>();
+        //mcDebuff = GetComponent<debuff>();
         _cp = GetComponent<consumablePotency>();
-        _mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<mcWeaponCollision>();
+        //_mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<mcWeaponCollision>();
     }
 
     
     void Update()
     {
-//        Debug.Log(Luck());
+//        Debug.Log( (_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f);
         AgePerSecond();
         CameraGrayScaleOnAging();
+  //      Debug.Log(_cp.SpiritRegen());
     }
 
     void OnTriggerEnter(Collider col)
@@ -148,23 +148,23 @@ public class mcStats : MonoBehaviour {
 
     public float Youthfulness()
     {
-        youthfulness = Mathf.Clamp((1f-age/72f),0f,1f) * (1+knowledge);
+        youthfulness = Mathf.Clamp((1f-age/72f),0f,1f) * (1+knowledge) + (bonusYouthfulness * wisdom);
         return youthfulness;
     }
 
     public float Fortitude()
     {
         if (age <= 17f)
-            fortitude = (knowledge * age/17f) + BonusFortitude;
+            fortitude = (knowledge * age/17f) + (BonusFortitude*wisdom);
         else if(age > 17f)
-            fortitude = (knowledge * 17f/age) + BonusFortitude;
+            fortitude = (knowledge * 17f/age) + (BonusFortitude*wisdom);
         
         return fortitude;
     }
 
     public float Wisdom()
     {
-        wisdom = (knowledge * Mathf.Clamp(age/72f,0f,1f)) + BonusWisdom;
+        wisdom = (knowledge * Mathf.Clamp(age/72f,0f,1f)) + (BonusWisdom * 5f);
         return wisdom;
     }
 
@@ -180,7 +180,7 @@ public class mcStats : MonoBehaviour {
         currentSpirit = Mathf.Clamp(currentSpirit, 0f, maxSpirit);
 
         if (currentSpirit < maxSpirit)
-            currentSpirit += Time.deltaTime*1.4f;
+            currentSpirit += Time.deltaTime*(1.4f + _cp.SpiritRegen());
         
         return currentSpirit;
     }
@@ -208,9 +208,10 @@ public class mcStats : MonoBehaviour {
     public float CritChance(float damageDealt)
     {
         float chanceToCrit = Random.Range(1f, 100f);
-        if (chanceToCrit <= _cp.CritChanceLevel * Fortitude()*0.1f)
+        if (chanceToCrit <= ((_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f))
+        {
             damageDealt = damageDealt * Random.Range(1.4f,2f);
-//        Debug.Log("is a crit: " + damageDealt);
+        }
         return damageDealt;
     }
 
@@ -255,6 +256,7 @@ public class mcStats : MonoBehaviour {
         gameObject.SetActive(false);
         fadeIn.enabled = true;
         fadeIn.SceneName = "enterLeaderboard";
+        knowledge = 0;
         Destroy(gameObject,5f);
     }
     // IEnumerator DestroyOnDeath()

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class consumableUse : MonoBehaviour {
 
-    [SerializeField] GameObject parent;
+    Transform parent;
 	[SerializeField] int id;
 
     consumablePotency player;
@@ -12,11 +10,20 @@ public class consumableUse : MonoBehaviour {
 
     void Awake()
     {
+        parent = gameObject.transform.parent;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<consumablePotency>();        
     }
     void OnMouseUpAsButton()
     {
        player.IncrementPassivePotency(id);
        Destroy(parent.gameObject);
+    }
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            player.IncrementPassivePotency(id);
+            Destroy(parent.gameObject);
+        }
     }
 }

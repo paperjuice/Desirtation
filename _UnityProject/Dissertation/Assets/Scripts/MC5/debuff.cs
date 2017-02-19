@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class debuff : MonoBehaviour {
 
-    private Animator _mainCamera;
+//    private Animator _mainCamera;
     [SerializeField]private Animator anim;
     private mcMovementBehaviour _mainChar;
     Rigidbody rigid;
@@ -18,7 +16,7 @@ public class debuff : MonoBehaviour {
     void Awake()
     {
         rigid =  GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
-        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+       // _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
         anim = GameObject.FindGameObjectWithTag("PlayerMesh").GetComponent<Animator>();
         _mainChar = GameObject.FindGameObjectWithTag("Player").GetComponent<mcMovementBehaviour>();
     }

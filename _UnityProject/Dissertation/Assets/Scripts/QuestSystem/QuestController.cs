@@ -13,7 +13,7 @@ public class QuestController : MonoBehaviour {
 	public int NumberOfEnemies{get;set;}
 
 	//kill enemies
-	float time=0f; //check enemies every n seconds
+	//float time=0f; //check enemies every n seconds
 	GameObject[] enemies;
 	public int Target{get;set;}
 

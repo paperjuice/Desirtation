@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class mcAnimationMethods : MonoBehaviour {
 
-    private Animator anim;
+//    private Animator anim;
     private Collider mcWeapon;
 
     [SerializeField] private mcMovementBehaviour _mc;
 
 
-    void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
+    // void Awake()
+    // {
+    //     anim = GetComponent<Animator>();
+    // }
 
     void StepForward()
     {
@@ -24,15 +24,7 @@ public class mcAnimationMethods : MonoBehaviour {
     void DecrementAttackQueue()
     {
         if (_mc.attackQueue > 0)
-        {
             _mc.attackQueue--;
-        }
-
-
-        // if (_mc.attackQueue <= 0)
-        // {
-        //     anim.SetBool("attack", false);
-        // }
     }
 
     void SetInvincibility(int a)
@@ -57,10 +49,5 @@ public class mcAnimationMethods : MonoBehaviour {
         else if (a == 0)
             mcWeapon.enabled = false;
     }
-
-
-
-
-
 
 }

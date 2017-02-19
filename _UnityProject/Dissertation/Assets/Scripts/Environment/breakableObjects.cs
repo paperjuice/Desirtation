@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class breakableObjects : MonoBehaviour {
@@ -9,6 +8,7 @@ public class breakableObjects : MonoBehaviour {
     [SerializeField] float force;
     private Animator _camera;
     private GameObject player;
+    bool isExploding;
 
     void Awake()
     {
@@ -25,25 +25,27 @@ public class breakableObjects : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "mcWeapon")
-        {
-            foreach(GameObject p in parts)
-            {
-                _camera.SetTrigger("shake");
-                p.GetComponent<Rigidbody>().isKinematic = false;
-                p.GetComponent<BoxCollider>().enabled = true;
-                p.GetComponent<Rigidbody>().AddForce((transform.position - player.gameObject.transform.position) * force + new Vector3(0f,520f,0f));
-                GetComponent<Collider>().enabled = false;
-                p.transform.parent = null;
-                gameObject.SetActive(false);
-            // this.enabled = false;
-            }
-        }
+            isExploding = true;
 
         
     }
 
-
-
-
+    void Update()
+    {
+        if (isExploding)
+        {
+            foreach (GameObject p in parts)
+            {
+                _camera.SetTrigger("shake");
+                p.GetComponent<Rigidbody>().isKinematic = false;
+                p.GetComponent<BoxCollider>().enabled = true;
+                p.GetComponent<Rigidbody>().AddExplosionForce(force * Random.Range(0.6f, 1.1f), player.transform.position, 25f, 2f, ForceMode.Force);
+                GetComponent<Collider>().enabled = false;
+                p.transform.parent = null;
+            }
+            isExploding = false;
+            gameObject.SetActive(false);
+        }
+    }
 
 }

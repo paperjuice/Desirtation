@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class enemyRangeMovementBehaviour : MonoBehaviour {
@@ -8,12 +7,10 @@ public class enemyRangeMovementBehaviour : MonoBehaviour {
     enemyRangeAttackBehaviour _enemyRangeAttackBehaviour;
     
     GameObject player;
-    Rigidbody _rigid;
 
     //move towards variables
     [SerializeField] float ms;
     float currentTimeBetweenChangingMovement;
-    float endTimeBetweenChangingMovement=1f;
 
     //activate movement animation
     Vector3 currentPosition;
@@ -37,7 +34,6 @@ public class enemyRangeMovementBehaviour : MonoBehaviour {
     void Awake()
     {
         _enemyRangeAttackBehaviour = GetComponent<enemyRangeAttackBehaviour>();
-        _rigid = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

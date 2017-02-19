@@ -17,7 +17,7 @@ public class aoe_DealDmgPerSecond : MonoBehaviour {
 		while(true)
 		{
 			enemies=GameObject.FindGameObjectsWithTag("enemy");
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(2f);
 		}
 
 	}

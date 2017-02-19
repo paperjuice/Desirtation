@@ -39,6 +39,7 @@ languorous
 lethargic
 languid
 nutant
+innocence
 
 pact
 lease
@@ -52,5 +53,14 @@ panacea
 elixir
 sip
 draught
+
+
+Assent of innocence - bonus youthfulness
+Ease of unholy clouts - armour
+Covenant of Strength - bonus fortitude 
+Fragment of Wise Judgement - bonus wisdom
+
+
+
 
 

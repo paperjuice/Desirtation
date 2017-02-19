@@ -15,21 +15,24 @@ public class generalEnemyStats : MonoBehaviour {
     [SerializeField] GameObject[] deadBody;
     [SerializeField] ParticleSystem _bloodPart;
     [SerializeField] GameObject _bloodSplatter;
+    mcCameraFollow _camera;
 
     [Header("VisualizeHealth")]
     [SerializeField] GameObject fillBar;
 
     [SerializeField]private float eMaxHealth = 10f;
-    public float eCurrentHealth;
+    [SerializeField]private float eMultiplierHealth = 10f;
+    [HideInInspector]public float eCurrentHealth;
 
     private void Awake()
     {
         _consumableDrop = GetComponent<consumableDrop>();
+        _camera = GameObject.FindGameObjectWithTag("cameraFather").GetComponent<mcCameraFollow>();
     }
 
     void Start()
     {
-        eMaxHealth += (controller.dungeonLevel * 5f);
+        eMaxHealth += (controller.dungeonLevel * eMultiplierHealth);
         eCurrentHealth = eMaxHealth;
     }
 
@@ -64,7 +67,7 @@ public class generalEnemyStats : MonoBehaviour {
         if (eCurrentHealth <= 0)
         {
             questController.IncrementQuest(id);
-
+            _camera.IsBossMode = false;
             foreach(GameObject a in deadBody)
             {
                 a.transform.parent = null;

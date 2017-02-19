@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class consumablePotency : MonoBehaviour {
-
 
     private consumableEffect _ce;
     private mcStats _mcStats;
-
 
 
     //armour Level
@@ -16,7 +11,8 @@ public class consumablePotency : MonoBehaviour {
     //critChance Level
     private float critChanceLevel = 0f;
 
-
+    //spirit regen
+    float spiritRegen = 0f;
 
 
     private void Awake()
@@ -34,11 +30,11 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 9:
-                CritChanceLevel += 1;
+                CritChanceLevel ++;
                 break;
 
             case 10:
-                LowerAge(1+_mcStats.Wisdom()*0.3f);
+                LowerAge(1+_mcStats.Wisdom()*0.15f);
                 break;
 
             case 13:
@@ -64,11 +60,20 @@ public class consumablePotency : MonoBehaviour {
             case 16:
                 _ce.AOE_DeadDmgPerSecondLevel ++;
                 break;
+                
+            case 17:
+                spiritRegen += 0.4f;
+                break;
         }
 
         id=0;
     }
 
+
+    void Update()
+    {
+        Debug.Log(CritChanceLevel);
+    }
 
     public float ArmourLevel
     {
@@ -80,7 +85,7 @@ public class consumablePotency : MonoBehaviour {
     public float CritChanceLevel
     {
         get { return critChanceLevel; }
-        set { critChanceLevel = (value/(30f+value))*100f; }
+        set { critChanceLevel = value; }
     }
 
 
@@ -95,6 +100,11 @@ public class consumablePotency : MonoBehaviour {
         _ce.PayHpForKnowledge(amount);
     }
 
+
+    public  float SpiritRegen()
+    {
+        return spiritRegen;
+    }
     
 
 }

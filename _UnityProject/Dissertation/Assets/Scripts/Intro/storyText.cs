@@ -15,8 +15,6 @@ public class storyText : MonoBehaviour {
 
 	IEnumerator Start()
 	{
-		int cont=0;
-
 		while(i!=text.Count)
 		{
 			_canvasText.text = text[i];

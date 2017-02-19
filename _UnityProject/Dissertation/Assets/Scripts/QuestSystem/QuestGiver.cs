@@ -57,9 +57,6 @@ public class QuestGiver : MonoBehaviour {
 		direction.y = 0;
 		Quaternion target = Quaternion.LookRotation(direction);
 		transform.rotation = Quaternion.Lerp(transform.rotation, target, Time.deltaTime * 2f);
-
-		//transform.position = 
-
 	}
 
 }

@@ -7,6 +7,6 @@ public class rotateOnY : MonoBehaviour {
 
 	void Update()
 	{
-		transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+		transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
 	}
 }

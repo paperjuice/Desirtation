@@ -10,7 +10,7 @@ public class holdScore : MonoBehaviour {
 
 
 
-	string name;
+	string _name;
 	int score;
 
 	void Awake()
@@ -27,8 +27,8 @@ public class holdScore : MonoBehaviour {
 	public void RegisterScore()
 	{
 		fadeIn = GameObject.FindGameObjectWithTag("fadeIn").GetComponent<fadeOutFadein>();         
-		name = GetComponent<InputField>().text;
-		_leaderboard.GetScore(name, score);
+		_name = GetComponent<InputField>().text;
+		_leaderboard.GetScore(_name, score);
 		fadeIn.enabled = true;
 		controller.dungeonLevel = 1;
 

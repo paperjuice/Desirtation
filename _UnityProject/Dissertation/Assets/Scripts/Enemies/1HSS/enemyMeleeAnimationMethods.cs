@@ -1,18 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class enemyMeleeAnimationMethods : MonoBehaviour {
 
     [SerializeField] private enemyMeleeBehaviour _enemyMeleeBehaviour;
     [SerializeField] Collider eWeapon;
-    private Animator anim;
-
-    private void Awake()
-    {
-        anim = GetComponent<Animator>();
-    }
-
+    
     void AttackBehaviour()
     {
         //combo of 1, 2, 3 an so on attacks

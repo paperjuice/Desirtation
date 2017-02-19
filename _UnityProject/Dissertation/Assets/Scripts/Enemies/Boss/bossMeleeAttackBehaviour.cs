@@ -1,18 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class bossMeleeAttackBehaviour : MonoBehaviour {
 
     [SerializeField] Animator _anim;
-    bossGeneralBehaviour _bossGeneralBehaviour;
     [SerializeField]
     public int numberOfCombos;
 
-    void Awake()
-    {
-        _bossGeneralBehaviour = GetComponent<bossGeneralBehaviour>();
-    }
 
 	public IEnumerator MeleeAttack()
 	{

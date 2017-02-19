@@ -10,7 +10,6 @@ public class lift : MonoBehaviour {
 	float progress;
 	bool isDescending;
 	bool isLocked;
-	Text pressE;
 	[SerializeField] int amountOfDungeonIncrement;
 	[SerializeField] string sceneName;
 	[SerializeField] float speed;
@@ -21,7 +20,7 @@ public class lift : MonoBehaviour {
 	void Awake()
 	{
 		player = GameObject.FindGameObjectWithTag("Player");
-		pressE = GameObject.FindGameObjectWithTag("pressE").GetComponent<Text>();
+		//pressE = GameObject.FindGameObjectWithTag("pressE").GetComponent<Text>();
 	}
 
 	void Update()

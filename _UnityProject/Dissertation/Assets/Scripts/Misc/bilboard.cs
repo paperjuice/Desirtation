@@ -2,13 +2,13 @@
 
 public class bilboard : MonoBehaviour {
 
-    private GameObject _camera;
+//    private GameObject _camera;
     [SerializeField] float x;
 
-    private void Awake()
-    {
-        _camera = GameObject.FindGameObjectWithTag("MainCamera");
-    }
+    // private void Awake()
+    // {
+    //     _camera = GameObject.FindGameObjectWithTag("MainCamera");
+    // }
 
     private void Update()
     {

@@ -7,6 +7,7 @@ public class consumableDrop : MonoBehaviour {
 
     mcStats _mcStats;
     float dropChance;
+    [SerializeField] float chanceToGetAConsumable;
     float dropQuality;
     [Header("Check If boss")]
     [SerializeField]bool isBoss;
@@ -32,13 +33,13 @@ public class consumableDrop : MonoBehaviour {
         {
             dropChance = Random.Range(1f, 100f);
 
-            if (dropChance <= _mcStats.Luck())
+            if (dropChance <= chanceToGetAConsumable)
             {
                 dropQuality = Random.Range(1f, 100f);
 
-                if (dropQuality <= 70f)
+                if (dropQuality <= 70f-_mcStats.Luck())
                     Instantiate(levelOneConsumable[Random.Range(0, levelOneConsumable.Length)], transform.position, transform.rotation);
-                else if (dropQuality > 70 && dropQuality <= 95)
+                else if (dropQuality > 70-_mcStats.Luck() && dropQuality <= 95)
                     Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, transform.rotation);
                 else if (dropQuality > 95 && dropQuality <= 100)
                     Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);

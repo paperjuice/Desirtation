@@ -31,7 +31,7 @@ public class mcMovementBehaviour : MonoBehaviour {
     //Block
     private bool isBlocking;
     [SerializeField]private GameObject gameObjectBlock;
-    [SerializeField]private float deflect = 0f;
+//    [SerializeField]private float deflect = 0f;
     private bool isDeflecting;
     bool isAbleToBlock=true;
 

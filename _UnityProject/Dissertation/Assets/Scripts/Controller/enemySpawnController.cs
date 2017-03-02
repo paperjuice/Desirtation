@@ -1,8 +1,6 @@
 ﻿
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class enemySpawnController : MonoBehaviour {
 
@@ -20,29 +18,31 @@ public class enemySpawnController : MonoBehaviour {
 
     private bool isReady; //we set this true after we made sure all the tiles are instantiated
 
-    IEnumerator FindPlayer()
-    {
-        yield return new WaitForSeconds(0.1f);
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+    // IEnumerator FindPlayer()
+    // {
+    //     yield return new WaitForSeconds(0.1f);
+    //     player = GameObject.FindGameObjectWithTag("Player");
+    // }
 
     void Start()
     {
-        StartCoroutine(FindPlayer());
-        StartCoroutine(GetSpawnPoints());
+      //  StartCoroutine(FindPlayer());
+       // StartCoroutine(GetSpawnPoints());
         i = controller.dungeonLevel;
     }
 
-    IEnumerator GetSpawnPoints()
-    {
-        yield return new WaitForSeconds(0.1f);
-        enemySpawnPoints = GameObject.FindGameObjectsWithTag("enemySpawnPoint");
-        bossSpawnPoints = GameObject.FindGameObjectsWithTag("bossSpawnPoint");
-        isReady=true;
-    }
+    // IEnumerator GetSpawnPoints()
+    // {
+    //     yield return new WaitForSeconds(0.1f);
+    //     enemySpawnPoints = GameObject.FindGameObjectsWithTag("enemySpawnPoint");
+    //     bossSpawnPoints = GameObject.FindGameObjectsWithTag("bossSpawnPoint");
+    //     isReady=true;
+    // }
 
     void Update()
      {
+        GetPlayer();
+        GetSpawnPoints();
         if(isReady)
         {
             SpawnFoes();
@@ -50,8 +50,23 @@ public class enemySpawnController : MonoBehaviour {
         }
     }
 
-    
+    void GetSpawnPoints()
+    {
+        if(enemySpawnPoints == null)
+            enemySpawnPoints = GameObject.FindGameObjectsWithTag("enemySpawnPoint");
 
+        if(bossSpawnPoints == null)
+            bossSpawnPoints = GameObject.FindGameObjectsWithTag("bossSpawnPoint");
+
+        if(enemySpawnPoints != null && bossSpawnPoints != null)
+            isReady = true;
+    }
+
+    void GetPlayer()
+    {
+        if(player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void SpawnFoes()
     {
@@ -62,7 +77,7 @@ public class enemySpawnController : MonoBehaviour {
                 if(esp.gameObject.activeInHierarchy)
                 {
                     chanceToGetEnemy = Random.Range(0f,100f);
-                    if(chanceToGetEnemy <= 20f+(i*2f))
+                    if(chanceToGetEnemy <= 10f+(i*4f))
                     {
                         enemyRollChance = Random.Range(1f,100f);
                         if(enemyRollChance<=110-i*10)
@@ -78,8 +93,6 @@ public class enemySpawnController : MonoBehaviour {
                 }
             }
         }
-            
-        
     }
 
     void SpawnBosses()
@@ -91,7 +104,7 @@ public class enemySpawnController : MonoBehaviour {
                 if(bsp.gameObject.activeInHierarchy)
                 {
                     bossRollChance = Random.Range(1f,100f);
-                    if(bossRollChance<i*50f)
+                    if(bossRollChance<i/(10f+i)*100f)
                         Instantiate(bossList[Random.Range(0,bossList.Length)], bsp.transform.position, transform.rotation );
                     bsp.gameObject.SetActive(false);
                 }

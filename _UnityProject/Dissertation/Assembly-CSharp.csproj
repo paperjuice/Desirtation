@@ -46,6 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Bonus\AccountProgression.cs" />
+     <Compile Include="Assets\Scripts\Bonus\Endowments.cs" />
+     <Compile Include="Assets\Scripts\Bonus\UnlockEndowments.cs" />
      <Compile Include="Assets\Scripts\Consumable\AOE-dealDmgPerSecond\aoe_DealDmgPerSecond.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableDrop.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableEffect.cs" />
@@ -97,6 +100,7 @@
      <Compile Include="Assets\Scripts\MainMenu\mainMenuController.cs" />
      <Compile Include="Assets\Scripts\Misc\DontDestroyOnLoad.cs" />
      <Compile Include="Assets\Scripts\Misc\GUI.cs" />
+     <Compile Include="Assets\Scripts\Misc\NextSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\Misc\bilboard.cs" />
      <Compile Include="Assets\Scripts\Misc\fadeOutFadein.cs" />
      <Compile Include="Assets\Scripts\Misc\floatingText.cs" />

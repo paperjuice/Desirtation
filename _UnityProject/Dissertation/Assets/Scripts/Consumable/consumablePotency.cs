@@ -72,7 +72,7 @@ public class consumablePotency : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(CritChanceLevel);
+//        Debug.Log(CritChanceLevel);
     }
 
     public float ArmourLevel

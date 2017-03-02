@@ -6,6 +6,17 @@ public class breakableObjects : MonoBehaviour {
 	
     [SerializeField] private GameObject[] parts;
     [SerializeField] float force;
+
+    [HeaderAttribute("Consumables")]
+    [SerializeField] float destructibleDropChance = 3f;
+    [HeaderAttribute("Level1")]
+    [SerializeField]GameObject[] levelOneConsumable;
+    [HeaderAttribute("Level2")]
+    [SerializeField]GameObject[] levelTwoConsumable;
+    [HeaderAttribute("Level3")]
+    [SerializeField]GameObject[] levelThreeConsumable;
+
+    float chanceToGetItem;
     private Animator _camera;
     private GameObject player;
     bool isExploding;
@@ -26,8 +37,6 @@ public class breakableObjects : MonoBehaviour {
     {
         if (other.gameObject.tag == "mcWeapon")
             isExploding = true;
-
-        
     }
 
     void Update()
@@ -43,8 +52,25 @@ public class breakableObjects : MonoBehaviour {
                 GetComponent<Collider>().enabled = false;
                 p.transform.parent = null;
             }
+            DropItem();
             isExploding = false;
             gameObject.SetActive(false);
+        }
+    }
+
+    void DropItem()
+    {
+        chanceToGetItem = Random.Range(1f,100f);
+        if(chanceToGetItem <= destructibleDropChance)
+        {
+            var dropQuality = Random.Range(1f, 100f);
+
+                if (dropQuality <= 70f)
+                    Instantiate(levelOneConsumable[Random.Range(0, levelOneConsumable.Length)], transform.position, transform.rotation);
+                else if (dropQuality > 70 && dropQuality <= 95)
+                    Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, transform.rotation);
+                else if (dropQuality > 95 && dropQuality <= 100)
+                    Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);
         }
     }
 

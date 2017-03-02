@@ -111,7 +111,7 @@ public class mcStats : MonoBehaviour {
 //        Debug.Log( (_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f);
         AgePerSecond();
         CameraGrayScaleOnAging();
-  //      Debug.Log(_cp.SpiritRegen());
+       Debug.Log(((_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f)+Endowments.bonusCritChance);
     }
 
     void OnTriggerEnter(Collider col)
@@ -148,23 +148,23 @@ public class mcStats : MonoBehaviour {
 
     public float Youthfulness()
     {
-        youthfulness = Mathf.Clamp((1f-age/72f),0f,1f) * (1+knowledge) + (bonusYouthfulness * wisdom);
+        youthfulness = (1f-age/60f>0?1f-age/60f:0) * (1+knowledge) + (bonusYouthfulness) + Endowments.bonusYouthfulness;
         return youthfulness;
     }
 
     public float Fortitude()
     {
         if (age <= 17f)
-            fortitude = (knowledge * age/17f) + (BonusFortitude*wisdom);
+            fortitude = (knowledge * age/17f) + (BonusFortitude) + Endowments.bonusFortitude;
         else if(age > 17f)
-            fortitude = (knowledge * 17f/age) + (BonusFortitude*wisdom);
+            fortitude = (knowledge * (17-(age-17))/17>0?(17-(age-17))/17:0) + (BonusFortitude)+ Endowments.bonusFortitude;
         
         return fortitude;
     }
 
     public float Wisdom()
     {
-        wisdom = (knowledge * Mathf.Clamp(age/72f,0f,1f)) + (BonusWisdom * 5f);
+        wisdom = (knowledge * (age/60<1?age/60:1)) + (BonusWisdom * 5f) + Endowments.bonusWisdom;
         return wisdom;
     }
 
@@ -176,11 +176,11 @@ public class mcStats : MonoBehaviour {
             decreasAmount = 0f;
         }
 
-        maxSpirit = 10 + Youthfulness()*0.2f;
+        maxSpirit = 10 + Youthfulness()*0.2f + Endowments.bonusSpirit;
         currentSpirit = Mathf.Clamp(currentSpirit, 0f, maxSpirit);
 
         if (currentSpirit < maxSpirit)
-            currentSpirit += Time.deltaTime*(1.4f + _cp.SpiritRegen());
+            currentSpirit += Time.deltaTime*(1.4f + _cp.SpiritRegen() + Endowments.bonusSpiritRegen);
         
         return currentSpirit;
     }
@@ -201,14 +201,14 @@ public class mcStats : MonoBehaviour {
     public float Armour(float damageReceived)
     {
         damageProcessedBasedOnArmour = damageReceived - (damageReceived * ((_cp.ArmourLevel+ Fortitude() * 0.1f) / (1000f+_cp.ArmourLevel + (Fortitude() * 0.1f)/2f)));
-//        Debug.Log(damageProcessedBasedOnArmour);
+        damageProcessedBasedOnArmour -= Endowments.bonusArmour;
         return damageProcessedBasedOnArmour;
     }
 
     public float CritChance(float damageDealt)
     {
         float chanceToCrit = Random.Range(1f, 100f);
-        if (chanceToCrit <= ((_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f))
+        if (chanceToCrit <= ((_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f)+Endowments.bonusCritChance)
         {
             damageDealt = damageDealt * Random.Range(1.4f,2f);
         }
@@ -256,7 +256,6 @@ public class mcStats : MonoBehaviour {
         gameObject.SetActive(false);
         fadeIn.enabled = true;
         fadeIn.SceneName = "enterLeaderboard";
-        knowledge = 0;
         Destroy(gameObject,5f);
     }
     // IEnumerator DestroyOnDeath()

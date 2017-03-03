@@ -5,6 +5,12 @@ public class generalEnemyStats : MonoBehaviour {
 
     consumableDrop _consumableDrop;
     QuestController questController;
+
+    bool isHit = false;
+    public bool IsHit{
+        get{return isHit;}
+        set{isHit = value;}
+    }
     [SerializeField]private int id;
     public int Id{
         get{return id;}

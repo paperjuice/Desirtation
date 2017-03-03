@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class AccountProgression : MonoBehaviour {
 
 	Endowments _end;
-	float totalAccountExperience = 70f;
+	float totalAccountExperience = 20f;
 	float currentAccountExperience = 0f;
 	float storedKnowledge;
 	float knowledgeToExperiecenTransferSpeed;
@@ -24,7 +24,7 @@ public class AccountProgression : MonoBehaviour {
 	void Start()
 	{
 		storedKnowledge = mcStats.knowledge;
-		knowledgeToExperiecenTransferSpeed = storedKnowledge /2;
+		knowledgeToExperiecenTransferSpeed = storedKnowledge ;
 		mcStats.knowledge = 0;
 	}
 
@@ -51,7 +51,7 @@ public class AccountProgression : MonoBehaviour {
 			_end.ActivateBonuses();
 			accountLevel ++;
 			currentAccountExperience = 0f;
-			totalAccountExperience = totalAccountExperience + (totalAccountExperience* accountLevel);
+			totalAccountExperience = totalAccountExperience + (3.5f* accountLevel);
 		}
 	}
 

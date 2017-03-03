@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class mcWeaponCollision : MonoBehaviour {
 
@@ -32,12 +33,22 @@ public class mcWeaponCollision : MonoBehaviour {
     {
         if (col.gameObject.tag == "enemy")
         {
-            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
-            _mcStats.Knowledge(0.1f+controller.dungeonLevel);  
-            _mainCamera.SetTrigger("shake");
-            col.gameObject.GetComponent<generalEnemyStats>().eCurrentHealth -=_mcStats.McDamage(WeaponDamage);
-            InstantiateDmgNumbers(col.gameObject);
+            var generalEnemySts= col.gameObject.GetComponent<generalEnemyStats>();
+            if(!generalEnemySts.IsHit)
+            {
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
+                _mcStats.Knowledge(0.1f+controller.dungeonLevel);  
+                generalEnemySts.eCurrentHealth -=_mcStats.McDamage(WeaponDamage + Endowments.bonusRawDamage);
+                InstantiateDmgNumbers(col.gameObject);
+                StartCoroutine(HasBeenHit(col.gameObject));
+            }
         }
+    }
+
+    IEnumerator HasBeenHit(GameObject obj)
+    {
+        yield return new WaitForSeconds(0.1f);
+        obj.GetComponent<generalEnemyStats>().IsHit=false;
     }
 
     void InstantiateDmgNumbers(GameObject enemyPos)

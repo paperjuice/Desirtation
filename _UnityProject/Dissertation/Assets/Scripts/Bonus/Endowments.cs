@@ -15,6 +15,7 @@ public class Endowments : MonoBehaviour {
 	public static float bonusCritChance;
 	public static float bonusAttackSpeed;
 	public static float bonusArmour;
+	public static float bonusRawDamage;
 
 
 	void Start()
@@ -28,41 +29,71 @@ public class Endowments : MonoBehaviour {
 
 		if(PlayerPrefs.GetInt("accountLevel") != accountLvl || !isActive)
 		{
-			BonusesBasedOnLevel();
+			for(int i = 0;i<accountLvl;i++)
+				BonusesBasedOnLevel(i);
+
+			bonusesText.text = string.Empty;
 			isActive = true;
+			
 		}
 		DisplayBonuses();
+		
 	}
 
-	void BonusesBasedOnLevel()
+	void BonusesBasedOnLevel(int i)
 	{
-		if(accountLvl >= 3)
-			bonusCritChance += 0.5f;
-
-		if(accountLvl >=4)
-			bonusWisdom += 2f;
-
-		if(accountLvl >=5)
-			bonusAttackSpeed += 0.01f;
-
-		if(accountLvl >=6)
-			bonusFortitude += 2f;
-
-		if(accountLvl >=7)
-			bonusYouthfulness += 2f;
-
-		if(accountLvl >=8)
-			bonusArmour += 0.2f;
-
-		if(accountLvl >=9)
-			bonusSpirit += 0.5f;
-
-		if(accountLvl >=11)
-			bonusSpiritRegen += 0.1f;
+		switch(i+1)
+		{
+			case 3:
+				bonusRawDamage += 0.5f;
+				break;
+			case 4:
+				bonusWisdom += 50f;
+				break;
+			case 5:
+				bonusAttackSpeed += 0.05f;
+				break;
+			case 6:
+				bonusFortitude += 50f;
+				break;
+			case 7:
+				bonusRawDamage += 0.5f;
+				break;
+			case 8:
+				bonusArmour += 1f;
+				break;
+			case 9:
+				bonusSpirit += 2f;
+				break;
+			case 11:
+				bonusSpiritRegen += 0.1f;
+				break;
+			case 12:
+				bonusCritChance += 5f;
+				break;
+			case 13:
+				bonusYouthfulness += 50f;
+				break;
+			case 14:
+				bonusAttackSpeed += 0.05f;
+				break;
+			case 15:
+				bonusWisdom += 50f;
+				break;
+			case 16:
+				bonusArmour += 1f;
+				break;
+			case 17:
+				bonusFortitude += 50f;
+				break;
+		}
 	}
 
 	void DisplayBonuses()
 	{
+		if(bonusRawDamage != 0)
+			bonusesText.text +="*Raw Damage: +" + bonusRawDamage.ToString("N1") + "\n";
+
 		if(bonusCritChance !=0)
 			bonusesText.text += "*Critical hit chance: +" +bonusCritChance.ToString("N1") +"%" + "\n";
 
@@ -79,7 +110,7 @@ public class Endowments : MonoBehaviour {
 			bonusesText.text += "*Youthfulness: +" + bonusYouthfulness.ToString("N1") + "\n";
 
 		if(bonusArmour != 0)
-			bonusesText.text += "*Armour: +" + bonusArmour.ToString("N1") + "\n";
+			bonusesText.text += "*Raw damage reduction: +" + bonusArmour.ToString("N1") + "\n";
 
 		if(bonusSpirit != 0)
 			bonusesText.text += "*Spirit: +" + bonusSpirit.ToString("N1") + "\n";

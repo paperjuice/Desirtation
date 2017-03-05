@@ -55,7 +55,8 @@ public class mcMovementBehaviour : MonoBehaviour {
     
     void Update()
     {
-        anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed + Endowments.bonusAttackSpeed);
+
+        anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed*0.03f + _mcStats.Youthfulness()*0.001f + Endowments.bonusAttackSpeed);
 
         if (!isRolling)
         {

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class enemyBeenBlocked : MonoBehaviour {
@@ -18,8 +17,7 @@ public class enemyBeenBlocked : MonoBehaviour {
     [SerializeField] private enemyMeleeBehaviour _enemyMeleeBehaviour;
 
     [Header("ONLY FOR BOSS")]
-    [SerializeField] private bossGeneralBehaviour _bossGeneralBehaviour;
-    [SerializeField] private bossMeleeAttackBehaviour _bossMeleeAttackBehaviour;
+    [SerializeField] private MonoBehaviour _bossGeneralBehaviour;
 
     [Header("Values")]
     [SerializeField] private float timeIncapacitated;
@@ -36,7 +34,7 @@ public class enemyBeenBlocked : MonoBehaviour {
         if (other.gameObject.tag == "shield")
         {
             _anim.SetTrigger("blocked");
-            _mcStats.Knowledge(1 + controller.dungeonLevel);
+           // _mcStats.Knowledge(1 + controller.dungeonLevel);
             _camera.SetTrigger("shake");
             _particle.transform.position = other.gameObject.transform.position + new Vector3(0,1,0) + transform.forward *-1.2f;
             _particle.Play();
@@ -54,9 +52,8 @@ public class enemyBeenBlocked : MonoBehaviour {
             }
             else
             {
-                print("intra");
+//                print("intra");
                 _bossGeneralBehaviour.enabled = false;
-                _bossMeleeAttackBehaviour.numberOfCombos = 0;
             }
 
             if(!isBoss)

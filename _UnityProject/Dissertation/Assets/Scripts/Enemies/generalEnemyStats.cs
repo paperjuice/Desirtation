@@ -5,18 +5,24 @@ public class generalEnemyStats : MonoBehaviour {
 
     consumableDrop _consumableDrop;
     QuestController questController;
+    mcStats _mcStats;
 
     bool isHit = false;
     public bool IsHit{
         get{return isHit;}
         set{isHit = value;}
     }
+    //check for dual hit
+    float savedHealth;
+    float time;
+
     [SerializeField]private int id;
     public int Id{
         get{return id;}
         set{id=value;}
     }
     [HeaderAttribute("For when it dies")]
+    [SerializeField] float amountOfKnowledgeGained;
     [SerializeField] GameObject aliveBody;
     [SerializeField] GameObject[] deadBody;
     [SerializeField] ParticleSystem _bloodPart;
@@ -34,6 +40,7 @@ public class generalEnemyStats : MonoBehaviour {
     {
         _consumableDrop = GetComponent<consumableDrop>();
         _camera = GameObject.FindGameObjectWithTag("cameraFather").GetComponent<mcCameraFollow>();
+        _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
     }
 
     void Start()
@@ -44,8 +51,8 @@ public class generalEnemyStats : MonoBehaviour {
 
     void Update()
     {
-        if(questController==null)
-            questController = GameObject.FindGameObjectWithTag("questController").GetComponent<QuestController>();
+        // if(questController==null)
+        //     questController = GameObject.FindGameObjectWithTag("questController").GetComponent<QuestController>();
         
         Death();
         VisualizeHealth();
@@ -68,11 +75,22 @@ public class generalEnemyStats : MonoBehaviour {
         fillBar.transform.localScale = new Vector3(eCurrentHealth / eMaxHealth, 1f, 1f);
     }
 
+    public void ReceiveDamage(float damage)
+    {
+        if(damage >0 && !isHit)
+        {
+            eCurrentHealth -= damage;
+            damage = 0;
+            isHit = false;
+        }
+    }
+
     void Death()
     {
         if (eCurrentHealth <= 0)
         {
-            questController.IncrementQuest(id);
+            _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel));
+//            questController.IncrementQuest(id);
             _camera.IsBossMode = false;
             foreach(GameObject a in deadBody)
             {

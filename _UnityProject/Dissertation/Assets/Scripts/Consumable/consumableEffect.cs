@@ -32,7 +32,7 @@ public class consumableEffect : MonoBehaviour {
 
 	public void LowerAge(float lowerAgeAmount)
 	{
-		lowerAgeAmount = Mathf.Clamp(lowerAgeAmount, 0f,30f);
+		lowerAgeAmount = Mathf.Clamp(lowerAgeAmount, 7f,35f);
 		if(lowerAgeAmount >0)
 		{
 			if(_mcStats.Age - lowerAgeAmount<0)
@@ -68,7 +68,7 @@ public class consumableEffect : MonoBehaviour {
 			aoe_particle.gameObject.SetActive(true);
 		}
 
-		aoeDmg = (AOE_DeadDmgPerSecondLevel * _mcStats.Wisdom()/(400f+_mcStats.Wisdom()) * Time.fixedDeltaTime);
+		aoeDmg = (AOE_DeadDmgPerSecondLevel*0.5f + _mcStats.Wisdom()*0.03f) * Time.fixedDeltaTime;
 		return aoeDmg;
 	}
 

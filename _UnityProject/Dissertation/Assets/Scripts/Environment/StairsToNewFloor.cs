@@ -17,7 +17,7 @@ public class StairsToNewFloor : MonoBehaviour {
 		if(col.gameObject.tag == "Player")
 		{
 			_fadeIn.enabled = true;
-			_fadeIn.SceneName = "game2_randomMapGen";
+			_fadeIn.SceneName = "FloorProgression";
 			controller.dungeonLevel += amountOfDungeonIncrement;
 			//col.gameObject.transform.parent = platform.transform;
 			platform.GetComponent<Animator>().SetBool("move", true);

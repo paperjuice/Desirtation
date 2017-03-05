@@ -34,22 +34,24 @@ public class mcWeaponCollision : MonoBehaviour {
         if (col.gameObject.tag == "enemy")
         {
             var generalEnemySts= col.gameObject.GetComponent<generalEnemyStats>();
+
             if(!generalEnemySts.IsHit)
             {
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
-                _mcStats.Knowledge(0.1f+controller.dungeonLevel);  
-                generalEnemySts.eCurrentHealth -=_mcStats.McDamage(WeaponDamage + Endowments.bonusRawDamage);
+                generalEnemySts.ReceiveDamage(_mcStats.McDamage(WeaponDamage + Endowments.bonusRawDamage));
                 InstantiateDmgNumbers(col.gameObject);
+                generalEnemySts.IsHit = true;
                 StartCoroutine(HasBeenHit(col.gameObject));
             }
         }
     }
 
-    IEnumerator HasBeenHit(GameObject obj)
+    IEnumerator HasBeenHit(GameObject col)
     {
         yield return new WaitForSeconds(0.1f);
-        obj.GetComponent<generalEnemyStats>().IsHit=false;
+        col.gameObject.GetComponent<generalEnemyStats>().IsHit=false;
     }
+    
 
     void InstantiateDmgNumbers(GameObject enemyPos)
     {

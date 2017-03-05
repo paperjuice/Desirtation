@@ -4,6 +4,7 @@ public class consumableUse : MonoBehaviour {
 
     Transform parent;
 	[SerializeField] int id;
+    [SerializeField] GameObject floatingText;
 
     consumablePotency player;
 
@@ -23,6 +24,9 @@ public class consumableUse : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.E))
         {
             player.IncrementPassivePotency(id);
+            floatingText.transform.parent = null;
+            floatingText.gameObject.SetActive(true);
+            floatingText.transform.rotation = Quaternion.Euler(65f,0f,0f);
             Destroy(parent.gameObject);
         }
     }

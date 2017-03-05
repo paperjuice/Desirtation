@@ -34,7 +34,7 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 10:
-                LowerAge(1+_mcStats.Wisdom()*0.15f);
+                LowerAge(_mcStats.Wisdom()*0.1f);
                 break;
 
             case 13:
@@ -54,7 +54,7 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 15:
-                _ce.AttackSpeed+= 0.05f;
+                _ce.AttackSpeed+= 1f;
                 break;
 
             case 16:
@@ -62,7 +62,7 @@ public class consumablePotency : MonoBehaviour {
                 break;
                 
             case 17:
-                spiritRegen += 0.4f;
+                spiritRegen += 1f;
                 break;
         }
 

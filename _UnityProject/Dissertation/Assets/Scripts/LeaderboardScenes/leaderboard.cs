@@ -11,7 +11,7 @@ public class leaderboard : MonoBehaviour {
     public Highscore[] highscoreList;
     List<string> listOfHighscores = new List<string>();
 
-    public void GetScore(string username, int score){
+    public void GetScore(string username, float score){
         StartCoroutine(UploadHighScore(username, score));
     }
 
@@ -22,7 +22,7 @@ public class leaderboard : MonoBehaviour {
 
 
 
-    IEnumerator UploadHighScore(string username, int score){
+    IEnumerator UploadHighScore(string username, float score){
         WWW www = new WWW(url + privateCode + "/add/"+WWW.EscapeURL(username)+"/"+score);
         yield return www;
 
@@ -55,7 +55,7 @@ public class leaderboard : MonoBehaviour {
             string username = entryInfo[0];
             int score = int.Parse(entryInfo[1]);
             highscoreList[i] = new Highscore(username, score);
-            listOfHighscores.Add((highscoreList[i].username + " - " + highscoreList[i].score).ToString());
+            listOfHighscores.Add((highscoreList[i].username + " - " + highscoreList[i].score.ToString("N1")).ToString());
             if(i>18)
                 break;
         }

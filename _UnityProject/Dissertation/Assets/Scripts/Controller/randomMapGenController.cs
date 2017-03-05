@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class randomMapGenController : MonoBehaviour {
 
@@ -16,6 +14,9 @@ public class randomMapGenController : MonoBehaviour {
 
     void Start()
     {
+        if(controller.dungeonLevel > 2)
+            numberOfTiles += Random.Range(-1, 3);
+
         while (numberOfTiles > 0)
         {
             mapSpawnPoints = GameObject.FindGameObjectsWithTag("mapSpawnPoint");

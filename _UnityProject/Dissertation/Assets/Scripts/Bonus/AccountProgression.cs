@@ -25,7 +25,6 @@ public class AccountProgression : MonoBehaviour {
 	{
 		storedKnowledge = mcStats.knowledge;
 		knowledgeToExperiecenTransferSpeed = storedKnowledge ;
-		mcStats.knowledge = 0;
 	}
 
 	void Update()

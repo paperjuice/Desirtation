@@ -7,7 +7,6 @@ public class QuestController : MonoBehaviour {
 	GameObject _text;
 	float alpha;
 	bool isFading = false;
-	
 	public int QuestId{get;set;}
 	public int EnemyId{get;set;}
 	public int NumberOfEnemies{get;set;}
@@ -16,6 +15,7 @@ public class QuestController : MonoBehaviour {
 	//float time=0f; //check enemies every n seconds
 	GameObject[] enemies;
 	public int Target{get;set;}
+
 
 	void Update()
 	{

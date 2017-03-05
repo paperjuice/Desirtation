@@ -8,10 +8,8 @@ public class holdScore : MonoBehaviour {
 	[SerializeField] Text titleText;
 	private fadeOutFadein fadeIn;
 
-
-
 	string _name;
-	int score;
+	float score;
 
 	void Awake()
 	{
@@ -21,7 +19,7 @@ public class holdScore : MonoBehaviour {
 
 	void Start()
 	{
-		score = controller.dungeonLevel;
+		score = mcStats.knowledge;
 	}
 
 	public void RegisterScore()
@@ -31,8 +29,5 @@ public class holdScore : MonoBehaviour {
 		_leaderboard.GetScore(_name, score);
 		fadeIn.enabled = true;
 		controller.dungeonLevel = 1;
-
 	}
-
-
 }

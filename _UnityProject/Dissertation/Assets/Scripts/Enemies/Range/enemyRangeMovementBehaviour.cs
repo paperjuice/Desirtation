@@ -104,7 +104,7 @@ public class enemyRangeMovementBehaviour : MonoBehaviour {
     void MoveAwayFromPlayer()
     {
         _enemyRangeAttackBehaviour.IsInRange(true);
-        transform.position -= Time.deltaTime * transform.forward * ms / 2;
+        transform.position -= Time.deltaTime * transform.forward * ms / 1.5f;
     }
 
 

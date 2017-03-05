@@ -66,11 +66,11 @@ public class breakableObjects : MonoBehaviour {
             var dropQuality = Random.Range(1f, 100f);
 
                 if (dropQuality <= 70f)
-                    Instantiate(levelOneConsumable[Random.Range(0, levelOneConsumable.Length)], transform.position, transform.rotation);
+                    Instantiate(levelOneConsumable[Random.Range(0, levelOneConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
                 else if (dropQuality > 70 && dropQuality <= 95)
-                    Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, transform.rotation);
+                    Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
                 else if (dropQuality > 95 && dropQuality <= 100)
-                    Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);
+                    Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
         }
     }
 

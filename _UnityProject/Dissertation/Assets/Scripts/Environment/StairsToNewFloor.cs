@@ -3,6 +3,7 @@
 public class StairsToNewFloor : MonoBehaviour {
 
 	fadeOutFadein _fadeIn;
+	[SerializeField] string sceneName = "FloorProgression";
 	[SerializeField] int amountOfDungeonIncrement;
 	[SerializeField] GameObject platform;
 
@@ -17,7 +18,7 @@ public class StairsToNewFloor : MonoBehaviour {
 		if(col.gameObject.tag == "Player")
 		{
 			_fadeIn.enabled = true;
-			_fadeIn.SceneName = "FloorProgression";
+			_fadeIn.SceneName = sceneName;
 			controller.dungeonLevel += amountOfDungeonIncrement;
 			//col.gameObject.transform.parent = platform.transform;
 			platform.GetComponent<Animator>().SetBool("move", true);

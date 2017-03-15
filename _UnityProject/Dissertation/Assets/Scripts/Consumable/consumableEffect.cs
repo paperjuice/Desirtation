@@ -3,6 +3,7 @@
 public class consumableEffect : MonoBehaviour {
 
 	private mcStats _mcStats;
+	private consumablePotency _cp;
 	
 	//AttackSpeed
 	private float attackSpeed;
@@ -12,17 +13,12 @@ public class consumableEffect : MonoBehaviour {
 
 	[Header("AOE_DeadDmgPerSecond")]
 	[SerializeField] GameObject aoe_particle;
-	private int aoe_DeadDmgPerSecondLevel;
-	public int AOE_DeadDmgPerSecondLevel
-	{
-		get{return aoe_DeadDmgPerSecondLevel;}
-		set{aoe_DeadDmgPerSecondLevel=value;}
-	}
 
 
 	void Awake()
 	{
 		_mcStats = GetComponent<mcStats>();
+		_cp = GetComponent<consumablePotency>();
 	}
 
 	void Update()
@@ -63,12 +59,12 @@ public class consumableEffect : MonoBehaviour {
 	public float AOE_DeadDmgPerSecond()
 	{
 		float aoeDmg;
-		if(AOE_DeadDmgPerSecondLevel>0)
+		if(_cp.AOE_DeadDmgPerSecondLevel>0)
 		{
 			aoe_particle.gameObject.SetActive(true);
 		}
 
-		aoeDmg = (AOE_DeadDmgPerSecondLevel*0.5f + _mcStats.Wisdom()*0.03f) * Time.fixedDeltaTime;
+		aoeDmg = (_cp.AOE_DeadDmgPerSecondLevel*0.5f + _mcStats.Wisdom()*0.07f) * Time.fixedDeltaTime;
 		return aoeDmg;
 	}
 

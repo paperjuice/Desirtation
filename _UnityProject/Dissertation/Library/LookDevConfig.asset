@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LookDevContexts:
   - m_Properties:
-    - floatValue: 0
+    - floatValue: 0.112676054
       intValue: 0
     - floatValue: 0
       intValue: 0

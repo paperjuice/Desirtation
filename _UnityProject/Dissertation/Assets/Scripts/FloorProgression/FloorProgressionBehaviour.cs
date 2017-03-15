@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class FloorProgressionBehaviour : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 	[SerializeField] Text[] floorText;
 	[SerializeField] Image[] skulls;
 	MonoBehaviour[] mono;
+	bool isReady = false;
 
 
 	[SerializeField]int floorLevel;
@@ -18,9 +20,9 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 		mono = GameObject.FindGameObjectWithTag("Player").GetComponents<MonoBehaviour>();
 	}
 
-	void Start()
+	IEnumerator Start()
 	{
-		// floorLevel = 3;
+		 //floorLevel = controller.dungeonLevel;
 		//floorLevel = 3;
 
 		DisableMcComponents();
@@ -30,19 +32,24 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 		}
 		ColourText();
 		ColourSkullsAfterProgress();
+
+		yield return new WaitForSeconds(1f);
+		isReady = true;
 	}
 
 	void Update()
 	{
 		LerpScaleOfLastFiller();
-		AnyKeyToNextScene();
+
+		if(isReady)
+			AnyKeyToNextScene();
 	}
 
 	void FillBar()
 	{
 		for(int i = 0; i<floorLevel-2;i++)
 		{
-			fills[i].transform.localScale = new Vector3(1,1,1);
+			fills[i].transform.localScale = new Vector3(4.8f,1,1);
 		}
 	}
 
@@ -54,16 +61,16 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 
 	void ColourSkullsAfterProgress()
 	{
-		if(floorLevel>4)
+		if(floorLevel>3)
 		{
 			skulls[0].color= new Color32(147, 45, 47, 255);
 		}
 
-		if(floorLevel>8)
+		if(floorLevel>5)
 		{
 			skulls[1].color= new Color32(147, 45, 47, 255);
 		}
-		if(floorLevel>12)
+		if(floorLevel>7)
 		{
 			skulls[2].color= new Color32(147, 45, 47, 255);
 		}
@@ -73,16 +80,16 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 	{
 		switch(floorLevel)
 		{
-			case 4:
+			case 3:
 				skulls[0].color= new Color32(147, 45, 47, 255);
 				break;
-			case 8:
+			case 5:
 				skulls[1].color= new Color32(147, 45, 47, 255);
 				break;
-			case 12:
+			case 7:
 				skulls[2].color= new Color32(147, 45, 47, 255);
 				break;
-			case 16:
+			case 9:
 				skulls[3].color= new Color32(147, 45, 47, 255);
 				break;
 		}
@@ -90,11 +97,11 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 
 	void LerpScaleOfLastFiller()
 	{
-		fills[floorLevel-2].transform.localScale = Vector3.Lerp(fills[floorLevel-2].transform.localScale, new Vector3(1f,1f,1f), Time.deltaTime*2f);
+		fills[floorLevel-2].transform.localScale = Vector3.Lerp(fills[floorLevel-2].transform.localScale, new Vector3(4.8f,1f,1f), Time.deltaTime*2f);
 		if(fills[floorLevel-2].transform.localScale.y >=0.9f )
 		{
 			ColourSkullsWhenProgress();
-			if(floorLevel != 4 && floorLevel != 8 && floorLevel != 12)
+			if(floorLevel != 2 && floorLevel != 5 && floorLevel != 7)
 				floorText[floorLevel-1].color = new Color32(147, 45, 47, 255);
 		}
 	}
@@ -111,6 +118,13 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 	{
 		if(Input.anyKeyDown)
 			_fade.enabled  = true;
+			
+			if(controller.dungeonLevel == 3 || controller.dungeonLevel == 6 || controller.dungeonLevel == 8)
+				_fade.SceneName = "game2_randomMapGen";
+			else
+				_fade.SceneName = "BossScene1";
+
+
 	}
 
 }

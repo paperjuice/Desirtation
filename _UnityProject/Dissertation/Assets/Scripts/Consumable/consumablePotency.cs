@@ -14,6 +14,15 @@ public class consumablePotency : MonoBehaviour {
     //spirit regen
     float spiritRegen = 0f;
 
+    // AOE_DeadDmgPerSecondLevel
+    float aoe_DeadDmgPerSecondLevel = 0f;
+
+    // lifesteal
+    float lifestealLevel;
+    public float LifestealLevel{
+        get{return lifestealLevel;}
+        set{lifestealLevel = value;}
+    }
 
     private void Awake()
     {
@@ -58,11 +67,15 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 16:
-                _ce.AOE_DeadDmgPerSecondLevel ++;
+                aoe_DeadDmgPerSecondLevel ++;
                 break;
                 
             case 17:
                 spiritRegen += 1f;
+                break;
+
+            case 18:
+                LifestealLevel++;
                 break;
         }
 
@@ -105,6 +118,14 @@ public class consumablePotency : MonoBehaviour {
     {
         return spiritRegen;
     }
+
+    public float AOE_DeadDmgPerSecondLevel
+    {
+        get{return aoe_DeadDmgPerSecondLevel;}
+        set{aoe_DeadDmgPerSecondLevel = value;}
+    }
+
+
     
 
 }

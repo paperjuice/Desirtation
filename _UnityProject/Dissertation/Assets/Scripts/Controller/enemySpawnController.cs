@@ -71,7 +71,7 @@ public class enemySpawnController : MonoBehaviour {
     {
         foreach(GameObject esp in enemySpawnPoints)
         {
-            if(Vector3.Distance(esp.transform.position, player.transform.position)<40f)
+            if(Vector3.Distance(esp.transform.position, player.transform.position)<25f)
             {
                 if(esp.gameObject.activeInHierarchy)
                 {
@@ -98,12 +98,12 @@ public class enemySpawnController : MonoBehaviour {
     {
         foreach(GameObject bsp in bossSpawnPoints)
         {
-            if(Vector3.Distance(bsp.transform.position, player.transform.position)<40f)
+            if(Vector3.Distance(bsp.transform.position, player.transform.position)<15f)
             {
                 if(bsp.gameObject.activeInHierarchy)
                 {
                     bossRollChance = Random.Range(1f,100f);
-                    if(bossRollChance<i/(10f+i)*100f)
+                    if(0<i/(10f+i)*100f)
                         Instantiate(bossList[Random.Range(0,bossList.Length)], bsp.transform.position, transform.rotation );
                     bsp.gameObject.SetActive(false);
                 }

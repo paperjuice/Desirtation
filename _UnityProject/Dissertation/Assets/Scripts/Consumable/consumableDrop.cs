@@ -5,7 +5,7 @@ using UnityEngine;
 public class consumableDrop : MonoBehaviour {
 
 
-    mcStats _mcStats;
+    consumablePotency _cp;
     float dropChance;
     [SerializeField] float chanceToGetAConsumable;
     float dropQuality;
@@ -22,7 +22,7 @@ public class consumableDrop : MonoBehaviour {
 
     void Awake()
     {
-        _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
+        _cp = GameObject.FindGameObjectWithTag("Player").GetComponent<consumablePotency>();
     }
 
 
@@ -37,17 +37,33 @@ public class consumableDrop : MonoBehaviour {
             {
                 dropQuality = Random.Range(1f, 100f);
 
-                if (dropQuality <= 70f-_mcStats.Luck())
+                if (dropQuality <= 70f)
                     Instantiate(levelOneConsumable[Random.Range(0, levelOneConsumable.Length)], transform.position, transform.rotation);
-                else if (dropQuality > 70-_mcStats.Luck() && dropQuality <= 95)
+                else if (dropQuality > 70 && dropQuality <= 95)
                     Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, transform.rotation);
                 else if (dropQuality > 95 && dropQuality <= 100)
-                    Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);
+                    DontDuplicateLevelThreeConsumables();
             }
         }
         if(isBoss)
-            Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, transform.rotation);
+            DontDuplicateLevelThreeConsumables();
+    }
 
+    public void DontDuplicateLevelThreeConsumables()
+    {
+        //Sort
+        //-AOE_DeadDmgPerSecondLevel : 0
+        //
+
+        var randomDrop = Random.Range(0,levelThreeConsumable.Length);
+        switch(randomDrop)
+        {
+            case 0:
+                if(_cp.AOE_DeadDmgPerSecondLevel<=0)
+                    Instantiate(levelThreeConsumable[0], transform.position, transform.rotation);
+                break;
+        }
+        
     }
 
 

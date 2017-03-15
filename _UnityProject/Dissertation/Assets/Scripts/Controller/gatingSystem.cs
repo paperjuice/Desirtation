@@ -2,68 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gatingSystem : MonoBehaviour {
+public class GatingSystem : MonoBehaviour {
+
+	[SerializeField] Animator[] gatesAnim;
+	bool isGateOpen;
+	List<GameObject> enemies = new List<GameObject>(0);
 
 
-    [Header("Condition")]
-    [SerializeField] GameObject[] condition;
+	void OnTriggerEnter(Collider col)
+	{
+		if(col.gameObject.tag == "enemy")
+				enemies.Add(col.gameObject);
+	
+		if(col.gameObject.tag == "Player")
+			foreach(Animator a in gatesAnim)
+				a.SetBool("close", true);
+	}
 
-    [Header("Gates")]
-	[SerializeField] GameObject[] fromGroundGates;
-    private Vector3[] startingPos;
-    [SerializeField] private bool isActivated;
-
-
-    void Start()
-    {
-        startingPos = new Vector3[fromGroundGates.Length];
-
-        for (int i = 0; i < fromGroundGates.Length; i++)
-        {
-            startingPos[i] = fromGroundGates[i].transform.localPosition;
-        }
-    }
-
-    void Update()
-    {
-        if (isActivated)
-        {
-            foreach (GameObject c in condition)
-            {
-                if (!c.gameObject.activeInHierarchy)
-                {
-                    isActivated = false;
-                }
-            }
-
-
-            foreach (GameObject g in fromGroundGates)
-            {
-                g.transform.localPosition = Vector3.Lerp(g.transform.localPosition, new Vector3(0f, 0f, 0f), Time.deltaTime * 1f);
-            }
-        }
-        else
-        {
-            for(int i = 0;i< fromGroundGates.Length; i++)
-            {
-                fromGroundGates[i].transform.localPosition = Vector3.Lerp(fromGroundGates[i].transform.localPosition, startingPos[i], Time.deltaTime * 2.5f);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            isActivated = true;
-
-            foreach (GameObject c in condition)
-            {
-                c.gameObject.SetActive(true);
-            }
-        }
-    }
-
+	void Update()
+	{
+		foreach( GameObject enemy in enemies)
+		{
+			foreach(Animator a in gatesAnim)
+			{
+				if(!enemy.gameObject.activeInHierarchy)
+					a.SetBool("close", false);
+				else
+					a.SetBool("close", true);
+			}
+		}
+	}
 
 
 }

@@ -19,6 +19,7 @@ public class breakableObjects : MonoBehaviour {
     float chanceToGetItem;
     private Animator _camera;
     private GameObject player;
+    consumablePotency _cp;
     bool isExploding;
 
     void Awake()
@@ -31,6 +32,7 @@ public class breakableObjects : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
         player = GameObject.FindGameObjectWithTag("Player");
+        _cp = GameObject.FindGameObjectWithTag("Player").GetComponent<consumablePotency>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,7 +72,22 @@ public class breakableObjects : MonoBehaviour {
                 else if (dropQuality > 70 && dropQuality <= 95)
                     Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
                 else if (dropQuality > 95 && dropQuality <= 100)
-                    Instantiate(levelThreeConsumable[Random.Range(0, levelThreeConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
+                    DontDuplicateLevelThreeConsumables();
+        }
+    }
+
+    public void DontDuplicateLevelThreeConsumables()
+    {
+         //Sort
+        //-AOE_DeadDmgPerSecondLevel : 0
+        //
+        var randomDrop = Random.Range(0,levelThreeConsumable.Length);
+        switch(randomDrop)
+        {
+            case 0:
+                if(_cp.AOE_DeadDmgPerSecondLevel<=0)
+                    Instantiate(levelThreeConsumable[0], transform.position, transform.rotation);
+                break;
         }
     }
 

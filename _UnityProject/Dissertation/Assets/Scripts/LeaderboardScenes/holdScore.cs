@@ -13,7 +13,7 @@ public class holdScore : MonoBehaviour {
 
 	void Awake()
 	{
-		titleText.text = string.Format("You reached FLOOR {0}\nYour name shall be remembered", controller.dungeonLevel);
+		titleText.text = string.Format("Knowledge gained:\n{0}\nYour name shall be remembered", mcStats.knowledge.ToString("N0"));
 		_leaderboard = GetComponent<leaderboard>();
 	}
 

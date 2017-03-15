@@ -7,6 +7,7 @@ public class randomMapGenController : MonoBehaviour {
     [SerializeField] private GameObject[] tile;
     [SerializeField] private GameObject endTile;
     [SerializeField] private int numberOfTiles;
+    Quaternion lastTileSavedPos;
 
     private GameObject[] mapSpawnPoints;
     private GameObject[] mapSpawnTiles;

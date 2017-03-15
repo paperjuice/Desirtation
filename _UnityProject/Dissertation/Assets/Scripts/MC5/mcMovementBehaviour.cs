@@ -30,7 +30,7 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     //Block
     private bool isBlocking;
-    [SerializeField]private GameObject gameObjectBlock;
+    [SerializeField]private BoxCollider gameObjectBlock;
 //    [SerializeField]private float deflect = 0f;
     private bool isDeflecting;
     bool isAbleToBlock=true;
@@ -179,7 +179,7 @@ public class mcMovementBehaviour : MonoBehaviour {
                 if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|block"))
                 {
                     isBlocking = true;
-                    gameObjectBlock.gameObject.SetActive(true);
+                    gameObjectBlock.enabled = true;
                     _mcStats.Spirit(0.4f);
                 }
             }
@@ -189,7 +189,7 @@ public class mcMovementBehaviour : MonoBehaviour {
             isAbleToBlock = false;
             isBlocking = false;
             anim.SetBool("block", false);
-            gameObjectBlock.gameObject.SetActive(false);
+            gameObjectBlock.enabled = false;
         }
     }
 

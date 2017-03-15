@@ -45,7 +45,9 @@ public class BossOneMovementBahaviour : MonoBehaviour {
 		currentTimeBetweenMovementChange += Time.deltaTime;
 		if(currentTimeBetweenMovementChange >= endTimeBetweenMovementChange)
 		{
-			Attack();
+			if(Vector3.Distance(transform.position, player.transform.position)<10)
+				Attack();
+				
 			endTimeBetweenMovementChange = Random.Range(1f,3f);
 			movementDirection = Random.Range(1,4);
 			currentTimeBetweenMovementChange = 0f;

@@ -23,7 +23,7 @@ public class leaderboard : MonoBehaviour {
 
 
     IEnumerator UploadHighScore(string username, float score){
-        WWW www = new WWW(url + privateCode + "/add/"+WWW.EscapeURL(username)+"/"+score);
+        WWW www = new WWW(url + privateCode + "/add/"+WWW.EscapeURL(username)+"/"+ Mathf.Ceil(score));
         yield return www;
 
         if(string.IsNullOrEmpty(www.error))
@@ -53,9 +53,9 @@ public class leaderboard : MonoBehaviour {
         {
             string[] entryInfo = entries[i].Split(new char[]{'|'});
             string username = entryInfo[0];
-            int score = int.Parse(entryInfo[1]);
+            float score = Mathf.Floor(float.Parse(entryInfo[1]));
             highscoreList[i] = new Highscore(username, score);
-            listOfHighscores.Add((highscoreList[i].username + " - " + highscoreList[i].score.ToString("N1")).ToString());
+            listOfHighscores.Add((highscoreList[i].username + " - " + highscoreList[i].score.ToString("N0")).ToString());
             if(i>18)
                 break;
         }
@@ -67,19 +67,14 @@ public class leaderboard : MonoBehaviour {
         return listOfHighscores;
     }
 
-
-
-
-
-
 }
 
 public struct Highscore
 {
     public string username;
-    public int score;
+    public float score;
 
-    public Highscore(string _username, int _score)
+    public Highscore(string _username, float _score)
     {
         username = _username;
         score = _score;

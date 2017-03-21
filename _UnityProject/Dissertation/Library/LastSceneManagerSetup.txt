@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/FloorProgression.unity
+- path: Assets/_Scenes/game2_randomMapGen.unity
   isLoaded: 1
   isActive: 1

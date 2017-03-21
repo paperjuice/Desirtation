@@ -62,6 +62,10 @@ public class consumableDrop : MonoBehaviour {
                 if(_cp.AOE_DeadDmgPerSecondLevel<=0)
                     Instantiate(levelThreeConsumable[0], transform.position, transform.rotation);
                 break;
+            case 1:
+                if(_cp.LifestealLevel<=0)
+                    Instantiate(levelThreeConsumable[1], transform.position, transform.rotation);
+                break;
         }
         
     }

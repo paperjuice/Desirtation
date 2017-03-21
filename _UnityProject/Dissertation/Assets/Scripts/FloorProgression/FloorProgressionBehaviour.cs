@@ -22,7 +22,7 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 
 	IEnumerator Start()
 	{
-		 //floorLevel = controller.dungeonLevel;
+		 floorLevel = controller.dungeonLevel;
 		//floorLevel = 3;
 
 		DisableMcComponents();
@@ -66,11 +66,11 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 			skulls[0].color= new Color32(147, 45, 47, 255);
 		}
 
-		if(floorLevel>5)
+		if(floorLevel>6)
 		{
 			skulls[1].color= new Color32(147, 45, 47, 255);
 		}
-		if(floorLevel>7)
+		if(floorLevel>8)
 		{
 			skulls[2].color= new Color32(147, 45, 47, 255);
 		}
@@ -83,13 +83,13 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 			case 3:
 				skulls[0].color= new Color32(147, 45, 47, 255);
 				break;
-			case 5:
+			case 6:
 				skulls[1].color= new Color32(147, 45, 47, 255);
 				break;
-			case 7:
+			case 8:
 				skulls[2].color= new Color32(147, 45, 47, 255);
 				break;
-			case 9:
+			case 10:
 				skulls[3].color= new Color32(147, 45, 47, 255);
 				break;
 		}
@@ -101,7 +101,7 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 		if(fills[floorLevel-2].transform.localScale.y >=0.9f )
 		{
 			ColourSkullsWhenProgress();
-			if(floorLevel != 2 && floorLevel != 5 && floorLevel != 7)
+			if(floorLevel != 3 && floorLevel != 5 && floorLevel != 8)
 				floorText[floorLevel-1].color = new Color32(147, 45, 47, 255);
 		}
 	}
@@ -120,9 +120,9 @@ public class FloorProgressionBehaviour : MonoBehaviour {
 			_fade.enabled  = true;
 			
 			if(controller.dungeonLevel == 3 || controller.dungeonLevel == 6 || controller.dungeonLevel == 8)
-				_fade.SceneName = "game2_randomMapGen";
-			else
 				_fade.SceneName = "BossScene1";
+			else
+				_fade.SceneName = "game2_randomMapGen";
 
 
 	}

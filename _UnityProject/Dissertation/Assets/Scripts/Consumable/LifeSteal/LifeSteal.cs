@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LifeSteal : MonoBehaviour {
 
 	consumablePotency _cp;
 	mcStats _mcStats;
 	float chanceToStealLife;
+	[SerializeField] GameObject mc_lifeStealMesh;
 
 
 	void Awake()
@@ -15,6 +14,13 @@ public class LifeSteal : MonoBehaviour {
 		_mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
 	}
 
+	void Update()
+	{
+		if(_cp.LifestealLevel>0)
+			mc_lifeStealMesh.gameObject.SetActive(true);
+		else
+			mc_lifeStealMesh.gameObject.SetActive(false);
+	}
 	void OnTriggerEnter(Collider col)
 	{
 		if(_cp.LifestealLevel>0)

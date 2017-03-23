@@ -7,12 +7,15 @@ public class LifeSteal : MonoBehaviour {
 	float chanceToStealLife;
 	[SerializeField] GameObject mc_lifeStealMesh;
 
+	[SerializeField] ParticleSystem particle;
+
 
 	void Awake()
 	{
 		_cp = GameObject.FindGameObjectWithTag("Player").GetComponent<consumablePotency>();
 		_mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
 	}
+	
 
 	void Update()
 	{
@@ -27,19 +30,18 @@ public class LifeSteal : MonoBehaviour {
 		{
 			if(col.gameObject.tag=="enemy")
 			{
-				if(col.gameObject.GetComponent<generalEnemyStats>().eCurrentHealth <=0)
-				{
-					StealLife();
-				}
+				StealLife();
 			}
 		}
 	}
 
 	void StealLife()
 	{
-		chanceToStealLife = Random.Range(10f, 100f);
-		if(chanceToStealLife<=_mcStats.Wisdom()/0.7f)
-			_mcStats.CurrentHealth-= 7;
+		chanceToStealLife = Random.Range(0f, 10f);
+		if(chanceToStealLife<= 10f)
+		{
+			_mcStats.Age-= 1 + _mcStats.Wisdom()*0.01f;
+			particle.Play();
+		}
 	}
-
 }

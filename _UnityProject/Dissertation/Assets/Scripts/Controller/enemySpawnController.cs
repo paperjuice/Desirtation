@@ -76,7 +76,7 @@ public class enemySpawnController : MonoBehaviour {
                 if(esp.gameObject.activeInHierarchy)
                 {
                     chanceToGetEnemy = Random.Range(0f,100f);
-                    if(chanceToGetEnemy <= 5f+(i*4f))
+                    if(chanceToGetEnemy <= 5f+(i*8f))
                     {
                         enemyRollChance = Random.Range(1f,100f);
                         if(enemyRollChance<=110-i*10)

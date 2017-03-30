@@ -23,6 +23,10 @@ public class mcMovementBehaviour : MonoBehaviour {
     private float _z;
     [SerializeField] Animator anim;
     [SerializeField] private float mcSpeed;
+    public float McSpeed{
+        get{return mcSpeed;}
+        set{mcSpeed = value;}
+    }
     
     //Attack
     public int attackQueue = 0;

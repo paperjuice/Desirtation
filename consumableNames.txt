@@ -25,6 +25,8 @@ foul
 iniquitous
 nefarious
 blight
+wicked
+iniquitous
 dispair
 rot
 plague

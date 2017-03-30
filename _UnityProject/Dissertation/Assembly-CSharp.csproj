@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Bonus\UnlockEndowments.cs" />
      <Compile Include="Assets\Scripts\Consumable\AOE-dealDmgPerSecond\aoe_DealDmgPerSecond.cs" />
      <Compile Include="Assets\Scripts\Consumable\LifeSteal\LifeSteal.cs" />
+     <Compile Include="Assets\Scripts\Consumable\PromiseOfLife\PromiseOfLife.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableDrop.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableEffect.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableId.cs" />
@@ -67,11 +68,16 @@
      <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\1HSS\enemyMeleeWeaponCollider.cs" />
      <Compile Include="Assets\Scripts\Enemies\ActivateBossCameraMode.cs" />
-     <Compile Include="Assets\Scripts\Enemies\Boss1 - Mot\BossOneMovementBahaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B1_Mot\BossOneMovementBahaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B2_\boss2Behaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3AnimationMethods.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3Behaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3FloorTrapBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3SpearBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3StunBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\Boss1\bossAnimationMethods.cs" />
      <Compile Include="Assets\Scripts\Enemies\Boss1\bossGeneralBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\Boss1\bossMeleeAttackBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Enemies\Boss2\boss2Behaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeAnimationMethods.cs" />
      <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeAttackBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\Range\enemyRangeMovementBehaviour.cs" />

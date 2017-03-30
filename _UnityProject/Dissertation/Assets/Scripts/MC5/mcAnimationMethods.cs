@@ -6,14 +6,15 @@ public class mcAnimationMethods : MonoBehaviour {
 
 //    private Animator anim;
     private Collider mcWeapon;
+    AudioSource[] _sound;
 
     [SerializeField] private mcMovementBehaviour _mc;
 
 
-    // void Awake()
-    // {
-    //     anim = GetComponent<Animator>();
-    // }
+    void Awake()
+    {
+        _sound = GameObject.FindGameObjectWithTag("mcWeapon").GetComponents<AudioSource>();
+    }
 
     void StepForward()
     {
@@ -48,6 +49,13 @@ public class mcAnimationMethods : MonoBehaviour {
             mcWeapon.enabled = true;
         else if (a == 0)
             mcWeapon.enabled = false;
+    }
+
+    void SoundEffect()
+    {
+        var rand = Random.Range(0,_sound.Length);
+        _sound[0].Play();
+        Debug.Log(rand);
     }
 
 }

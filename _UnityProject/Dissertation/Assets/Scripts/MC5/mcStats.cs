@@ -134,7 +134,9 @@ public class mcStats : MonoBehaviour {
             Age += Armour(damageReceived);
             damageReceived = 0f;
             blood.Play();
-            Death();
+
+            if(_cp.PromiseOfLifeLevel==0)
+                Death();
         }
     }
 
@@ -201,7 +203,8 @@ public class mcStats : MonoBehaviour {
 
     public float Armour(float damageReceived)
     {
-        damageProcessedBasedOnArmour = damageReceived - _cp.ArmourLevel*0.1f - Endowments.bonusArmour - Fortitude() * 0.01f;
+        damageProcessedBasedOnArmour = damageReceived - _cp.ArmourLevel*2f - Endowments.bonusArmour - Fortitude() * 0.01f;
+        damageProcessedBasedOnArmour = Mathf.Clamp(damageProcessedBasedOnArmour, 2f, float.MaxValue);
         return damageProcessedBasedOnArmour;
     }
 
@@ -219,7 +222,7 @@ public class mcStats : MonoBehaviour {
     void Death()
     {
         float deathChance = 0f;
-        if (Age>=62)
+        if (Age>=62 )
         {
             deathChance = Random.Range(1f,100f);
             if(deathChance<= Age / (1.5f +Age/41f))

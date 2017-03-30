@@ -89,7 +89,7 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (eCurrentHealth <= 0)
         {
-            _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel));
+            _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel * 0.5f));
 //            questController.IncrementQuest(id);
             _camera.IsBossMode = false;
             foreach(GameObject a in deadBody)

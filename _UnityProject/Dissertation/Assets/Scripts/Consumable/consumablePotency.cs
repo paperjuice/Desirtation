@@ -24,6 +24,13 @@ public class consumablePotency : MonoBehaviour {
         set{lifestealLevel = value;}
     }
 
+    //Promise of life: when you go above a certain age you are brought back to 18 yeas old.
+    float promiseOfLifeLevel = 0;
+    public float PromiseOfLifeLevel{
+        get{return promiseOfLifeLevel;}
+        set{promiseOfLifeLevel = value;}
+    }
+
     private void Awake()
     {
         _ce = GetComponent<consumableEffect>();
@@ -76,6 +83,10 @@ public class consumablePotency : MonoBehaviour {
 
             case 18:
                 LifestealLevel++;
+                break;
+
+            case 19:
+                PromiseOfLifeLevel++;
                 break;
         }
 

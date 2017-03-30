@@ -39,7 +39,7 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
             {
                  GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shakePlayer");
                 _mcStats.IncrementAgeOnDamageReceived(enemyDamage + Random.Range(-0.1f*enemyDamage, 0.1f*enemyDamage));
-                mcDebuffs.secondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
+                mcDebuffs.SecondsInterrupted = interruptTime; //Interrupt - this will be iterated based on enemy type
                 mcDebuffs.PushBack(enemyPosition.transform.position, mcDebuffs.transform.position, pushBackForce); //PushBack - iterate force
             }
         }

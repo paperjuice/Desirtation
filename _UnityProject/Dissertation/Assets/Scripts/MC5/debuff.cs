@@ -7,9 +7,18 @@ public class debuff : MonoBehaviour {
     private mcMovementBehaviour _mainChar;
     Rigidbody rigid;
 
+    //slow
+    float savedMsSpeed;
+    float current_slow = 0f;
+    // float end_slow;
 
     //is interrupting
-    [HideInInspector]public float secondsInterrupted;
+    [HideInInspector]private float secondsInterrupted;
+    public float SecondsInterrupted
+    {
+        get{return secondsInterrupted;}
+        set{secondsInterrupted = value;}
+    }
 
 
 
@@ -21,9 +30,15 @@ public class debuff : MonoBehaviour {
         _mainChar = GameObject.FindGameObjectWithTag("Player").GetComponent<mcMovementBehaviour>();
     }
 
+    void Start()
+    {
+        savedMsSpeed = _mainChar.McSpeed;
+    }
+
     private void Update()
     {
         Interrupting();
+        Slow();
     }
     
     void Interrupting()
@@ -49,6 +64,21 @@ public class debuff : MonoBehaviour {
             rigid.AddForce((toPos-fromPos) * force*1000f*60f * Time.deltaTime);
     }
 
+    public void Slow(float amountOfTimeSlowed = 0)
+    {
+        _mainChar.McSpeed = savedMsSpeed * 0.2f;
+
+        if(current_slow < amountOfTimeSlowed)
+        {
+            current_slow += Time.deltaTime;
+        }
+        else if(current_slow >=amountOfTimeSlowed)
+        {
+            current_slow = 0;
+            _mainChar.McSpeed = savedMsSpeed;
+        }
+        
+    }
 
    
 

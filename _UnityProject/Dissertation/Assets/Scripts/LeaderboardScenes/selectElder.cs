@@ -11,6 +11,8 @@ public class selectElder : MonoBehaviour {
 	{
 		foreach(Animator a in anim)
 			a.SetBool("talk", false);
+
+		controller.dungeonLevel = 1;
 	}
 
 	void OnMouseEnter()
@@ -35,7 +37,6 @@ public class selectElder : MonoBehaviour {
 			a.SetBool("talk", true);
 		_fd.enabled = true;
 		enabled = false;
-
 	}
 
 

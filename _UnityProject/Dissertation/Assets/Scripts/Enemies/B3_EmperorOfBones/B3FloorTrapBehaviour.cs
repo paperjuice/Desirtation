@@ -26,7 +26,7 @@ public class B3FloorTrapBehaviour : MonoBehaviour {
   {
     if(col.gameObject.tag == "Player")
     {
-      player.GetComponent<debuff>().Slow(0.5f);
+      player.GetComponent<debuff>().Slow(0.5f, 0.5f);
     }
 
     if(col.gameObject.tag == "Player" && isSpiky)

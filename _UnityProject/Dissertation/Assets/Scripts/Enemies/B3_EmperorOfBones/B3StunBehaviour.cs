@@ -11,8 +11,9 @@ public class B3StunBehaviour : MonoBehaviour {
 
 	void Awake()
 	{
-		_debuff = GameObject.FindGameObjectWithTag("Player").GetComponent<debuff>();
-		Destroy(gameObject, 20f);
+		if(GameObject.FindGameObjectWithTag("Player"))
+			_debuff = GameObject.FindGameObjectWithTag("Player").GetComponent<debuff>();
+		Destroy(gameObject, 30f);
 	}
 
 	void Update()

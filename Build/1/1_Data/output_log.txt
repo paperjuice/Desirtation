@@ -40,3 +40,19 @@ desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 UnloadTime: 12.303687 ms
 Setting up 1 worker threads for Enlighten.
   Thread -> id: 1cb0 -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.174083 ms
+System memory in use before: 53.1 MB.
+System memory in use after: 37.6 MB.
+
+Unloading 40 unused Assets to reduce memory usage. Loaded Objects now: 4215.
+Total: 7.765124 ms (FindLiveObjects: 0.287360 ms CreateObjectMapping: 5.885763 ms MarkObjects: 0.453760 ms  DeleteObjects: 1.136960 ms)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.713602 ms
+System memory in use before: 47.0 MB.
+System memory in use after: 46.6 MB.
+
+Unloading 53 unused Assets to reduce memory usage. Loaded Objects now: 9002.
+Total: 2.897921 ms (FindLiveObjects: 0.403520 ms CreateObjectMapping: 0.104640 ms MarkObjects: 1.279360 ms  DeleteObjects: 1.109440 ms)
+

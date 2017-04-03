@@ -28,6 +28,6 @@ public class holdScore : MonoBehaviour {
 		_name = GetComponent<InputField>().text;
 		_leaderboard.GetScore(_name, score);
 		fadeIn.enabled = true;
-		controller.dungeonLevel = 1;
+		//controller.dungeonLevel = 1;
 	}
 }

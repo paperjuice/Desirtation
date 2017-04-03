@@ -4,6 +4,7 @@ public class debuff : MonoBehaviour {
 
 //    private Animator _mainCamera;
     [SerializeField]private Animator anim;
+    [SerializeField] GameObject stunIcon;
     private mcMovementBehaviour _mainChar;
     Rigidbody rigid;
 
@@ -51,10 +52,13 @@ public class debuff : MonoBehaviour {
             _mainChar.attackQueue = 0;
             _mainChar.isRolling = false;
             _mainChar.enabled = false;
+            stunIcon.gameObject.SetActive(true);
+            stunIcon.transform.Rotate(Vector3.forward * Time.deltaTime * 250f);
         }
         else if (secondsInterrupted <= 0)
         {
             _mainChar.enabled = true;
+            stunIcon.gameObject.SetActive(false);
         }
     }
 
@@ -64,9 +68,9 @@ public class debuff : MonoBehaviour {
             rigid.AddForce((toPos-fromPos) * force*1000f*60f * Time.deltaTime);
     }
 
-    public void Slow(float amountOfTimeSlowed = 0)
+    public void Slow(float amountOfTimeSlowed = 0, float slowPotency = 0.4f)
     {
-        _mainChar.McSpeed = savedMsSpeed * 0.2f;
+        _mainChar.McSpeed = savedMsSpeed * slowPotency;
 
         if(current_slow < amountOfTimeSlowed)
         {

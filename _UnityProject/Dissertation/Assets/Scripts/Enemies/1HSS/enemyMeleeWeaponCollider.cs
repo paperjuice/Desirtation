@@ -26,7 +26,7 @@ public class enemyMeleeWeaponCollider : MonoBehaviour {
 
     void Start()
     {
-        enemyDamage += controller.dungeonLevel * 1.8f;
+        enemyDamage += controller.dungeonLevel * 1.9f;
 //        print(enemyDamage);
     }
 

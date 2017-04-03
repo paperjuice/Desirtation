@@ -12,7 +12,7 @@ public class Skip : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Escape))
 		{
 			_fade.enabled = true;
-			controller.dungeonLevel = 1;
+			//controller.dungeonLevel = 1;
 		}
 	}
 }

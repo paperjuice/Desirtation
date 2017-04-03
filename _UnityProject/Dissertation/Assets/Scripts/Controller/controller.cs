@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +11,15 @@ public class controller : MonoBehaviour {
 
     IEnumerator Start()
     {
+        //farget frame rate
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+
         floorLevelText.text = "Floor -" + (11-dungeonLevel).ToString("N0");
         yield return new WaitForSeconds(1f);
         isFading=true;
+
+        // dungeonLevel = 3;
     }
 
     void Update()

@@ -42,7 +42,7 @@ public class B3Behaviour : MonoBehaviour {
 
 	void Movement()
 	{
-		if(Vector3.Distance(transform.position, player.transform.position) < 10)
+		if(Vector3.Distance(transform.position, player.transform.position) < 10 )
 		{
 			time_between_random_movement +=Time.deltaTime;
 			if(time_between_random_movement > end_time)
@@ -50,6 +50,10 @@ public class B3Behaviour : MonoBehaviour {
 				random_movement = Random.Range(0,10);
 				time_between_random_movement = 0f;
 			}
+		}
+		else if(Vector3.Distance(transform.position, player.transform.position) >= 10)
+		{
+			transform.position += transform.forward * Time.deltaTime * ms;
 		}
 
 		if(random_movement == 0)

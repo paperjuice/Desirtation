@@ -203,7 +203,7 @@ public class mcStats : MonoBehaviour {
 
     public float Armour(float damageReceived)
     {
-        damageProcessedBasedOnArmour = damageReceived - _cp.ArmourLevel*2f - Endowments.bonusArmour - Fortitude() * 0.01f;
+        damageProcessedBasedOnArmour = damageReceived - _cp.ArmourLevel*2f - Endowments.bonusArmour - Fortitude() * 0.005f;
         damageProcessedBasedOnArmour = Mathf.Clamp(damageProcessedBasedOnArmour, 2f, float.MaxValue);
         return damageProcessedBasedOnArmour;
     }

@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3FloorTrapBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3SpearBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\B3_EmperorOfBones\B3StunBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Enemies\B5_\B5Behaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\Boss1\bossAnimationMethods.cs" />
      <Compile Include="Assets\Scripts\Enemies\Boss1\bossGeneralBehaviour.cs" />
      <Compile Include="Assets\Scripts\Enemies\Boss1\bossMeleeAttackBehaviour.cs" />
@@ -112,6 +113,7 @@
      <Compile Include="Assets\Scripts\Misc\LockCursorInWindowFrame.cs" />
      <Compile Include="Assets\Scripts\Misc\MousePointer.cs" />
      <Compile Include="Assets\Scripts\Misc\NextSceneOnClick.cs" />
+     <Compile Include="Assets\Scripts\Misc\SelectionBase.cs" />
      <Compile Include="Assets\Scripts\Misc\bilboard.cs" />
      <Compile Include="Assets\Scripts\Misc\fadeOutFadein.cs" />
      <Compile Include="Assets\Scripts\Misc\floatingText.cs" />

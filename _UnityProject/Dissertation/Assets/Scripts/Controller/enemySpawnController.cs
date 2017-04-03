@@ -1,11 +1,12 @@
 ﻿
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class enemySpawnController : MonoBehaviour {
 
     [SerializeField] GameObject[] enemyList;
-    [SerializeField] GameObject[] bossList;
+    [SerializeField] List<GameObject> bossList;
     private GameObject[] enemySpawnPoints;
     private GameObject[] bossSpawnPoints;
     private GameObject player;
@@ -103,11 +104,15 @@ public class enemySpawnController : MonoBehaviour {
                 if(bsp.gameObject.activeInHierarchy)
                 {
                     bossRollChance = Random.Range(1f,100f);
+                    var randBoss = Random.Range(0,bossList.Count);
                     if(0<i/(10f+i)*100f)
-                        Instantiate(bossList[Random.Range(0,bossList.Length)], bsp.transform.position, transform.rotation );
+                        Instantiate(bossList[randBoss], bsp.transform.position, transform.rotation );
+                    bossList.RemoveAt(randBoss);
                     bsp.gameObject.SetActive(false);
                 }
             }
+            else
+                break;
         }
 
     }

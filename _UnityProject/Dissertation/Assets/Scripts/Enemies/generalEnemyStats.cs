@@ -34,6 +34,11 @@ public class generalEnemyStats : MonoBehaviour {
 
     [SerializeField]private float eMaxHealth = 10f;
     [SerializeField]private float eMultiplierHealth = 10f;
+
+    //when boss is defeated, the enemies power grows exponentially
+    [HeaderAttribute("Check if it is a boss")]
+    [SerializeField] bool isBoss;
+    static float eGlobalMultiplier = 1f;
     [HideInInspector]public float eCurrentHealth;
 
     private void Awake()
@@ -45,7 +50,7 @@ public class generalEnemyStats : MonoBehaviour {
 
     void Start()
     {
-        eMaxHealth += (controller.dungeonLevel * eMultiplierHealth);
+        eMaxHealth += (controller.dungeonLevel * eMultiplierHealth) * eGlobalMultiplier;
         eCurrentHealth = eMaxHealth;
     }
 
@@ -89,7 +94,9 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (eCurrentHealth <= 0)
         {
-            _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel * 0.5f));
+            _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel * 0.4f));
+            if(isBoss)
+                eGlobalMultiplier += 1.2f;
 //            questController.IncrementQuest(id);
             _camera.IsBossMode = false;
             foreach(GameObject a in deadBody)

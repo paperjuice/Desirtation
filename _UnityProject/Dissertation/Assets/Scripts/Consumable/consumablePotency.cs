@@ -31,6 +31,13 @@ public class consumablePotency : MonoBehaviour {
         set{promiseOfLifeLevel = value;}
     }
 
+    //shield charge
+    float shieldChargeLevel = 0;
+    public float ShieldChargeLevel{
+        get{return shieldChargeLevel;}
+        set{shieldChargeLevel = value;}
+    }
+
     private void Awake()
     {
         _ce = GetComponent<consumableEffect>();
@@ -87,6 +94,10 @@ public class consumablePotency : MonoBehaviour {
 
             case 19:
                 PromiseOfLifeLevel++;
+                break;
+
+            case 20:
+                ShieldChargeLevel++;
                 break;
         }
 

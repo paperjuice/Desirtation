@@ -12,6 +12,7 @@ public class enemyBeenBlocked : MonoBehaviour {
     [SerializeField] private Rigidbody pushback;
     [SerializeField] private ParticleSystem _particle;
     [SerializeField] private Animator _anim;
+    [SerializeField] GameObject stunIcon;
 
     [Header("ONLY FOR LESSER")]
     [SerializeField] private enemyMeleeBehaviour _enemyMeleeBehaviour;
@@ -27,6 +28,11 @@ public class enemyBeenBlocked : MonoBehaviour {
     {
         _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        RotateStunIcon();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,8 +77,21 @@ public class enemyBeenBlocked : MonoBehaviour {
 
     IEnumerator ActivateBehaviourBoss()
     {
+        stunIcon.gameObject.SetActive(true);
         yield return new WaitForSeconds(timeIncapacitated);
         _bossGeneralBehaviour.enabled = true;
+        stunIcon.gameObject.SetActive(false);
+    }
+
+    void RotateStunIcon()
+    {
+        if(stunIcon != null)
+        {
+            if( stunIcon.gameObject.activeInHierarchy)
+            {
+                stunIcon.transform.Rotate(Vector3.forward * Time.deltaTime * 200f);
+            }
+        }
     }
 
 

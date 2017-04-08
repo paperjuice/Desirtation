@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Consumable\AOE-dealDmgPerSecond\aoe_DealDmgPerSecond.cs" />
      <Compile Include="Assets\Scripts\Consumable\LifeSteal\LifeSteal.cs" />
      <Compile Include="Assets\Scripts\Consumable\PromiseOfLife\PromiseOfLife.cs" />
+     <Compile Include="Assets\Scripts\Consumable\ShieldCharge\ShieldCharge.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableDrop.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableEffect.cs" />
      <Compile Include="Assets\Scripts\Consumable\consumableId.cs" />

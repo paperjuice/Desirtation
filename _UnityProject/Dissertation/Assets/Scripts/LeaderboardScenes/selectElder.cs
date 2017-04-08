@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class selectElder : MonoBehaviour {
 
@@ -13,6 +14,14 @@ public class selectElder : MonoBehaviour {
 			a.SetBool("talk", false);
 
 		controller.dungeonLevel = 1;
+	}
+
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.F4))
+		{
+			SceneManager.LoadScene("mainMenu");
+		}
 	}
 
 	void OnMouseEnter()

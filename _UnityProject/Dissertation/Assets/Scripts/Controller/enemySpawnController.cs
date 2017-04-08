@@ -6,6 +6,8 @@ using UnityEngine;
 public class enemySpawnController : MonoBehaviour {
 
     [SerializeField] GameObject[] enemyList;
+    [HeaderAttribute("Boss Panel")]
+    [SerializeField] [RangeAttribute(1,2)]int numberOfBosses;
     [SerializeField] List<GameObject> bossList;
     private GameObject[] enemySpawnPoints;
     private GameObject[] bossSpawnPoints;
@@ -72,8 +74,10 @@ public class enemySpawnController : MonoBehaviour {
     {
         foreach(GameObject esp in enemySpawnPoints)
         {
-            if(Vector3.Distance(esp.transform.position, player.transform.position)<25f)
+
+            if(Vector3.Distance(esp.transform.position, player.transform.position)<25f )
             {
+                
                 if(esp.gameObject.activeInHierarchy)
                 {
                     chanceToGetEnemy = Random.Range(0f,100f);
@@ -99,8 +103,9 @@ public class enemySpawnController : MonoBehaviour {
     {
         foreach(GameObject bsp in bossSpawnPoints)
         {
-            if(Vector3.Distance(bsp.transform.position, player.transform.position)<15f)
+            if(Vector3.Distance(bsp.transform.position, player.transform.position)<15f && numberOfBosses != 0)
             {
+                numberOfBosses--;
                 if(bsp.gameObject.activeInHierarchy)
                 {
                     bossRollChance = Random.Range(1f,100f);

@@ -15,6 +15,7 @@ public class B5Behaviour : MonoBehaviour {
 	float time_between_random_movement;
 	float end_time = 2;
 	int random_movement = 0;
+	float distance;
 
 	//dash
 	[HeaderAttribute("Dash Power")] 
@@ -24,7 +25,9 @@ public class B5Behaviour : MonoBehaviour {
 
 	//Attack
 	[SerializeField] Animator anim;
-	[SerializeField] List<string> listOfAttacks;
+	[SerializeField] List<string> closeRangeAttack;
+	[SerializeField] List<string> farRangeAttack;
+	bool isRushinTowardsPlayer;
 	int chooseAttack;
 	int chanceToAttack = 0;
 	float current_chooseAttack;
@@ -45,21 +48,24 @@ public class B5Behaviour : MonoBehaviour {
 			Movement();
 
 		SetAttackingToFalse();
+		RushingThePlayer();
 	}
 
 	void Movement()
 	{
-		if(Vector3.Distance(transform.position, player.transform.position) < 10 )
+		distance = Vector3.Distance(transform.position, player.transform.position);
+
+		if(distance < 10 )
 		{
 			time_between_random_movement +=Time.deltaTime;
 			if(time_between_random_movement > end_time)
 			{
 				random_movement = Random.Range(0,10);
 				time_between_random_movement = 0f;
-			//	RollDash();
+				RollDash();
 			}
 		}
-		else if(Vector3.Distance(transform.position, player.transform.position) >= 10)
+		else if(distance >= 10)
 		{
 			transform.position += transform.forward * Time.deltaTime * ms;
 		}
@@ -78,8 +84,12 @@ public class B5Behaviour : MonoBehaviour {
 		}
 		if(random_movement >=3 && !isAttacking)	
 		{	
-				Attack();
-				isAttacking=true;
+			if(distance>6)
+				AttackFarRange();
+			else
+				AttackCloseRange();
+			StartCoroutine(SetAttackingToFalse());
+			isAttacking = true;
 		}
 	}
 
@@ -93,28 +103,56 @@ public class B5Behaviour : MonoBehaviour {
 	}
 
 
-	void Attack()
+	void AttackCloseRange()
 	{
-		chooseAttack  = Random.Range(0, listOfAttacks.Count);
-		if(chooseAttack==0 || chooseAttack==3 )
-			StartCoroutine(WaitForCombo1());
-
-		anim.SetTrigger(listOfAttacks[chooseAttack]);
+		chooseAttack  = Random.Range(0, closeRangeAttack.Count);
+		anim.SetTrigger(closeRangeAttack[chooseAttack]);
 	}
 
-	IEnumerator WaitForCombo1()
+	void AttackFarRange()
 	{
-		yield return new WaitForSeconds(1);
-		anim.SetTrigger("combo1.1");
-		transform.position = player.transform.position - transform.forward* 3f;
+		chooseAttack  = Random.Range(0, farRangeAttack.Count);
+		StartCoroutine(WaitForCombo());
+		anim.SetTrigger(farRangeAttack[chooseAttack]);
 	}
 
-	void SetAttackingToFalse()
+	IEnumerator WaitForCombo()
 	{
-		if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|idle") && isAttacking)
+		var randomTime = Random.Range(0.75f, 1.5f);
+		yield return new WaitForSeconds(randomTime);
+		isRushinTowardsPlayer = true;
+		
+		// transform.position = player.transform.position - transform.forward* 3f;
+	}
+
+	void RushingThePlayer()
+	{
+		distance = Vector3.Distance(transform.position, player.transform.position);
+
+		if(isRushinTowardsPlayer)
 		{
-			isAttacking = false;
+			transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 20f * Time.deltaTime);
 		}
+
+		if(distance < 3)
+		{
+			anim.SetTrigger("combo1.1");
+			isRushinTowardsPlayer = false;
+		}
+	}
+
+	// void SetAttackingToFalse()
+	// {
+	// 	if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|idle") && isAttacking)
+	// 	{
+	// 		isAttacking = false;
+	// 	}
+	// }
+
+	IEnumerator SetAttackingToFalse()
+	{
+		yield return new WaitForSeconds(5f);
+		isAttacking = false;
 	}
 
 	void RollDash()

@@ -79,7 +79,7 @@ public class mcMovementBehaviour : MonoBehaviour {
     void FixedUpdate()
     {
         if (attackQueue == 0 && !isRolling)
-            Movement();
+           Movement();
     }
 
     void RotateTowardsMouse()

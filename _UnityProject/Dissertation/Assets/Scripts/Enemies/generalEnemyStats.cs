@@ -96,7 +96,7 @@ public class generalEnemyStats : MonoBehaviour {
         {
             _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel * 0.4f));
             if(isBoss)
-                eGlobalMultiplier += 1.2f;
+                eGlobalMultiplier += 1.05f;
 //            questController.IncrementQuest(id);
             _camera.IsBossMode = false;
             foreach(GameObject a in deadBody)
@@ -115,8 +115,8 @@ public class generalEnemyStats : MonoBehaviour {
             bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));             
             bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
             bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.3f);
+             _consumableDrop.ItemDrop();
             aliveBody.gameObject.SetActive(false);
-            _consumableDrop.ItemDrop();
         }
     }
 

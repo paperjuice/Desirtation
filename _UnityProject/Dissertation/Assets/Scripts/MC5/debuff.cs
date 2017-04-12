@@ -49,6 +49,7 @@ public class debuff : MonoBehaviour {
             secondsInterrupted -= Time.deltaTime;
             anim.SetBool("walkin", false);
             anim.SetBool("block", false);
+            _mainChar.UnblockIfIncapacitated();
             _mainChar.attackQueue = 0;
             _mainChar.isRolling = false;
             _mainChar.enabled = false;

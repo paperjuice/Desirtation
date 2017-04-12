@@ -70,7 +70,503 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: attack_2
+      takeName: attack_2
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|attack_1
+      takeName: Armature|attack_1
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|attack_2
+      takeName: Armature|attack_2
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|block
+      takeName: Armature|block
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|deflect
+      takeName: Armature|deflect
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|idle
+      takeName: Armature|idle
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|roll
+      takeName: Armature|roll
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|walking
+      takeName: Armature|walking
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/tibia
+        weight: 1
+      - path: Armature/tibia/femur
+        weight: 1
+      - path: Armature/tibia/femur/stomach
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/Bone/Bone.001/Bone.001_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle
+        weight: 1
+      - path: Armature/tibia/femur/stomach/chest/upperArm/foreArm/handle/handle_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

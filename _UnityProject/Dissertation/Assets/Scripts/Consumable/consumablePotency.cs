@@ -31,12 +31,14 @@ public class consumablePotency : MonoBehaviour {
         set{promiseOfLifeLevel = value;}
     }
 
-    //shield charge
-    float shieldChargeLevel = 0;
-    public float ShieldChargeLevel{
-        get{return shieldChargeLevel;}
-        set{shieldChargeLevel = value;}
+    // charge
+    [SerializeField] GameObject charge;
+    float chargeLevel = 0;
+    public float ChargeLevel{
+        get{return chargeLevel;}
+        set{chargeLevel = value;}
     }
+
 
     private void Awake()
     {
@@ -97,7 +99,7 @@ public class consumablePotency : MonoBehaviour {
                 break;
 
             case 20:
-                ShieldChargeLevel++;
+                ChargeLevel++;
                 break;
         }
 
@@ -107,7 +109,7 @@ public class consumablePotency : MonoBehaviour {
 
     void Update()
     {
-//        Debug.Log(CritChanceLevel);
+        ActivateCharge();
     }
 
     public float ArmourLevel
@@ -147,6 +149,13 @@ public class consumablePotency : MonoBehaviour {
         set{aoe_DeadDmgPerSecondLevel = value;}
     }
 
+    private void ActivateCharge()
+    {
+        if(ChargeLevel >=1)
+        {
+            charge.gameObject.SetActive(true);
+        }
+    }
 
     
 

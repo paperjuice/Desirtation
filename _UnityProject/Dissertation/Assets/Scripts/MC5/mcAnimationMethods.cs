@@ -9,6 +9,7 @@ public class mcAnimationMethods : MonoBehaviour {
     AudioSource[] _sound;
 
     [SerializeField] private mcMovementBehaviour _mc;
+    [SerializeField] ParticleSystem[] part;
 
 
     void Awake()
@@ -56,6 +57,11 @@ public class mcAnimationMethods : MonoBehaviour {
         var rand = Random.Range(0,_sound.Length);
         _sound[0].Play();
         Debug.Log(rand);
+    }
+
+    public void PlaySlashParticleSystem(int a)
+    {
+        part[a].Play();
     }
 
 }

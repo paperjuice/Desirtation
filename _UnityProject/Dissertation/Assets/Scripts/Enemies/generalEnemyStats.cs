@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class generalEnemyStats : MonoBehaviour {
@@ -27,6 +27,7 @@ public class generalEnemyStats : MonoBehaviour {
     [SerializeField] GameObject[] deadBody;
     [SerializeField] ParticleSystem _bloodPart;
     [SerializeField] GameObject _bloodSplatter;
+    [SerializeField] AudioSource[] whenHurt;
     mcCameraFollow _camera;
 
     [Header("VisualizeHealth")]
@@ -50,7 +51,7 @@ public class generalEnemyStats : MonoBehaviour {
 
     void Start()
     {
-        eMaxHealth += (controller.dungeonLevel * eMultiplierHealth) * eGlobalMultiplier;
+        eMaxHealth += (controller.dungeonLevel * eMultiplierHealth * eGlobalMultiplier) ;
         eCurrentHealth = eMaxHealth;
     }
 
@@ -65,12 +66,6 @@ public class generalEnemyStats : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "mcWeapon")
-        {
-            _bloodPart.Play();
-            StartCoroutine(InstantiateBloodSplatter());
-        }
-
         if(col.gameObject.tag == "water")
             eCurrentHealth = 0;
     }
@@ -80,13 +75,26 @@ public class generalEnemyStats : MonoBehaviour {
         fillBar.transform.localScale = new Vector3(eCurrentHealth / eMaxHealth, 1f, 1f);
     }
 
-    public void ReceiveDamage(float damage)
+    void SoundWhenHurt()
     {
-        if(damage >0 && !isHit)
+        var rand = Random.Range(0, whenHurt.Length);
+        whenHurt[rand].transform.parent =null;
+        whenHurt[rand].transform.position = _mcStats.transform.position;
+        whenHurt[rand].Play();
+    }
+
+    public void ReceiveDamage(float damage, bool isHavingSoundVisualEffect = true)
+    {
+        if(damage >0 )//&& !isHit
         {
+            SoundWhenHurt();
             eCurrentHealth -= damage;
             damage = 0;
-            isHit = false;
+            _bloodPart.Play();
+            // StartCoroutine(InstantiateBloodSplatter());
+            if(isHavingSoundVisualEffect)
+                InstantiateBloodSplatter();
+            // isHit = false;
         }
     }
 
@@ -94,9 +102,10 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (eCurrentHealth <= 0)
         {
+             SoundWhenHurt();
             _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel * 0.4f));
             if(isBoss)
-                eGlobalMultiplier += 1.05f;
+                eGlobalMultiplier += 1.1f;
 //            questController.IncrementQuest(id);
             _camera.IsBossMode = false;
             foreach(GameObject a in deadBody)
@@ -128,13 +137,13 @@ public class generalEnemyStats : MonoBehaviour {
             return false;
     }
 
-    IEnumerator InstantiateBloodSplatter()
+    void InstantiateBloodSplatter()
     {
         GameObject bloodPng;
         float bloodScale = Random.Range(0.09f, 0.3f);
-        yield return new WaitForSeconds(0.15f);        
+        // yield return new WaitForSeconds(0.15f);        
         bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));             
-        yield return new WaitForSeconds(0.2f);
+        // yield return new WaitForSeconds(0.2f);
         bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
         bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.3f);
     }

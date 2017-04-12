@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using UnityStandardAssets.ImageEffects;
 
 public class mcStats : MonoBehaviour {
@@ -151,27 +152,27 @@ public class mcStats : MonoBehaviour {
 
     public float Youthfulness()
     {
-        youthfulness = (1f-age/62f>0?1f-age/62f:0) * (knowledge + bonusYouthfulness + Endowments.bonusYouthfulness);
+        youthfulness = (1f-age/62f>0?1f-age/62f:0) * (knowledge + bonusYouthfulness);
         return youthfulness;
     }
 
     public float Fortitude()
     {
         if (age <= 22f)
-            fortitude = (age/22f) * (knowledge + BonusFortitude + Endowments.bonusFortitude);
+            fortitude = (age/22f) * (knowledge + BonusFortitude);
         else if(age > 22f)
-            fortitude = ((22-(age-22))/22>0.1f?(22-(age-22))/22:0.1f) *(knowledge+ BonusFortitude + Endowments.bonusFortitude);
+            fortitude = ((22-(age-22))/22>0?(22-(age-22))/22:0) *(knowledge+ BonusFortitude);
         
         return fortitude;
     }
 
     public float Wisdom()
     {
-        wisdom = (age/62<1?age/62:1) * (knowledge + BonusWisdom  + Endowments.bonusWisdom);
+        wisdom = (age/62<1?age/62:1) * (knowledge + BonusWisdom);
         return wisdom;
     }
 
-    public float Spirit(float decreasAmount)
+    public float Spirit(float decreasAmount = 0)
     {
         if (decreasAmount > 0)
         {
@@ -183,7 +184,7 @@ public class mcStats : MonoBehaviour {
         currentSpirit = Mathf.Clamp(currentSpirit, 0f, maxSpirit);
 
         if (currentSpirit < maxSpirit)
-            currentSpirit += Time.deltaTime*(1.4f + _cp.SpiritRegen()*0.2f + Endowments.bonusSpiritRegen + (Youthfulness()*0.01f));
+            currentSpirit += Time.deltaTime*(1.4f + _cp.SpiritRegen()*0.2f + (Youthfulness()*0.01f));
         
         return currentSpirit;
     }
@@ -197,8 +198,10 @@ public class mcStats : MonoBehaviour {
 
     public float McDamage(float weaponDamage)
     {
-        mcDamage = ((Fortitude() * 0.25f) + weaponDamage) + Random.Range(-((Fortitude() * 0.1f) + weaponDamage)*0.1f, ((Fortitude() * 0.1f) + weaponDamage)*0.1f);   
-        return CritChance(mcDamage);
+        float temp = ((Fortitude() * 0.2f) + weaponDamage);
+        mcDamage = temp + Random.Range(-temp*0.1f, temp*0.1f);  
+        CritChance(mcDamage);
+        return mcDamage;
     }
 
     public float Armour(float damageReceived)
@@ -208,15 +211,14 @@ public class mcStats : MonoBehaviour {
         return damageProcessedBasedOnArmour;
     }
 
-    public float CritChance(float damageDealt)
+    public float CritChance(float mcDamage)
     {
-        float chanceToCrit = Random.Range(1f, 100f);
-        //if (chanceToCrit <= ((_cp.CritChanceLevel * Fortitude())/(1500+ _cp.CritChanceLevel * Fortitude())*100f)+Endowments.bonusCritChance)
-        if (chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.05f  + Endowments.bonusCritChance + 5)
+        float chanceToCrit = Random.Range(1f, 10f);
+        if(chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.1f + 5)
         {
-            damageDealt = damageDealt * Random.Range(1.4f,2f);
+            mcDamage = mcDamage * Random.Range(1.6f,2f);
         }
-        return damageDealt;
+        return mcDamage;
     }
 
     void Death()

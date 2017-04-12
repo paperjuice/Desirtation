@@ -38,9 +38,9 @@ public class LifeSteal : MonoBehaviour {
 	void StealLife()
 	{
 		chanceToStealLife = Random.Range(0f, 100f);
-		if(chanceToStealLife<= 15f)
+		if(chanceToStealLife<= _mcStats.Age/5f)
 		{
-			_mcStats.Age-= 1 + _mcStats.Wisdom()*0.02f;
+			_mcStats.Age-= 1 + _mcStats.Wisdom()*0.04f;
 			particle.Play();
 		}
 	}

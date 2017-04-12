@@ -31,6 +31,7 @@ public class mcMovementBehaviour : MonoBehaviour {
     //Attack
     public int attackQueue = 0;
     BoxCollider mcWeapon;
+    int randomSwingAttack = 0;
 
     //Block
     private bool isBlocking;
@@ -38,6 +39,12 @@ public class mcMovementBehaviour : MonoBehaviour {
 //    [SerializeField]private float deflect = 0f;
     private bool isDeflecting;
     bool isAbleToBlock=true;
+   
+    bool canBlock = true;
+    public bool CanBlock{
+        get{return canBlock;}
+        set{canBlock = value;}
+    }
 
     //Roll
     public bool isRolling;
@@ -59,16 +66,16 @@ public class mcMovementBehaviour : MonoBehaviour {
     
     void Update()
     {
-        //attack speed
-        anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed*0.03f + _mcStats.Youthfulness()*0.0005f + Endowments.bonusAttackSpeed);
+        AttackSpeed();
 
         if (!isRolling)
         {
             if (attackQueue == 0)
             {
                 RotateTowardsMouse();
-                Block();
-                //Roll();
+                if(CanBlock)
+                    Block();
+                //Roll
             }
 
             if (!isBlocking /*&& !anim.GetBool("deflected")*/)
@@ -89,9 +96,7 @@ public class mcMovementBehaviour : MonoBehaviour {
         {
             Vector3 rotate = _raycast.point - transform.position;
             rotate.y = 0f;
-
             Quaternion target_rotation = Quaternion.LookRotation(rotate);
-
             transform.rotation = Quaternion.Lerp(transform.rotation, target_rotation, playerRotationSpeed * Time.deltaTime);
         }
     }
@@ -133,32 +138,34 @@ public class mcMovementBehaviour : MonoBehaviour {
 
         if (attackQueue != 0)
             anim.SetBool("attack", true);
-
-        
     }
 
     void AttackV2()
     {
-        var randomSwingAttack = 0;
+        
         if(_mcStats.Spirit(0) >= 5f)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                randomSwingAttack = Random.Range(1,3);
-                _mcStats.Spirit(5f);
+                randomSwingAttack++;
+                _mcStats.Spirit(5f);                
+                switch(randomSwingAttack)
+                {
+                    case 1:
+                        anim.SetTrigger("attack1");
+                        break;
+                    case 2:
+                        anim.SetTrigger("attack2");
+                        break;
+                }
+            }
+            if(randomSwingAttack == 2)
+            {
+                randomSwingAttack =0;
             }
         }
 
-        if(randomSwingAttack == 1)
-        {
-            anim.SetTrigger("attack1");
-            randomSwingAttack = 0;
-        }
-        else if(randomSwingAttack == 2)
-        {
-            anim.SetTrigger("attack2");
-            randomSwingAttack = 0;
-        }
+        
 
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_2"))
         {
@@ -169,6 +176,13 @@ public class mcMovementBehaviour : MonoBehaviour {
             playerRotationSpeed = savedPlayerRotationSpeed;
         }
     }
+
+    void AttackSpeed()
+    {
+        //attack speed
+        anim.SetFloat("attackSpeed", 1f + _ce.AttackSpeed*0.03f + _mcStats.Youthfulness()*0.0005f);
+    }
+
 
     void Block()
     {
@@ -190,11 +204,18 @@ public class mcMovementBehaviour : MonoBehaviour {
         }
         if (Input.GetKeyUp(KeyCode.Mouse1) || _mcStats.Spirit(0f) <= 1f)
         {
-            isAbleToBlock = false;
             isBlocking = false;
+            isAbleToBlock = false;
             anim.SetBool("block", false);
             gameObjectBlock.enabled = false;
         }
+    }
+    public void UnblockIfIncapacitated()
+    {
+        isBlocking = false;
+        isAbleToBlock = false;
+        anim.SetBool("block", false);
+        gameObjectBlock.enabled = false;
     }
 
     void Roll()

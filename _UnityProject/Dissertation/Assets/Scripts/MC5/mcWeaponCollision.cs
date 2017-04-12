@@ -4,6 +4,11 @@ using System.Collections;
 public class mcWeaponCollision : MonoBehaviour {
 
     [SerializeField]GameObject[] dmgNumbers;
+    [SerializeField] ParticleSystem[] slashs;
+
+    GameObject[] enemies;
+    ParticleSystem slash = new ParticleSystem();
+    Transform father;
 
     private Animator _mainCamera;
 //    bool isCameraFound =false;
@@ -14,34 +19,44 @@ public class mcWeaponCollision : MonoBehaviour {
         get { return weaponDamage; }
         set { weaponDamage = value; }
     }
+    float damageHistory = 0f;
 
 
 
     void Awake()
     {
         _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
+        father = slashs[0].transform.parent;
         //_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+    }
+
+    IEnumerator Start()
+    {
+        damageHistory = 3+(0.4f *(mcStats.knowledge+ _mcStats.BonusFortitude));
+
+        while(true)
+        {
+            enemies = GameObject.FindGameObjectsWithTag("enemy");
+            yield return new WaitForSeconds(2f);
+        }
     }
 
     void Update()
     {
+        weaponDamage =3+(0.4f *(mcStats.knowledge+ _mcStats.BonusFortitude));
         if(_mainCamera==null)
              _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "enemy")
+        foreach(GameObject enemy in enemies)
         {
-            var generalEnemySts= col.gameObject.GetComponent<generalEnemyStats>();
-
-            if(!generalEnemySts.IsHit)
+            if(col.gameObject == enemy)
             {
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
-                generalEnemySts.ReceiveDamage(_mcStats.McDamage(WeaponDamage + Endowments.bonusRawDamage));
-                InstantiateDmgNumbers(col.gameObject);
-                generalEnemySts.IsHit = true;
-                StartCoroutine(HasBeenHit(col.gameObject));
+                enemy.GetComponent<generalEnemyStats>().ReceiveDamage(weaponDamage);
+                InstantiateDmgNumbers(col.gameObject, weaponDamage);
             }
         }
     }
@@ -53,7 +68,7 @@ public class mcWeaponCollision : MonoBehaviour {
     }
     
 
-    void InstantiateDmgNumbers(GameObject enemyPos)
+    void InstantiateDmgNumbers(GameObject enemyPos, float damage )
     {
         foreach(GameObject a in dmgNumbers)
         {
@@ -63,10 +78,24 @@ public class mcWeaponCollision : MonoBehaviour {
                 if(a.transform.parent != null)
                     a.transform.parent =null;
                 a.transform.position = enemyPos.transform.position + new Vector3(0f,3f,0f);
-                a.GetComponent<TextMesh>().text = _mcStats.McDamage(WeaponDamage).ToString("N1");
+                a.GetComponent<TextMesh>().text = damage.ToString("N1");
                 a.transform.rotation = Quaternion.Euler(50f,0f,0f);
                 break;
             }
         }
+    }
+
+    bool CheckForCrit( float damage)
+    {
+        if(damageHistory * 1.6f <= damage)
+        {
+            return false;
+        }
+        else
+        {
+            
+            return true;
+        }
+       
     }
 }

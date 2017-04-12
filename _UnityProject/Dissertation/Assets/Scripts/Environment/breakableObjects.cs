@@ -13,8 +13,7 @@ public class breakableObjects : MonoBehaviour {
     [SerializeField]GameObject[] levelOneConsumable;
     [HeaderAttribute("Level2")]
     [SerializeField]GameObject[] levelTwoConsumable;
-    [HeaderAttribute("Level3")]
-    [SerializeField]GameObject[] levelThreeConsumable;
+  
 
     float chanceToGetItem;
     private Animator _camera;
@@ -37,7 +36,7 @@ public class breakableObjects : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "mcWeapon")
+        if (other.gameObject.tag == "mcWeapon" || other.gameObject.tag == "charge")
             isExploding = true;
     }
 
@@ -71,23 +70,7 @@ public class breakableObjects : MonoBehaviour {
                     Instantiate(levelOneConsumable[Random.Range(0, levelOneConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
                 else if (dropQuality > 70 && dropQuality <= 95)
                     Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, Quaternion.Euler(0f,0f,0f));
-                else if (dropQuality > 95 && dropQuality <= 100)
-                    DontDuplicateLevelThreeConsumables();
-        }
-    }
-
-    public void DontDuplicateLevelThreeConsumables()
-    {
-         //Sort
-        //-AOE_DeadDmgPerSecondLevel : 0
-        //
-        var randomDrop = Random.Range(0,levelThreeConsumable.Length);
-        switch(randomDrop)
-        {
-            case 0:
-                if(_cp.AOE_DeadDmgPerSecondLevel<=0)
-                    Instantiate(levelThreeConsumable[0], transform.position, transform.rotation);
-                break;
+               
         }
     }
 

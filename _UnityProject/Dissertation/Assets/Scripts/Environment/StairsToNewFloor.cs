@@ -24,6 +24,7 @@ public class StairsToNewFloor : MonoBehaviour {
 			//col.gameObject.transform.parent = platform.transform;
 			platform.GetComponent<Animator>().SetBool("move", true);
 			enabled = false;
+			GetComponent<SphereCollider>().enabled = false;
 		}
 	}
 }

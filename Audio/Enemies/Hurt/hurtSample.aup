@@ -1,0 +1,93 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="hurtSample_data" version="1.3.0" audacityversion="2.1.2" sel0="0.2580000000" sel1="0.2580000000" vpos="0" h="0.0000000000" zoom="689.0625000000" rate="44100.0" snapto="on" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="Audio Track" channel="0" linked="1" mute="0" solo="0" height="161" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2178560">
+				<waveblock start="0">
+					<simpleblockfile filename="e00005f4.au" len="262144" min="-0.216266" max="0.273761" rms="0.006618"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e0000eca.au" len="262144" min="-0.49587" max="0.553448" rms="0.012428"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e00008ca.au" len="262144" min="-0.642423" max="0.884243" rms="0.012253"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="e0000584.au" len="262144" min="-0.347932" max="0.262035" rms="0.008705"/>
+				</waveblock>
+				<waveblock start="1048576">
+					<simpleblockfile filename="e0000ad7.au" len="262144" min="-0.46964" max="0.414338" rms="0.012249"/>
+				</waveblock>
+				<waveblock start="1310720">
+					<simpleblockfile filename="e00000a1.au" len="262144" min="-0.423626" max="0.261899" rms="0.008898"/>
+				</waveblock>
+				<waveblock start="1572864">
+					<simpleblockfile filename="e0000cab.au" len="262144" min="-0.306006" max="0.282019" rms="0.010387"/>
+				</waveblock>
+				<waveblock start="1835008">
+					<simpleblockfile filename="e0000c39.au" len="262144" min="-0.456658" max="0.513103" rms="0.01193"/>
+				</waveblock>
+				<waveblock start="2097152">
+					<simpleblockfile filename="e00007b2.au" len="81408" min="-0.000697" max="0.00069" rms="0.000164"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Audio Track" channel="1" linked="0" mute="0" solo="0" height="161" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2178560">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000f68.au" len="262144" min="-0.217473" max="0.275816" rms="0.00666"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="e000083d.au" len="262144" min="-0.500364" max="0.555864" rms="0.012513"/>
+				</waveblock>
+				<waveblock start="524288">
+					<simpleblockfile filename="e0000ad6.au" len="262144" min="-0.648654" max="0.889896" rms="0.012339"/>
+				</waveblock>
+				<waveblock start="786432">
+					<simpleblockfile filename="e0000cc8.au" len="262144" min="-0.352029" max="0.263816" rms="0.008768"/>
+				</waveblock>
+				<waveblock start="1048576">
+					<simpleblockfile filename="e0000f0f.au" len="262144" min="-0.473018" max="0.416977" rms="0.012332"/>
+				</waveblock>
+				<waveblock start="1310720">
+					<simpleblockfile filename="e0000b0d.au" len="262144" min="-0.426846" max="0.263786" rms="0.008957"/>
+				</waveblock>
+				<waveblock start="1572864">
+					<simpleblockfile filename="e0000c21.au" len="262144" min="-0.30873" max="0.283573" rms="0.010461"/>
+				</waveblock>
+				<waveblock start="1835008">
+					<simpleblockfile filename="e0000919.au" len="262144" min="-0.459703" max="0.516995" rms="0.012012"/>
+				</waveblock>
+				<waveblock start="2097152">
+					<simpleblockfile filename="e00000e6.au" len="81408" min="-0.000728" max="0.000803" rms="0.000176"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Audio Track" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="62225">
+				<waveblock start="0">
+					<simpleblockfile filename="e00006af.au" len="62225" min="-0.820058" max="0.889976" rms="0.042475"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Audio Track" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="62225">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e72.au" len="62225" min="-0.821677" max="0.891789" rms="0.042729"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

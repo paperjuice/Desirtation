@@ -33,11 +33,12 @@ public class debuff : MonoBehaviour {
 
     void Start()
     {
-        savedMsSpeed = _mainChar.McSpeed;
+        
     }
 
     private void Update()
     {
+        savedMsSpeed = _mainChar.McSpeed;
         Interrupting();
         Slow();
     }
@@ -49,8 +50,9 @@ public class debuff : MonoBehaviour {
             secondsInterrupted -= Time.deltaTime;
             anim.SetBool("walkin", false);
             anim.SetBool("block", false);
+            anim.SetBool("interrupted", true);
             _mainChar.UnblockIfIncapacitated();
-            _mainChar.attackQueue = 0;
+            // _mainChar.attackQueue = 0;
             _mainChar.isRolling = false;
             _mainChar.enabled = false;
             stunIcon.gameObject.SetActive(true);
@@ -58,6 +60,7 @@ public class debuff : MonoBehaviour {
         }
         else if (secondsInterrupted <= 0)
         {
+            anim.SetBool("interrupted", false);
             _mainChar.enabled = true;
             stunIcon.gameObject.SetActive(false);
         }

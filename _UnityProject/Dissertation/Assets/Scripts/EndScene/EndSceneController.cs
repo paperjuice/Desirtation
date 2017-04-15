@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.ImageEffects;
 
 public class EndSceneController : MonoBehaviour {
 
+	GameObject playerTag;
 	[SerializeField] fadeOutFadein _fade;
 	[SerializeField] GameObject player;
 	[SerializeField] float mc_ms;
@@ -17,6 +17,8 @@ public class EndSceneController : MonoBehaviour {
 	void Awake()
 	{
 		_camera = GameObject.FindGameObjectWithTag("MainCamera");
+		playerTag = GameObject.FindGameObjectWithTag("Player");
+		Destroy(playerTag);
 	}
 
 	void Update()

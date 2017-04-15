@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class prologueBehaviour : MonoBehaviour {
@@ -16,6 +14,7 @@ public class prologueBehaviour : MonoBehaviour {
 	Vector3 targetPos;
 	Quaternion targetRot;
 	float cameraSpeed;
+	[SerializeField]FadeOutSound fadeSound;
 
 	void Awake()
 	{
@@ -39,7 +38,7 @@ public class prologueBehaviour : MonoBehaviour {
 		cameraSpeed = 1.5f;
 		
 		yield return new WaitForSeconds(4.5f);
-
+		fadeSound.IsFading = true;
 		SceneManager.LoadScene("tutorial");
 	}
 

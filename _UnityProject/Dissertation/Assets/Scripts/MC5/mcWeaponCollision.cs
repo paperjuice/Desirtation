@@ -43,7 +43,7 @@ public class mcWeaponCollision : MonoBehaviour {
 
     void Update()
     {
-        weaponDamage =3+(0.4f *(mcStats.knowledge+ _mcStats.BonusFortitude));
+        weaponDamage =3 + (0.1f *(mcStats.knowledge + _mcStats.Fortitude()));
         if(_mainCamera==null)
              _mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
@@ -55,8 +55,8 @@ public class mcWeaponCollision : MonoBehaviour {
             if(col.gameObject == enemy)
             {
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
-                enemy.GetComponent<generalEnemyStats>().ReceiveDamage(weaponDamage);
-                InstantiateDmgNumbers(col.gameObject, weaponDamage);
+                enemy.GetComponent<generalEnemyStats>().ReceiveDamage(_mcStats.McDamage(weaponDamage));
+                InstantiateDmgNumbers(col.gameObject, _mcStats.McDamage(weaponDamage));
             }
         }
     }

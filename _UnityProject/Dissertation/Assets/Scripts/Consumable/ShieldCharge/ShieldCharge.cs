@@ -13,7 +13,7 @@ public class ShieldCharge : MonoBehaviour {
 	[SerializeField] float speed;
 	[SerializeField] GameObject playerMesh;
 	[SerializeField] BoxCollider _collider;
-	[SerializeField] float damage = 0.5f;
+	[SerializeField] float damage = 0.6f;
 	Vector3 chargeTarget;
 	float chargeCost = 0.3f;
 	bool isCharging = false;

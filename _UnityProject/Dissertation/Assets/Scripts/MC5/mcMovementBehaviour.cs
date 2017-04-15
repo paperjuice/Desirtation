@@ -17,19 +17,20 @@ public class mcMovementBehaviour : MonoBehaviour {
     //Movement
     private Rigidbody rigid;
     private Vector3 pos;
-    private float positiveSpeed;
-    private float negativeSpeed;
+    // private float positiveSpeed;
+    // private float negativeSpeed;
     private float _x;
     private float _z;
     [SerializeField] Animator anim;
     [SerializeField] private float mcSpeed;
+    float savedMcSpeed;
     public float McSpeed{
         get{return mcSpeed;}
         set{mcSpeed = value;}
     }
     
     //Attack
-    public int attackQueue = 0;
+    // public int attackQueue = 0;
     BoxCollider mcWeapon;
     int randomSwingAttack = 0;
 
@@ -49,6 +50,8 @@ public class mcMovementBehaviour : MonoBehaviour {
     //Roll
     public bool isRolling;
     public bool isInvincible;
+    BoxCollider col;
+    float rollSpeed = 5;
 
 
 
@@ -62,31 +65,46 @@ public class mcMovementBehaviour : MonoBehaviour {
         layerMask = LayerMask.GetMask("floor");
         rigid = GetComponent<Rigidbody>();
         _ce = GetComponent<consumableEffect>();
+        col = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<BoxCollider>();
+
+        
+    }
+
+    void Start()
+    {
+        savedMcSpeed = McSpeed;
+        // rollSpeed = McSpeed;
     }
     
     void Update()
     {
+        
+            
         AttackSpeed();
-
         if (!isRolling)
         {
-            if (attackQueue == 0)
+            // if (attackQueue == 0)
             {
                 RotateTowardsMouse();
-                if(CanBlock)
-                    Block();
-                //Roll
+                // if(CanBlock)
+                //     Block();
+                
             }
 
-            if (!isBlocking /*&& !anim.GetBool("deflected")*/)
+            if (!isBlocking && !isRolling )
                 AttackV2();
         }
+        Roll();
+        if (!isRolling)
+            Movement();
     }
 
     void FixedUpdate()
     {
-        if (attackQueue == 0 && !isRolling)
-           Movement();
+        // if(!anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|roll 0"))
+        
+
+        
     }
 
     void RotateTowardsMouse()
@@ -119,49 +137,51 @@ public class mcMovementBehaviour : MonoBehaviour {
         }
     }
 
-    void Attack()
-    {
-        if (_mcStats.Spirit(0) >= 5)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                if (attackQueue < 1)
-                {
-                    attackQueue++;
-                    _mcStats.Spirit(5f);
-                }
-            }
-        }
+    // void Attack()
+    // {
+    //     if (_mcStats.Spirit(0) >= 5)
+    //     {
+    //         if (Input.GetKeyDown(KeyCode.Mouse0))
+    //         {
+    //             if (attackQueue < 1)
+    //             {
+    //                 attackQueue++;
+    //                 _mcStats.Spirit(5f);
+    //             }
+    //         }
+    //     }
 
-        if (attackQueue == 0f)
-            mcWeapon.enabled = false;
+    //     if (attackQueue == 0f)
+    //         mcWeapon.enabled = false;
 
-        if (attackQueue != 0)
-            anim.SetBool("attack", true);
-    }
+    //     if (attackQueue != 0)
+    //         anim.SetBool("attack", true);
+    // }
 
     void AttackV2()
     {
-        
-        if(_mcStats.Spirit(0) >= 5f)
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|walking"))
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if(_mcStats.Spirit(0) >= 5f )
             {
-                randomSwingAttack++;
-                _mcStats.Spirit(5f);                
-                switch(randomSwingAttack)
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    case 1:
-                        anim.SetTrigger("attack1");
-                        break;
-                    case 2:
-                        anim.SetTrigger("attack2");
-                        break;
+                    randomSwingAttack++;
+                    _mcStats.Spirit(5f);                
+                    switch(randomSwingAttack)
+                    {
+                        case 1:
+                            anim.SetTrigger("attack1");
+                            break;
+                        case 2:
+                            anim.SetTrigger("attack2");
+                            break;
+                    }
                 }
-            }
-            if(randomSwingAttack == 2)
-            {
-                randomSwingAttack =0;
+                if(randomSwingAttack == 2)
+                {
+                    randomSwingAttack =0;
+                }
             }
         }
 
@@ -170,10 +190,12 @@ public class mcMovementBehaviour : MonoBehaviour {
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_2"))
         {
             playerRotationSpeed = 0.5f;
+            McSpeed = savedMcSpeed * 0.3f;
         }
         else
         {
             playerRotationSpeed = savedPlayerRotationSpeed;
+            McSpeed = savedMcSpeed;
         }
     }
 
@@ -220,11 +242,17 @@ public class mcMovementBehaviour : MonoBehaviour {
 
     void Roll()
     {
-        if(_mcStats.Spirit(0)>=15)
+        if ((_x != 0 || _z != 0) && Input.GetKeyDown(KeyCode.Space) && !isRolling)
         {
-            if ((_x != 0 || _z != 0) && Input.GetKeyDown(KeyCode.Space) && !isRolling)
+            if(_mcStats.Spirit(0)>=7f)
             {
+                if(col.enabled)
+                    col.enabled = false;
+
+                _mcStats.Spirit(7f);
+                anim.SetTrigger("roll");
                 isRolling = true;
+                isInvincible = true;
 
                 if (_x > 0)
                 {
@@ -265,14 +293,15 @@ public class mcMovementBehaviour : MonoBehaviour {
                 {
                     transform.rotation = Quaternion.Euler(0f, 225f, 0f);
                 }
-                anim.SetTrigger("roll");
-                _mcStats.Spirit(15f);
+                
+                
             }
 
         }
         if (isRolling)
         {
-            rigid.MovePosition(transform.position + transform.forward * mcSpeed * Time.deltaTime);
+            rigid.MovePosition(transform.position + transform.forward * rollSpeed * Time.deltaTime);
+            // Debug.Log("amerge");
         }
     }
 

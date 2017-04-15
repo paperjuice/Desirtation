@@ -1,0 +1,850 @@
+fileFormatVersion: 2
+guid: e455ec5d889673e4d9c5409c6b5b8056
+timeCreated: 1492040439
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: chest
+    100004: finger.L
+    100006: finger.L_end
+    100008: finger.R
+    100010: finger.R_end
+    100012: forearm.L
+    100014: forearm.R
+    100016: handle
+    100018: handle_end
+    100020: head
+    100022: head_end
+    100024: heap
+    100026: heap.001
+    100028: heap.002
+    100030: heap.002_end
+    100032: ik
+    100034: ik_end
+    100036: //RootNode
+    100038: mc7
+    100040: neck
+    100042: palm.L
+    100044: palm.R
+    100046: pole
+    100048: pole_end
+    100050: shoulder.L
+    100052: shoulder.R
+    100054: stomach
+    100056: upperarm.L
+    100058: upperarm.R
+    400000: Armature
+    400002: chest
+    400004: finger.L
+    400006: finger.L_end
+    400008: finger.R
+    400010: finger.R_end
+    400012: forearm.L
+    400014: forearm.R
+    400016: handle
+    400018: handle_end
+    400020: head
+    400022: head_end
+    400024: heap
+    400026: heap.001
+    400028: heap.002
+    400030: heap.002_end
+    400032: ik
+    400034: ik_end
+    400036: mc7
+    400038: //RootNode
+    400040: neck
+    400042: palm.L
+    400044: palm.R
+    400046: pole
+    400048: pole_end
+    400050: shoulder.L
+    400052: shoulder.R
+    400054: stomach
+    400056: upperarm.L
+    400058: upperarm.R
+    4300000: mc7
+    7400000: attack1
+    7400002: attack2
+    7400004: block
+    7400006: idle
+    7400008: walk
+    7400010: Armature|_idle
+    7400012: Armature|roll
+    7400014: Armature|walk
+    9500000: //RootNode
+    13700000: mc7
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: attack1
+      takeName: attack1
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: attack2
+      takeName: attack2
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: block
+      takeName: block
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle
+      takeName: idle
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walk
+      takeName: walk
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|_idle
+      takeName: Armature|_idle
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|roll
+      takeName: Armature|roll
+      firstFrame: 0
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|walk
+      takeName: Armature|walk
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/heap
+        weight: 1
+      - path: Armature/heap/heap.001
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002
+        weight: 1
+      - path: Armature/heap/heap.001/heap.002/heap.002_end
+        weight: 1
+      - path: Armature/heap/stomach
+        weight: 1
+      - path: Armature/heap/stomach/chest
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head
+        weight: 1
+      - path: Armature/heap/stomach/chest/neck/head/head_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.L/upperarm.L/forearm.L/palm.L/finger.L/finger.L_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/finger.R/finger.R_end
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle
+        weight: 1
+      - path: Armature/heap/stomach/chest/shoulder.R/upperarm.R/forearm.R/palm.R/handle/handle_end
+        weight: 1
+      - path: Armature/ik
+        weight: 1
+      - path: Armature/ik/ik_end
+        weight: 1
+      - path: Armature/pole
+        weight: 1
+      - path: Armature/pole/pole_end
+        weight: 1
+      - path: mc7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1.1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 80
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

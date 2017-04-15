@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class mainMenuController : MonoBehaviour {
@@ -7,7 +6,6 @@ public class mainMenuController : MonoBehaviour {
 	[SerializeField] GameObject fadeInObject;
 	[SerializeField] GameObject pressAnyKey;
 	[SerializeField] Animator mcAnim;
-
 
 	IEnumerator Start()
 	{
@@ -26,5 +24,4 @@ public class mainMenuController : MonoBehaviour {
 			fadeInObject.gameObject.SetActive(true);
 		}
 	}
-
 }

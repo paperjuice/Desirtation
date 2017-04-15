@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class fadeOutFadein : MonoBehaviour {
 
+	[HeaderAttribute("Sound")][SerializeField] AudioSource exitSound;
+	GameObject[] audioToMuteOnExit;
+	bool isNotExiting = false;
 	[SerializeField] string sceneName;
 	[SerializeField] float fadeSpeed = 0.4f;
   	public string SceneName{
@@ -14,6 +17,7 @@ public class fadeOutFadein : MonoBehaviour {
 
 	void Awake(){
 		img = GetComponent<Image>();
+		audioToMuteOnExit = GameObject.FindGameObjectsWithTag("audio");
 	}
 
 	void Update()
@@ -24,6 +28,19 @@ public class fadeOutFadein : MonoBehaviour {
 
 			if(img.color.a>=1 && sceneName != string.Empty)
 				SceneManager.LoadScene(sceneName);
+
+			if(exitSound != null && !isNotExiting)
+			{
+				exitSound.Play();
+				isNotExiting = true;
+			}
+			if(audioToMuteOnExit.Length != 0 && exitSound != null)
+			{
+				foreach(GameObject a in audioToMuteOnExit)
+				{
+					a.GetComponent<AudioSource>().volume -= 0.4f * Time.deltaTime;
+				}
+			}
 		}
 		else{
 			if(img.color.a >0) 

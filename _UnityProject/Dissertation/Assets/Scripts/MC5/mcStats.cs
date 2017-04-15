@@ -10,6 +10,7 @@ public class mcStats : MonoBehaviour {
     private consumablePotency _cp;
 //    private mcWeaponCollision _mcWeapon;
     private fadeOutFadein fadeIn;
+    mcMovementBehaviour _mcMsBehaviour;
     GameObject _camera;
 //    bool isCameraObjectRefered = false;
 
@@ -105,6 +106,7 @@ public class mcStats : MonoBehaviour {
         _cp = GetComponent<consumablePotency>();
         //_mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<mcWeaponCollision>();
         knowledge = 0;
+        _mcMsBehaviour = GetComponent<mcMovementBehaviour>();
     }
 
     
@@ -130,7 +132,7 @@ public class mcStats : MonoBehaviour {
 
     public void IncrementAgeOnDamageReceived(float damageReceived)
     {
-        if(damageReceived>0)
+        if(damageReceived>0 && !_mcMsBehaviour.isInvincible)
         {
             Age += Armour(damageReceived);
             damageReceived = 0f;
@@ -180,11 +182,11 @@ public class mcStats : MonoBehaviour {
             decreasAmount = 0f;
         }
 
-        maxSpirit = 10 + Youthfulness()*0.1f + Endowments.bonusSpirit;
+        maxSpirit = 20 + Youthfulness()*0.01f;
         currentSpirit = Mathf.Clamp(currentSpirit, 0f, maxSpirit);
 
         if (currentSpirit < maxSpirit)
-            currentSpirit += Time.deltaTime*(1.4f + _cp.SpiritRegen()*0.2f + (Youthfulness()*0.01f));
+            currentSpirit += Time.fixedDeltaTime*(8f + _cp.SpiritRegen()*0.5f + (Youthfulness()*0.01f));
         
         return currentSpirit;
     }
@@ -198,23 +200,22 @@ public class mcStats : MonoBehaviour {
 
     public float McDamage(float weaponDamage)
     {
-        float temp = ((Fortitude() * 0.2f) + weaponDamage);
+        float temp = ((Fortitude() * 0.5f) + weaponDamage);
         mcDamage = temp + Random.Range(-temp*0.1f, temp*0.1f);  
-        CritChance(mcDamage);
-        return mcDamage;
+        return CritChance(mcDamage);;
     }
 
     public float Armour(float damageReceived)
     {
-        damageProcessedBasedOnArmour = damageReceived - _cp.ArmourLevel*2f - Endowments.bonusArmour - Fortitude() * 0.005f;
+        damageProcessedBasedOnArmour = damageReceived - _cp.ArmourLevel*2f - Fortitude() * 0.005f;
         damageProcessedBasedOnArmour = Mathf.Clamp(damageProcessedBasedOnArmour, 2f, float.MaxValue);
         return damageProcessedBasedOnArmour;
     }
 
     public float CritChance(float mcDamage)
     {
-        float chanceToCrit = Random.Range(1f, 10f);
-        if(chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.1f + 5)
+        float chanceToCrit = Random.Range(1f, 100f);
+        if(chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.1f + 10f)
         {
             mcDamage = mcDamage * Random.Range(1.6f,2f);
         }

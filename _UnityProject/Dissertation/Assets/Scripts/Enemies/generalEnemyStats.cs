@@ -6,6 +6,7 @@ public class generalEnemyStats : MonoBehaviour {
     consumableDrop _consumableDrop;
     QuestController questController;
     mcStats _mcStats;
+    SoundController soundController;
 
     bool isHit = false;
     public bool IsHit{
@@ -27,7 +28,6 @@ public class generalEnemyStats : MonoBehaviour {
     [SerializeField] GameObject[] deadBody;
     [SerializeField] ParticleSystem _bloodPart;
     [SerializeField] GameObject _bloodSplatter;
-    [SerializeField] AudioSource[] whenHurt;
     mcCameraFollow _camera;
 
     [Header("VisualizeHealth")]
@@ -47,6 +47,7 @@ public class generalEnemyStats : MonoBehaviour {
         _consumableDrop = GetComponent<consumableDrop>();
         _camera = GameObject.FindGameObjectWithTag("cameraFather").GetComponent<mcCameraFollow>();
         _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
+        soundController = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundController>();
     }
 
     void Start()
@@ -75,26 +76,23 @@ public class generalEnemyStats : MonoBehaviour {
         fillBar.transform.localScale = new Vector3(eCurrentHealth / eMaxHealth, 1f, 1f);
     }
 
-    void SoundWhenHurt()
-    {
-        var rand = Random.Range(0, whenHurt.Length);
-        whenHurt[rand].transform.parent =null;
-        whenHurt[rand].transform.position = _mcStats.transform.position;
-        whenHurt[rand].Play();
-    }
+   
 
     public void ReceiveDamage(float damage, bool isHavingSoundVisualEffect = true)
     {
+        var count = 0;
         if(damage >0 )//&& !isHit
         {
-            SoundWhenHurt();
+            soundController.EnemyHitSound();
             eCurrentHealth -= damage;
             damage = 0;
             _bloodPart.Play();
             // StartCoroutine(InstantiateBloodSplatter());
-            if(isHavingSoundVisualEffect)
+            if(isHavingSoundVisualEffect && count <2)
+            {
                 InstantiateBloodSplatter();
-            // isHit = false;
+                count ++;
+            }
         }
     }
 
@@ -102,7 +100,6 @@ public class generalEnemyStats : MonoBehaviour {
     {
         if (eCurrentHealth <= 0)
         {
-             SoundWhenHurt();
             _mcStats.Knowledge(amountOfKnowledgeGained *(controller.dungeonLevel * 0.4f));
             if(isBoss)
                 eGlobalMultiplier += 1.1f;
@@ -144,7 +141,7 @@ public class generalEnemyStats : MonoBehaviour {
         // yield return new WaitForSeconds(0.15f);        
         bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));             
         // yield return new WaitForSeconds(0.2f);
-        bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
+        // bloodPng = Instantiate(_bloodSplatter, new Vector3(transform.position.x, transform.position.y+0.05f, transform.position.z), Quaternion.Euler(90f, Random.Range(0f,360f), transform.rotation.z));
         bloodPng.transform.localScale = new Vector3(bloodScale, bloodScale, 0.3f);
     }
 

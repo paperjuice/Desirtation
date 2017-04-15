@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class breakableObjects : MonoBehaviour {
 
-	
+    [HeaderAttribute("1 - wood\n 2 - stone")]
+	[SerializeField] int type = 1;
     [SerializeField] private GameObject[] parts;
     [SerializeField] float force;
 
@@ -14,7 +15,7 @@ public class breakableObjects : MonoBehaviour {
     [HeaderAttribute("Level2")]
     [SerializeField]GameObject[] levelTwoConsumable;
   
-
+     SoundController soundController;
     float chanceToGetItem;
     private Animator _camera;
     private GameObject player;
@@ -25,6 +26,7 @@ public class breakableObjects : MonoBehaviour {
     {
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
         StartCoroutine(FindPlayer());
+        soundController = GameObject.FindGameObjectWithTag("SoundController").GetComponent<SoundController>();
     }
 
     IEnumerator FindPlayer()
@@ -37,7 +39,10 @@ public class breakableObjects : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "mcWeapon" || other.gameObject.tag == "charge")
+        {
             isExploding = true;
+             soundController.DestructibleExplosionSound(type);
+        }
     }
 
     void Update()

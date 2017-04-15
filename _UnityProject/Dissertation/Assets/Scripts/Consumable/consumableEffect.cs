@@ -64,7 +64,7 @@ public class consumableEffect : MonoBehaviour {
 			aoe_particle.gameObject.SetActive(true);
 		}
 
-		aoeDmg = (1f + _mcStats.Wisdom()*0.1f);
+		aoeDmg = (1f + _mcStats.Wisdom()*0.75f);
 		return aoeDmg;
 	}
 

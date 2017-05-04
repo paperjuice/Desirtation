@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class mcAnimationMethods : MonoBehaviour {
 
@@ -64,7 +62,7 @@ public class mcAnimationMethods : MonoBehaviour {
 
     void SoundEffect()
     {
-        var rand = Random.Range(0,_sound.Length);
+        // var rand = Random.Range(0,_sound.Length);
         _sound[0].Play();
 //        Debug.Log(rand);
     }

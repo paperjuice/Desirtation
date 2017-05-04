@@ -9,6 +9,7 @@ public class mcWeaponCollision : MonoBehaviour {
     GameObject[] enemies;
     ParticleSystem slash = new ParticleSystem();
     Transform father;
+    bool isRepeting; //shit that should fucking prevent that shitassbug where attack is called twice fml
 
     private Animator _mainCamera;
 //    bool isCameraFound =false;
@@ -20,6 +21,8 @@ public class mcWeaponCollision : MonoBehaviour {
         set { weaponDamage = value; }
     }
     float damageHistory = 0f;
+
+    float totalDamage;
 
 
 
@@ -50,21 +53,23 @@ public class mcWeaponCollision : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
+        totalDamage = _mcStats.McDamage(weaponDamage);
         foreach(GameObject enemy in enemies)
         {
             if(col.gameObject == enemy)
             {
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
-                enemy.GetComponent<generalEnemyStats>().ReceiveDamage(_mcStats.McDamage(weaponDamage));
-                InstantiateDmgNumbers(col.gameObject, _mcStats.McDamage(weaponDamage));
+                enemy.GetComponent<generalEnemyStats>().ReceiveDamage(totalDamage);
+                // Debug.Log(totalDamage);
+                InstantiateDmgNumbers(col.gameObject, totalDamage);
             }
         }
     }
 
-    IEnumerator HasBeenHit(GameObject col)
+    IEnumerator HasBeenHit()
     {
         yield return new WaitForSeconds(0.1f);
-        col.gameObject.GetComponent<generalEnemyStats>().IsHit=false;
+        isRepeting = false;
     }
     
 

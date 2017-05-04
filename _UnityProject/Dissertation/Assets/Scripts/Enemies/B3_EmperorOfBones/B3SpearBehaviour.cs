@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class B3SpearBehaviour : MonoBehaviour {
@@ -16,7 +15,9 @@ public class B3SpearBehaviour : MonoBehaviour {
 
 	void Start()
 	{
-		transform.LookAt(player.transform.position + new Vector3(0,1,0));
+		if(player != null)
+			transform.LookAt(player.transform.position + new Vector3(0,1,0));
+
 		StartCoroutine(TimeUntilToss());
 		Destroy(gameObject, 4f);
 		damage += controller.dungeonLevel *1.2f;
@@ -38,17 +39,17 @@ public class B3SpearBehaviour : MonoBehaviour {
 		if(col.gameObject.tag == "Player")
 		{
 			col.gameObject.GetComponent<mcStats>().IncrementAgeOnDamageReceived(damage);
-			Camera.main.GetComponent<Animator>().SetTrigger("shakePlayer");
+			
 			col.gameObject.GetComponent<Rigidbody>().AddForce(-transform.position + col.gameObject.transform.position* Time.fixedDeltaTime *600000f);
 			Destroy(gameObject, 0.2f);
 		}
 
-		if(col.gameObject.tag == "shield")
-		{
-			Camera.main.GetComponent<Animator>().SetTrigger("shake");
-			col.gameObject.GetComponent<Rigidbody>().AddForce(-transform.position + col.gameObject.transform.position* Time.fixedDeltaTime *500000f);
-			Destroy(gameObject);
-		}
+		// if(col.gameObject.tag == "shield")
+		// {
+		// 	Camera.main.GetComponent<Animator>().SetTrigger("shake");
+		// 	col.gameObject.GetComponent<Rigidbody>().AddForce(-transform.position + col.gameObject.transform.position* Time.fixedDeltaTime *500000f);
+		// 	Destroy(gameObject);
+		// }
 	}
 
 }

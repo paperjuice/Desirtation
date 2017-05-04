@@ -1,5 +1,4 @@
 ﻿
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class enemySpawnController : MonoBehaviour {
 
     private float chanceToGetEnemy;
     private float enemyRollChance;
-    private float bossRollChance;
+    // private float bossRollChance;
 
     private bool isReady; //we set this true after we made sure all the tiles are instantiated
 
@@ -81,7 +80,7 @@ public class enemySpawnController : MonoBehaviour {
                 if(esp.gameObject.activeInHierarchy)
                 {
                     chanceToGetEnemy = Random.Range(0f,100f);
-                    if(chanceToGetEnemy <= 5f+(i*8f))
+                    if(chanceToGetEnemy <= (i*11.2f))
                     {
                         enemyRollChance = Random.Range(1f,100f);
                         if(enemyRollChance<=110-i*10)
@@ -108,7 +107,7 @@ public class enemySpawnController : MonoBehaviour {
                 numberOfBosses--;
                 if(bsp.gameObject.activeInHierarchy)
                 {
-                    bossRollChance = Random.Range(1f,100f);
+                    // bossRollChance = Random.Range(1f,100f);
                     var randBoss = Random.Range(0,bossList.Count);
                     if(0<i/(10f+i)*100f)
                         Instantiate(bossList[randBoss], bsp.transform.position, transform.rotation );

@@ -4,7 +4,7 @@ using UnityEngine;
 public class consumableDrop : MonoBehaviour {
 
 
-    consumablePotency _cp;
+    // consumablePotency _cp;
     float dropChance;
     [SerializeField] float chanceToGetAConsumable;
     float dropQuality;
@@ -25,14 +25,14 @@ public class consumableDrop : MonoBehaviour {
 
 
 
-    void Awake()
-    {
-        _cp = GameObject.FindGameObjectWithTag("Player").GetComponent<consumablePotency>();
-    }
+    // void Awake()
+    // {
+    //     _cp = GameObject.FindGameObjectWithTag("Player").GetComponent<consumablePotency>();
+    // }
 
     void Start()
 	{
-		if(listOfLevelThreeConsumables== null)
+		if(listOfLevelThreeConsumables == null)
 			listOfLevelThreeConsumables = levelThreeConsumable;
 	}
 
@@ -52,7 +52,7 @@ public class consumableDrop : MonoBehaviour {
                 else if (dropQuality > 70 && dropQuality <= 95)
                     Instantiate(levelTwoConsumable[Random.Range(0, levelTwoConsumable.Length)], transform.position, transform.rotation);
             }
-        }else if(isBoss)
+        }else if(isBoss && controller.dungeonLevel != 10)
         {
             BossDrop();
         }

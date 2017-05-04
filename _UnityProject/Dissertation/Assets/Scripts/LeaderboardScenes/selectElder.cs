@@ -14,6 +14,7 @@ public class selectElder : MonoBehaviour {
 			a.SetBool("talk", false);
 
 		controller.dungeonLevel = 1;
+		generalEnemyStats.eGlobalMultiplier = 1f;
 	}
 
 	void Update()

@@ -29,9 +29,9 @@ public class B5Behaviour : MonoBehaviour {
 	[SerializeField] List<string> farRangeAttack;
 	bool isRushinTowardsPlayer;
 	int chooseAttack;
-	int chanceToAttack = 0;
+	// int chanceToAttack = 0;
 	float current_chooseAttack;
-	float end_chooseAttack = 3;
+	// float end_chooseAttack = 3;
 	bool isAttacking = false;
 
 

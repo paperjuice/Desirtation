@@ -1,13 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class aoe_DealDmgPerSecond : MonoBehaviour {
 
 	private consumableEffect _ce;
 	private GameObject[] enemies;
-	float time;
-	float endTime=1;
+	// float time;
+	// float endTime=1;
 	
 
 
@@ -34,21 +33,9 @@ public class aoe_DealDmgPerSecond : MonoBehaviour {
 			if(e != null)
 				if(Vector3.Distance(transform.position,e.transform.position)<3)
 				{
-					if(time >= endTime)
-					{
-						 	;
-						e.GetComponent<generalEnemyStats>().ReceiveDamage(_ce.AOE_DeadDmgPerSecond());
-						time = 0;
-					}
-					
+					e.GetComponent<generalEnemyStats>().ReceiveDamage(_ce.AOE_DeadDmgPerSecond() * Time.deltaTime);
 				}
 		}
-
-		if(time <= endTime)
-		{
-			time += Time.deltaTime;
-		}
-
 	}
 
 

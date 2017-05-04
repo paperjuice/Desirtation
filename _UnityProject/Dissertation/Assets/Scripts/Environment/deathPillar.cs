@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class deathPillar : MonoBehaviour {
 
 	mcStats _mcStats;
 	mcMovementBehaviour _mcMovementBehaviour;
+	bool controlDamage;
 
 
 	void Awake()
@@ -14,12 +14,23 @@ public class deathPillar : MonoBehaviour {
 		_mcMovementBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<mcMovementBehaviour>();
 	} 
 
+
 	void OnTriggerStay(Collider other)
 	{
 		if(other.gameObject.tag == "Player")
 		{
-			if(!_mcMovementBehaviour.isInvincible)
-				_mcStats.IncrementAgeOnDamageReceived(10f * Time.deltaTime);
+			if(!controlDamage && !_mcMovementBehaviour.isInvincible)
+			{
+				_mcStats.IncrementAgeOnDamageReceived(0.5f* Time.deltaTime);
+				controlDamage = true;
+				StartCoroutine(ControlDamage());
+			}
 		}
+	}
+
+	IEnumerator ControlDamage()
+	{
+		yield return new WaitForSeconds(0.1f);
+		controlDamage = false;
 	}
 }

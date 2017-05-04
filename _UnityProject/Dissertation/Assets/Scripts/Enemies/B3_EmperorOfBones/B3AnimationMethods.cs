@@ -15,7 +15,6 @@ public class B3AnimationMethods : MonoBehaviour {
 	{
 		Instantiate(attacks[0], attacks[0].transform.position = transform.position + new Vector3(0,6.5f,0) + (transform.right *Random.Range(5f,10f)), attacks[0].transform.rotation);
 		Instantiate(attacks[0], attacks[0].transform.position = transform.position + new Vector3(0,6.5f,0) + (transform.forward *Random.Range(7f,10f)), attacks[0].transform.rotation);
-
 	}
 
 	public void InstantiateAttack2()

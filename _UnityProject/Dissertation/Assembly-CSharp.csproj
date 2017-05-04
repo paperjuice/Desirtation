@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Consumable\consumableUse.cs" />
      <Compile Include="Assets\Scripts\Controller\BloodStainController.cs" />
      <Compile Include="Assets\Scripts\Controller\GatingSystem.cs" />
+     <Compile Include="Assets\Scripts\Controller\LiftController.cs" />
      <Compile Include="Assets\Scripts\Controller\McSpawnController.cs" />
      <Compile Include="Assets\Scripts\Controller\SoundController.cs" />
      <Compile Include="Assets\Scripts\Controller\controller.cs" />
@@ -92,7 +93,6 @@
      <Compile Include="Assets\Scripts\Environment\StairsToNewFloor.cs" />
      <Compile Include="Assets\Scripts\Environment\breakableObjects.cs" />
      <Compile Include="Assets\Scripts\Environment\deathPillar.cs" />
-     <Compile Include="Assets\Scripts\Environment\lift.cs" />
      <Compile Include="Assets\Scripts\Environment\particlesFollow.cs" />
      <Compile Include="Assets\Scripts\FloorProgression\FloorProgressionBehaviour.cs" />
      <Compile Include="Assets\Scripts\Intro\firstStartGameBahaviour.cs" />
@@ -113,6 +113,7 @@
      <Compile Include="Assets\Scripts\MC5\mcMovementBehaviour.cs" />
      <Compile Include="Assets\Scripts\MC5\mcStats.cs" />
      <Compile Include="Assets\Scripts\MC5\mcWeaponCollision.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\OnEnableShowTitle.cs" />
      <Compile Include="Assets\Scripts\MainMenu\mainMenuController.cs" />
      <Compile Include="Assets\Scripts\Misc\DontDestroyOnLoad.cs" />
      <Compile Include="Assets\Scripts\Misc\FadeOutSound.cs" />

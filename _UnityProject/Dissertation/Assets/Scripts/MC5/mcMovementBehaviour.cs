@@ -4,6 +4,7 @@ public class mcMovementBehaviour : MonoBehaviour {
 
 
     private mcStats _mcStats;
+    private debuff _debuff;
     private consumableEffect _ce;
 
     //Rotation
@@ -51,7 +52,7 @@ public class mcMovementBehaviour : MonoBehaviour {
     public bool isRolling;
     public bool isInvincible;
     BoxCollider col;
-    float rollSpeed = 5;
+    float rollSpeed = 7;
 
 
 
@@ -62,6 +63,7 @@ public class mcMovementBehaviour : MonoBehaviour {
 
         mcWeapon = GameObject.FindGameObjectWithTag("mcWeapon").GetComponent<BoxCollider>();
         _mcStats = GetComponent<mcStats>();
+        _debuff = GetComponent<debuff>();
         layerMask = LayerMask.GetMask("floor");
         rigid = GetComponent<Rigidbody>();
         _ce = GetComponent<consumableEffect>();
@@ -190,12 +192,12 @@ public class mcMovementBehaviour : MonoBehaviour {
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Armature|attack_2"))
         {
             playerRotationSpeed = 0.5f;
-            McSpeed = savedMcSpeed * 0.3f;
+            _debuff.Slow(0.2f, 0.3f);
         }
         else
         {
             playerRotationSpeed = savedPlayerRotationSpeed;
-            McSpeed = savedMcSpeed;
+            // McSpeed = savedMcSpeed;
         }
     }
 

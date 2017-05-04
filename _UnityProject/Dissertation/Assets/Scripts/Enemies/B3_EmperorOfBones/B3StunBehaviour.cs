@@ -13,7 +13,7 @@ public class B3StunBehaviour : MonoBehaviour {
 	{
 		if(GameObject.FindGameObjectWithTag("Player"))
 			_debuff = GameObject.FindGameObjectWithTag("Player").GetComponent<debuff>();
-		Destroy(gameObject, 30f);
+		Destroy(gameObject, 35f);
 	}
 
 	void Update()

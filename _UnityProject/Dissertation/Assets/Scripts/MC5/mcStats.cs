@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 using UnityStandardAssets.ImageEffects;
 
 public class mcStats : MonoBehaviour {
@@ -12,6 +11,7 @@ public class mcStats : MonoBehaviour {
     private fadeOutFadein fadeIn;
     mcMovementBehaviour _mcMsBehaviour;
     GameObject _camera;
+    
 //    bool isCameraObjectRefered = false;
 
     [SerializeField] ParticleSystem blood;
@@ -59,8 +59,8 @@ public class mcStats : MonoBehaviour {
 
     
     //youthfulness
-    private float youthfulness;
-    private float bonusYouthfulness;
+    private float youthfulness= 0f;
+    private float bonusYouthfulness= 0f;
     public float BonusYouthfulness
     {
         get{return bonusYouthfulness;}
@@ -68,8 +68,8 @@ public class mcStats : MonoBehaviour {
     }
 
     //fortitude
-    private float fortitude;
-    private float bonusFortitude;
+    private float fortitude= 0f;
+    private float bonusFortitude= 0f;
     public float BonusFortitude
     {
         get{return bonusFortitude;}
@@ -77,8 +77,8 @@ public class mcStats : MonoBehaviour {
     }
 
     //wisdom
-    private float wisdom;
-    private float bonusWisdom;
+    private float wisdom= 0f;
+    private float bonusWisdom= 0f;
     public float BonusWisdom
     {
         get{return bonusWisdom;}
@@ -86,17 +86,17 @@ public class mcStats : MonoBehaviour {
     }
 
     //luck
-    private float luck;
+    private float luck= 0f;
 
     //damage
-    private float mcDamage;
+    private float mcDamage= 0f;
 
     //armour
-    private float damageProcessedBasedOnArmour;
+    private float damageProcessedBasedOnArmour= 0f;
 
 
     //critChance
-    private float damageIfCrited;
+    // private float damageIfCrited= 0f;
     
     
     void Awake()
@@ -134,6 +134,7 @@ public class mcStats : MonoBehaviour {
     {
         if(damageReceived>0 && !_mcMsBehaviour.isInvincible)
         {
+            Camera.main.GetComponent<Animator>().SetTrigger("shakePlayer");
             Age += Armour(damageReceived);
             damageReceived = 0f;
             blood.Play();
@@ -201,8 +202,15 @@ public class mcStats : MonoBehaviour {
     public float McDamage(float weaponDamage)
     {
         float temp = ((Fortitude() * 0.5f) + weaponDamage);
+        float chanceToCrit = Random.Range(1f, 100f);
         mcDamage = temp + Random.Range(-temp*0.1f, temp*0.1f);  
-        return CritChance(mcDamage);;
+
+        if(chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.1f + 10f)
+        {
+            mcDamage = mcDamage * Random.Range(1.6f,2f);
+        }
+
+        return mcDamage;;
     }
 
     public float Armour(float damageReceived)
@@ -212,15 +220,15 @@ public class mcStats : MonoBehaviour {
         return damageProcessedBasedOnArmour;
     }
 
-    public float CritChance(float mcDamage)
-    {
-        float chanceToCrit = Random.Range(1f, 100f);
-        if(chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.1f + 10f)
-        {
-            mcDamage = mcDamage * Random.Range(1.6f,2f);
-        }
-        return mcDamage;
-    }
+    // public float CritChance(float mcDamage)
+    // {
+    //     float chanceToCrit = Random.Range(1f, 100f);
+    //     if(chanceToCrit <= _cp.CritChanceLevel  +  Youthfulness()*0.1f + 10f)
+    //     {
+    //         mcDamage = mcDamage * Random.Range(1.6f,2f);
+    //     }
+    //     return mcDamage;
+    // }
 
     void Death()
     {
@@ -262,7 +270,7 @@ public class mcStats : MonoBehaviour {
         deadBody.gameObject.SetActive(true);
         gameObject.SetActive(false);
         fadeIn.enabled = true;
-        fadeIn.SceneName = "enterLeaderboard";
+        //fadeIn.SceneName = "enterLeaderboard";
         Destroy(gameObject,5f);
     }
     // IEnumerator DestroyOnDeath()

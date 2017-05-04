@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PromiseOfLife : MonoBehaviour {
 
 	
-	Vector3 initialPosOfTheWingsParticles;
+	// Vector3 initialPosOfTheWingsParticles;
 	[SerializeField] mcStats _ms;
 	[SerializeField] consumablePotency _cp;
 	[SerializeField] GameObject wingsMesh;
 	[SerializeField] ParticleSystem wingsDisolve;
 
 
-	void Start()
-	{
-		initialPosOfTheWingsParticles = transform.position;
-	}
+	// void Start()
+	// {
+	// 	initialPosOfTheWingsParticles = transform.position;
+	// }
 
 	void Update()
 	{

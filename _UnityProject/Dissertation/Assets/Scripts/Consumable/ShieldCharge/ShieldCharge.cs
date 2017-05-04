@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class ShieldCharge : MonoBehaviour {
 
@@ -13,7 +12,7 @@ public class ShieldCharge : MonoBehaviour {
 	[SerializeField] float speed;
 	[SerializeField] GameObject playerMesh;
 	[SerializeField] BoxCollider _collider;
-	[SerializeField] float damage = 0.6f;
+	[SerializeField] float damage = 1.2f;
 	Vector3 chargeTarget;
 	float chargeCost = 0.3f;
 	bool isCharging = false;
@@ -48,6 +47,7 @@ void Awake(){
 			rigid.MovePosition(player.transform.position + player.transform.forward * Time.fixedDeltaTime * speed);
 			playerMesh.transform.localRotation = Quaternion.Euler(35f,0,0);
 			_collider.enabled = true;
+			mcMB.isInvincible = true;
 		}
 	}
 
@@ -60,6 +60,7 @@ void Awake(){
 		playerMesh.transform.localRotation = Quaternion.Euler(0f,0f,0f);
 		_collider.enabled = false;
 		disableDoubleCharge=false;
+		mcMB.isInvincible = false;
 	}
 
 	void OnTriggerEnter(Collider col)

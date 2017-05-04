@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class enemyBeenBlocked : MonoBehaviour {
 
-    private mcStats _mcStats;
+    // private mcStats _mcStats;
     private Animator _camera;
 
     [SerializeField] private bool isBoss;
@@ -26,7 +26,7 @@ public class enemyBeenBlocked : MonoBehaviour {
 
     private void Awake()
     {
-        _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
+        // _mcStats = GameObject.FindGameObjectWithTag("Player").GetComponent<mcStats>();
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
 

@@ -19,7 +19,7 @@ public class controller : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         isFading=true;
 
-        // dungeonLevel = 3;
+        // dungeonLevel = 9;
     }
 
     void Update()

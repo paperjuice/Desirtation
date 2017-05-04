@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GatingSystem : MonoBehaviour {
@@ -21,6 +20,7 @@ public class GatingSystem : MonoBehaviour {
 
 	void Update()
 	{
+		print(enemies.Count);
 		foreach( GameObject enemy in enemies)
 		{
 			foreach(Animator a in gatesAnim)
@@ -31,7 +31,14 @@ public class GatingSystem : MonoBehaviour {
 					a.SetBool("close", true);
 			}
 		}
+
+
+		// foreach(Animator a in gatesAnim)
+		// {
+		// 	if(enemies.Count == 0)
+		// 		a.SetBool("close", false);
+		// 	else
+		// 		a.SetBool("close", true);
+		// }
 	}
-
-
 }

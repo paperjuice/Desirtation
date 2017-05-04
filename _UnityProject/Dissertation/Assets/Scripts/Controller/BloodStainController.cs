@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BloodStainController : MonoBehaviour {
@@ -24,7 +23,7 @@ public class BloodStainController : MonoBehaviour {
 
 
 			DestroyPngBasedOnDistance();
-			print(images.Length);
+			// print(images.Length);
 			if(images.Length > 7)
 			{
 				if(images[0] != null)

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class generalEnemyStats : MonoBehaviour {
@@ -16,6 +16,9 @@ public class generalEnemyStats : MonoBehaviour {
     //check for dual hit
     float savedHealth;
     float time;
+    int countNumberOfBloodSpashes = 0;
+
+    bool areEffectsTooOften = false; //this wont allow the enemy to play effects until a counter is set
 
     [SerializeField]private int id;
     public int Id{
@@ -39,7 +42,7 @@ public class generalEnemyStats : MonoBehaviour {
     //when boss is defeated, the enemies power grows exponentially
     [HeaderAttribute("Check if it is a boss")]
     [SerializeField] bool isBoss;
-    static float eGlobalMultiplier = 1f;
+    public static float eGlobalMultiplier = 1f;
     [HideInInspector]public float eCurrentHealth;
 
     private void Awake()
@@ -78,22 +81,42 @@ public class generalEnemyStats : MonoBehaviour {
 
    
 
-    public void ReceiveDamage(float damage, bool isHavingSoundVisualEffect = true)
+    public void ReceiveDamage(float damage)
     {
-        var count = 0;
-        if(damage >0 )//&& !isHit
+        if(damage >0) //&& !isHit
         {
-            soundController.EnemyHitSound();
+            // print("damaged");
+            isHit = true;
             eCurrentHealth -= damage;
             damage = 0;
-            _bloodPart.Play();
-            // StartCoroutine(InstantiateBloodSplatter());
-            if(isHavingSoundVisualEffect && count <2)
+            
+            if(!areEffectsTooOften)
             {
-                InstantiateBloodSplatter();
-                count ++;
+                if(countNumberOfBloodSpashes < 2)
+                {
+                    InstantiateBloodSplatter();
+                    countNumberOfBloodSpashes ++;
+                }
+                areEffectsTooOften = true;
+                _bloodPart.Play();
+                soundController.EnemyHitSound();
+                
+                StartCoroutine(CounterForEffect());
             }
+            // StartCoroutine(DoubleHitPrevention());
         }
+    }
+
+    IEnumerator CounterForEffect()
+    {
+        yield return new WaitForSeconds(1f);
+        areEffectsTooOften = false;
+    }
+
+    IEnumerator DoubleHitPrevention()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isHit = false;
     }
 
     void Death()

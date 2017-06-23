@@ -9,7 +9,7 @@
 
 
 
-   Some code to put in a snippet 
+   Some code snippet with ruby syntax
 ```ruby
   defp setup_channel do
     {:ok, connection} = AMQP.Connection.open(@mq_config)
